@@ -26,6 +26,7 @@ export class DonationDetailPage implements OnInit {
   temp_nominal = 0;
   nominal = "";
   donationName;
+  history:any;
 
   constructor(
     private modalCtrl: ModalController,
@@ -39,7 +40,8 @@ export class DonationDetailPage implements OnInit {
     private donationService: DonationService) {
 
     this.donation = this.navParams.get("donation");
-    this.donationName = this.donation.title
+    this.donationName = this.donation.title;
+    this.getHistory();
   }
 
   ngOnInit() {
@@ -81,6 +83,13 @@ export class DonationDetailPage implements OnInit {
         );
       });
     }
+  }
+
+  getHistory(){
+    this.donationService.getHistory(this.donation.id).then((res:any)=>{
+      this.history = res.body.participants;
+      console.log(this.history);
+    })
   }
 
   onChangePrice(evt) {

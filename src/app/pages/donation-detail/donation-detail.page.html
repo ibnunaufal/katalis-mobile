@@ -26,7 +26,20 @@
       <ion-input #autofocus class="input-nominal" type="string" elastic placeholder='Rp 0' [(ngModel)]="nominal"
         (ionInput)='onChangePrice($event.target.value)'></ion-input>
       <!-- <ion-input class="ion-input" [(ngModel)]="nominal" type="number"></ion-input> -->
+    </ion-item>    
+    <ion-item lines="none">
+      <ion-label class="ion-label" position="stacked">Riwayat Donasi
+      </ion-label>
+      <table class="table">
+        <tbody>
+          <tr *ngFor="let list of history">
+            <td>{{ list.amount | currency: 'Rp ':true:'1.0' | replace: ',':'.' }}</td>
+            <td>{{list.dateTime | date : 'dd MMM yyyy hh:mm'}}</td>
+          </tr>
+        </tbody>
+      </table>
     </ion-item>
+      
     <div class="container-button">
       <ion-button expand="block" type="button" (click)="ADD_DONATION()">
         {{'DONATION.title' | translate}}
