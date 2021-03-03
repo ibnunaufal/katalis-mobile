@@ -1,0 +1,18 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>{{ 'INBOX.notification' | translate }}</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()" strong>
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="no-box-shadow">
+    <ion-card-content [innerHTML]="inbox.body">
+    </ion-card-content>
+  </ion-card>
+</ion-content>

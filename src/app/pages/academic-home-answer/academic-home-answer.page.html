@@ -1,0 +1,46 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>{{'EDMEDIA.answer' | translate}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()" strong>
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="user=='student'">
+    <ion-item>
+      <ion-label position="stacked">{{'ADD.answer' | translate}}</ion-label>
+      <ion-textarea [(ngModel)]="input.answer" name="answer">
+      </ion-textarea>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label slot="start">{{'ADD.uploadfile' | translate}} :</ion-label>
+      <ion-button slot="end" color="light" (click)="ChooseFile()">{{'ADD.choosefile' | translate}}</ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{'ADD.filename' | translate}} : {{FileName}}</ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label slot="start"></ion-label>
+      <ion-button slot="end" block color="primary" (click)="UploadFile()">{{'ADD.upload' | translate}}</ion-button>
+    </ion-item>
+  </div>
+
+  <div style="width: 100%;height:4px;background-color: #eee;" *ngIf="user=='student'"></div>
+  <p style="text-align: center;
+  font-size: 11px;
+  font-weight: 600;color:#1b1c1e" *ngIf="answer.length==0">{{'EDMEDIA.nodata' | translate}}</p>
+  <ion-item lines="none" *ngFor="let item of answer">
+    <ion-label position="stacked">{{'ADD.youranswer' | translate}} :</ion-label>
+    <ion-textarea [innerHTML]="item.jawaban" disabled readonly style="    background-color: #e4e4e4;
+    padding: 10px;
+    font-size: 12px;
+    border-radius: 8px;color:#424242;">
+    </ion-textarea>
+    <ion-label position="stacked">{{'ADD.answerfile' | translate}} :</ion-label>
+    <p style="font-size: 12px;">{{item.fileUrl}}</p>
+  </ion-item>
+</ion-content>

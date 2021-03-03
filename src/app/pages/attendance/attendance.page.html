@@ -1,0 +1,180 @@
+<ion-header class="ion-no-border">
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'ATTENDANCE.title' | translate}}</ion-title>
+  </ion-toolbar>
+  <!-- <ion-card class="no-box-shadow">
+    <div style="margin:0px auto">
+      <div>
+        <p style="float:left;margin-right: 20px;margin-left: 10px;font-size: 16px;">
+          <ion-icon style="color: #0054E6;margin-right: 5px;" name="checkmark-done-outline"> </ion-icon>
+          {{'ATTENDANCE.ontime' | translate}}
+        </p>
+        <p style="float:left;margin-right: 20px;margin-left: 10px;font-size: 16px;">
+          |
+        </p>
+        <p style="float:left;margin-right: 20px;margin-left: 10px;font-size: 16px;">
+          <ion-icon style="color: #e60000;margin-right: 5px;" name="close-outline"></ion-icon>{{'ATTENDANCE.late' |
+          translate}}
+        </p>
+
+      </div>
+    </div>
+
+  </ion-card> -->
+
+
+  <ion-card class="no-box-shadow" style="padding:10px">
+    <p style="margin: 0px 24px 0px 16px;
+    font-size: 14px;">{{'ATTENDANCE.student' | translate}}</p>
+    <div class="student">
+      <h2>{{currentStudent}}</h2>
+    </div>
+    <div (click)="OpenSheet()" class="container-filter">
+      <ion-icon name="options-outline"></ion-icon>
+    </div>
+  </ion-card>
+</ion-header>
+
+
+<ion-content [scrollEvents]="true" (ionScroll)="onScroll($event)">
+  <div *ngIf="data">
+    <div style="width: 100%;
+    text-align: center;
+    background: #fff;
+    height: 67vh" *ngIf="data.length==0">
+      <ion-icon name="md-data-not-found" style="zoom:16"></ion-icon>
+      <p style="font-family: 'montserrat';
+      margin: 0px 50px 0px 50px;
+      font-weight: 600;
+      color: #6ab856;
+      font-size: 13px;">{{'DATANOTFOUND.title' | translate}}</p>
+    </div>
+
+
+    <ion-card *ngFor="let item of data" class="no-box-shadow">
+      <ion-card-content>
+        <div class="container-date">
+          <div class="number">
+            {{item.absen.tanggal | date : 'dd'}}
+          </div>
+          <div class="day">
+            {{item.absen.tanggal | date : 'EEE'}}
+          </div>
+        </div>
+        <div class="container-punchin">
+          <h2>
+            {{'ATTENDANCE.punchin' | translate}}
+          </h2>
+          <p>
+            {{item.absen.first }}
+            <ion-icon *ngIf="item.absen.masuk =='datang_tepat'" style="color: #0054E6;" name="checkmark-done-outline">
+            </ion-icon>
+            <ion-icon *ngIf="item.absen.masuk !='datang_tepat'" style="color: #e60000;" name="close-outline"></ion-icon>
+            | {{item.absen.suhuFirst }} &#8451;
+          </p>
+
+        </div>
+        <div class="container-punchout">
+          <h2>
+            {{'ATTENDANCE.punchout' | translate}}
+          </h2>
+          <p>
+            {{item.absen.last}}
+            <ion-icon *ngIf="item.absen.pulang =='pulang_tepat'" style="color: #0054E6;" name="checkmark-done-outline">
+            </ion-icon>
+            <ion-icon *ngIf="item.absen.pulang !='pulang_tepat'" style="color: #e60000;" name="close-outline">
+            </ion-icon>
+            | {{item.absen.suhuLast }} &#8451;
+          </p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+
+
+    <bottom-sheet [(State)]="BottomSheetState" (StateChange)="StateChanged($event)">
+      <ion-grid class="bottom-sheet">
+        <p class="bs-title">
+          {{'ATTENDANCE.filter' | translate}}
+        </p>
+        <ion-item lines="none">
+          <h2>{{'ATTENDANCE.student' | translate}}</h2>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-select [(ngModel)]="SelectedStudent" class="select-left"
+            placeholder="{{'ATTENDANCE.selectStudent' | translate}}">
+            <ion-select-option *ngFor="let item of students" [(value)]="item.callerId + '.' +item.name">{{item.name}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item lines="none">
+          <h2>{{'TRANSACTION.month' | translate}}</h2>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-datetime value="January" [(ngModel)]="input.month" name="input.month" displayFormat="MMMM"
+            placeholder="{{'ATTENDANCE.selectMonth' | translate}}">
+          </ion-datetime>
+        </ion-item>
+        <ion-item lines="none">
+          <h2>{{'TRANSACTION.year' | translate}}</h2>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-datetime value="2021" [(ngModel)]="input.year" name="input.year" displayFormat="YYYY"
+            placeholder="{{'ATTENDANCE.selectYear' | translate}}">
+          </ion-datetime>
+        </ion-item>
+        <ion-button class="no-box-shadow" expand="block" shape="round" (click)="filter()">{{'ATTENDANCE.sort' |
+          translate}}</ion-button>
+
+
+      </ion-grid>
+
+    </bottom-sheet>
+
+
+  </div>
+  <ion-fab style="width: 95.5%;" *ngIf="data && currentValue" center vertical="bottom" horizontal="start" slot="fixed"
+    [class.show-fab]="showToolbar" [class.show-fab2]="showToolbarAgain">
+    <ion-card class="box-shadow" style="--background: #235ec3;">
+      <ion-card-content>
+        <div class="container-date">
+          <div style="    color: #2381c3;" class="number">
+            {{currentValue.absen.tanggal | date : 'dd'}}
+          </div>
+          <div style="    color: #2381c3;" class="day">
+            {{currentValue.absen.tanggal | date : 'EEE'}}
+          </div>
+        </div>
+        <div class="container-punchin">
+          <h2 style="color:#fff">
+            {{'ATTENDANCE.punchin' | translate}}
+          </h2>
+          <p style="color:#fff">
+            {{currentValue.absen.first }}
+            <ion-icon style="color: #fff;" name="checkmark-done-outline">
+            </ion-icon>
+
+            | {{currentValue.absen.suhuFirst }} &#8451;
+          </p>
+
+        </div>
+        <div class="container-punchout">
+          <h2 style="color:#fff">
+            {{'ATTENDANCE.punchout' | translate}}
+          </h2>
+          <p style="color:#fff">
+            {{currentValue.absen.last}}
+            <ion-icon style="color: #fff;" name="checkmark-done-outline">
+            </ion-icon>
+
+            | {{currentValue.absen.suhuLast }} &#8451;
+          </p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-fab>
+</ion-content>

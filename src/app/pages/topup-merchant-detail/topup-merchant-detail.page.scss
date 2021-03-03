@@ -1,0 +1,38 @@
+* {
+    font-family: "montserrat";
+}
+.title {
+    font-size: 16px;
+    font-weight: 600;
+}
+.lihat {
+    position: absolute;
+    right: 16px;
+    top: 18px;
+    color: #397ffb;
+    font-weight: 600;
+    font-size: 14px;
+}
+.metode {
+    display: inline-block;
+    position: absolute;
+    top: 52px;
+    left: 72px;
+}
+.nama-sekolah {
+    font-size: 11px;
+    font-weight: 600;
+    color: #949494;
+    margin-bottom: 3px;
+}
+.sekolah {
+    margin: 0;
+    font-size: 14px;
+}
+
+.nominal {
+    margin: 0;
+    font-size: 14px;
+    color: #ffc107;
+    font-weight: 700;
+}

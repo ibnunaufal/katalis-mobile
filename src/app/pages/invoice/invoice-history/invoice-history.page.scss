@@ -1,0 +1,46 @@
+ion-card {
+    border-radius: 8px;
+}
+.box-shadow {
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+ion-card-title {
+    font-family: "montserrat";
+    font-weight: 600;
+}
+ion-card-subtitle {
+    font-size: 12px;
+}
+h3 {
+    font-family: "montserrat";
+    font-weight: 500;
+    font-size: 21px;
+}
+ion-card-header {
+    padding-bottom: 5px;
+}
+
+ion-label {
+    margin-top: 5px;
+}
+.status {
+    text-align: center;
+    background: #fba339;
+    color: #fff;
+    border-radius: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    width: 71px;
+    float: right;
+    font-weight: 700;
+}
+
+.callerName {
+    margin-top: 4px;
+    font-size: 14px;
+    margin-bottom: 0px;
+}

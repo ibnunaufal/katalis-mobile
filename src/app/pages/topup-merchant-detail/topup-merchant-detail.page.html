@@ -1,0 +1,74 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Topup Merchant</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()" strong>
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <div>
+      <h2 class="title">Metode Topup</h2>
+      <div>
+        <img width="62px" style="display: inline-block;" src="../../../assets/merchant/{{item.image}}">
+        <p class="metode">{{item.name}}</p>
+      </div>
+    </div>
+
+  </ion-item>
+  <ion-item lines="none">
+    <div>
+      <p class="nama-sekolah">Nama Sekolah</p>
+      <h4 class="sekolah">{{company}}</h4>
+    </div>
+
+  </ion-item>
+  <ion-item lines="none">
+    <div>
+      <p class="nama-sekolah">NIS</p>
+      <h2 class="sekolah">{{profile}}
+        <ion-icon name="copy-outline" (click)="copy(profile)"></ion-icon>
+      </h2>
+    </div>
+  </ion-item>
+  <ion-item lines="none">
+    <div>
+      <p class="nama-sekolah">Jumlah Topup</p>
+      <h2 class="nominal">{{merchantAmount}}</h2>
+    </div>
+  </ion-item>
+  <ion-item lines="none">
+    <h2 class="title">Panduan Topup</h2>
+  </ion-item>
+  <ion-item lines="none">
+
+    <ion-card-content>
+      <ion-list *ngFor="let tutorial of item.children" class="tutorial-list" lines="none">
+        <ion-item class="child-item" text-wrap detail="false" lines="none">
+          <ion-row no-padding align-items-center>
+            <ion-col size="9">
+              <ion-row no-padding>
+                <ion-col size="10">
+                  <h3>{{tutorial.name}}</h3>
+                </ion-col>
+                <ion-col size="10">
+                  <p text-lowercase color="medium">{{tutorial.information}}</p>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col size="3" text-right>
+              <img [src]="tutorial.image" (click)="openPreview(tutorial.image)" />
+            </ion-col>
+          </ion-row>
+        </ion-item>
+      </ion-list>
+
+
+    </ion-card-content>
+  </ion-item>
+
+</ion-content>

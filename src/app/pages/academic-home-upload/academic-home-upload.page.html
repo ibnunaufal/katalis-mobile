@@ -1,0 +1,54 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>{{'ADD.uploadfile' | translate}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()" strong>
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item lines="none">
+    <ion-label slot="start">{{'ADD.upload' | translate}} : {{FileName}}</ion-label>
+    <ion-button slot="end" color="light" (click)="ChooseFile()">{{'ADD.choosefile' | translate}}</ion-button>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label slot="start"></ion-label>
+    <ion-button slot="end" block color="medium" (click)="UploadFile()">{{'ADD.upload' | translate}}</ion-button>
+  </ion-item>
+  <div style="width: 100%;height:4px;background-color: #eee;"></div>
+  <ion-list>
+    <ion-list-header>
+      {{'ADD.fileuploaded' | translate}} :
+    </ion-list-header>
+
+    <ion-item *ngFor="let item of data;let i of index;">
+      <ion-thumbnail slot="start" style="margin-right: 0px;">
+        <ion-img *ngIf="item.fileType=='excel'  || item.fileExt=='.xlsx'" src="../../../assets/icon/excel.png"
+          style="width:49px;"></ion-img>
+        <ion-img *ngIf="item.fileType=='word'  || item.fileExt=='.docx'" src="../../../assets/icon/word.png"
+          style="width:49px;"></ion-img>
+        <ion-img *ngIf="item.fileType=='pdf'  || item.fileExt=='.pdf'" src="../../../assets/icon/pdf.png"
+          style="width:49px;"></ion-img>
+        <ion-img *ngIf="item.fileType=='sound'  || item.fileExt=='.mp3'" src="../../../assets/icon/sound.png"
+          style="width:42px;"></ion-img>
+        <ion-img *ngIf="item.fileType=='video'  || item.fileExt=='.mp4'" src="../../../assets/icon/video.png"
+          style="width:42px;"></ion-img>
+        <ion-img *ngIf="item.fileType=='image' || item.fileExt=='.jpg'" src="../../../assets/icon/image.png"
+          style="width:42px;"></ion-img>
+      </ion-thumbnail>
+      <ion-label>{{item.fileUrl}}</ion-label>
+      <ion-checkbox (ionChange)="addCheckbox($event,item.fileUrl,item.fileType)" name="file{{i}}" mode="ios">
+      </ion-checkbox>
+    </ion-item>
+
+  </ion-list>
+
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

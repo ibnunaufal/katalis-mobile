@@ -1,0 +1,24 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>{{info.title}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()" strong>
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="box-shadow">
+    <img src="{{ apiUrl + 'main_a/image/get/'+ info.image + '/thumb' }}" class="box-shadow radius slide-image" />
+    <ion-card-header>
+      <ion-card-subtitle>{{info.createTime | date : 'dd/MM/yyyy' }}</ion-card-subtitle>
+      <ion-card-title>{{info.subtitle}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      {{info.description}}
+    </ion-card-content>
+  </ion-card>
+</ion-content>

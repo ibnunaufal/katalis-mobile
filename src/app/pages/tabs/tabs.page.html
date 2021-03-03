@@ -1,0 +1,28 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home" (click)="changeIcon('home')">
+      <ion-icon [hidden]="!activeHomepage" name="md-homepage"></ion-icon>
+      <ion-icon [hidden]="activeHomepage" name="md-homepage-inactive"></ion-icon>
+      <ion-label></ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="info" (click)="changeIcon('info')">
+      <ion-icon [hidden]="!activeInfo" name="md-info"></ion-icon>
+      <ion-icon [hidden]="activeInfo" name="md-info-inactive"></ion-icon>
+      <ion-label></ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="inbox" (click)="changeIcon('inbox')">
+      <ion-icon [hidden]="!activeNotification" name="md-notification"></ion-icon>
+      <ion-icon [hidden]="activeNotification" name="md-notification-inactive"></ion-icon>
+      <ion-label></ion-label>
+    </ion-tab-button>
+
+
+    <ion-tab-button tab="profile" (click)="changeIcon('profile')">
+      <ion-icon [hidden]="!activeProfile" name="md-profile"></ion-icon>
+      <ion-icon [hidden]="activeProfile" name="md-profile-inactive"></ion-icon>
+      <ion-label></ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

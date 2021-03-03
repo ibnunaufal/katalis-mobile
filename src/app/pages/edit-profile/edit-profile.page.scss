@@ -1,0 +1,28 @@
+* {
+    font-family: "montserrat" !important;
+}
+h2 {
+    color: #fff;
+    text-transform: lowercase;
+}
+h2::first-line {
+    color: #1b1c1e;
+    font-weight: 600;
+    font-size: 20px;
+    text-transform: capitalize;
+}
+
+.avatar {
+    width: 75px !important;
+    height: 75px !important;
+    max-width: 75px !important; //any size
+    max-height: 75px !important; //any size
+}
+.camera-icon {
+    position: absolute;
+    bottom: 15px;
+    left: 18.5px;
+    z-index: 2;
+    zoom: 2;
+    color: #ffffff;
+}

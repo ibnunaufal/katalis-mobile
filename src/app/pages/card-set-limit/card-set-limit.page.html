@@ -1,0 +1,44 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>
+      <ion-icon name="settings-outline"></ion-icon> Set Limit
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()" strong>
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-item lines="none">
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label class="ion-label" position="stacked">Set Limit Max <ion-text color="danger">
+        </ion-text>
+      </ion-label>
+      <ion-input #autofocus1 class="input-nominal" type="string" elastic placeholder='Rp 0' [(value)]="max"
+        [(ngModel)]="max" (ionInput)='onChangeMax($event.target.value)'></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label class="ion-label" position="stacked">Set Limit Daily <ion-text color="danger">
+        </ion-text>
+      </ion-label>
+      <ion-input class="input-nominal" type="string" elastic placeholder='Rp 0' [(value)]="daily" [(ngModel)]="daily"
+        (ionInput)='onChangeDaily($event.target.value)'></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label class="ion-label" position="stacked">Transaction Unlimited <ion-text color="danger"></ion-text>
+      </ion-label>
+      <!-- <ion-label>Setting Unlimited</ion-label> -->
+      <ion-toggle [(ngModel)]="setUnlimited" mode="ios" (ionChange)="updatetogle($event)" slot="end"></ion-toggle>
+    </ion-item>
+    <div class="container-button">
+      <ion-button expand="block" type="button" (click)="setLimit()">
+        Set Limit
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

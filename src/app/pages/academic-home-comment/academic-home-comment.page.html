@@ -1,0 +1,82 @@
+<ion-content>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/academic-home"></ion-back-button>
+    </ion-buttons>
+    <ion-card-header>
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <div class="text-avatar">{{data.first | slice:0:1}}{{data.second | slice:0:1}}</div>
+          <!-- <img src="../../../assets/icon user.png"> -->
+        </ion-avatar>
+        <ion-label *ngIf="data.tipe =='info'">
+          <h3>{{data.accountName}}</h3>
+          <p class="date">{{data.newDate | timeago}}</p>
+        </ion-label>
+        <ion-label *ngIf="data.tipe !='info'">
+          <h3>{{data.accountName}} <span> untuk kelas</span>
+            {{data.kelasName}}</h3>
+          <p class="date">{{data.newDate | timeago}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-card-header>
+  </ion-toolbar>
+  <ion-card-content>
+    <p class="text-title">{{data.title}}</p>
+    <div class="text-desc" [innerHTML]="data.description"></div>
+    <a [href]="data.linkDetail">{{data.linkDetail}}</a>
+
+    <div *ngIf="data.attachmentImage.length >0">
+      <ion-slides [options]="sliderGaleri">
+        <ion-slide *ngFor="let img of data.attachmentImage">
+          <img class="img-slide" src="{{ apiUrl + 'media/view/'+ img.fileUrl }}" alt="" tappable
+            (click)="openPreview(data.fileUrl)">
+        </ion-slide>
+      </ion-slides>
+    </div>
+    <div *ngIf="data.attachmentOther.length>0">
+      <p class="attachments" *ngFor="let other of data.attachmentOther">{{other.fileUrl}}</p>
+    </div>
+    <!-- <p class="attachments" *ngFor="let data of data.attachments" (click)="download(data)">
+      <img src="{{ apiUrl + 'media/view/'+ data.fileUrl }} " alt=""></p> -->
+
+  </ion-card-content>
+
+  <ion-footer>
+    <ion-row>
+      <ion-col center text-center>
+
+      </ion-col>
+      <ion-col center text-center>
+        <a>
+          <ion-icon name="chatbox-outline"></ion-icon>
+          <div>Comments</div>
+        </a>
+      </ion-col>
+      <ion-col center text-center>
+
+      </ion-col>
+    </ion-row>
+  </ion-footer>
+  <div style="margin-bottom: 79px;">
+    <ion-item lines="none" *ngFor="let item of comments;let i = index;">
+      <ion-avatar slot="start">
+        <div class="text-avatar">{{item.name | slice:0:2}}</div>
+        <!-- <img src="../../../assets/icon user.png"> -->
+      </ion-avatar>
+      <ion-label>
+        <div class="comment" *ngIf="i != comments.length-1"> {{item.comment}}</div>
+        <div class="comment" [style.backgroundColor]="color" *ngIf="i == comments.length-1"> {{item.comment}}</div>
+      </ion-label>
+    </ion-item>
+  </div>
+
+  <div class="input-area">
+    <form name="messageForm">
+      <ion-input type="text" name="message" [(ngModel)]="input.message" placeholder="send a message.."></ion-input>
+      <ion-button (click)="addComment(data.id)">
+        <ion-icon name="send"></ion-icon>
+      </ion-button>
+    </form>
+  </div>
+</ion-content>

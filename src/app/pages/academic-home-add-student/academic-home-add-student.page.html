@@ -1,0 +1,38 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Add Student</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()" strong>
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-label position="stacked">NIS</ion-label>
+        <ion-input [(ngModel)]="input.nis" name="nis"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Nama Lengkap</ion-label>
+        <ion-input [(ngModel)]="input.name" name="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input [(ngModel)]="input.email" name="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Phone</ion-label>
+        <ion-input [(ngModel)]="input.phone" name="phone"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div class="ion-padding">
+      <ion-button expand="block" color="primary" type="submit" class="ion-no-margin" (click)="addStudent()">
+        {{'ADD.save' | translate}}
+      </ion-button>
+    </div>
+  </form>
+</ion-content>

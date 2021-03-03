@@ -1,0 +1,354 @@
+{
+    "items": [
+        {
+            "name": "Cara Pembayaran",
+            "children": [
+                {
+                    "name": "Indomaret",
+                    "image": "indomaret.png",
+                    "children": [
+                        {
+                            "image": "../../assets/indomaret/icon_doc_cashier.png",
+                            "name": "LANGKAH 1 PAYMENT POINT",
+                            "information": "Informasikan kepada kasir akan melakukan pembayaran Payment Point"
+                        },
+                        {
+                            "image": "../../assets/indomaret/icon_doc_select.png",
+                            "name": "LANGKAH 2 VALIDASI",
+                            "information": "Sebutkan Nama Sekolah dan Nomor Induk Siswa Anda kepada kasir."
+                        },
+                        {
+                            "image": "../../assets/indomaret/icon_doc_cards.png",
+                            "name": "LANGKAH 3 PEMBAYARAN",
+                            "information": "Detail tagihan akan ada pada layar Kasir. Lakukan pembayaran ke Kasir sejumlah nominal yang disebutkan."
+                        },
+                        {
+                            "image": "../../assets/indomaret/icon_doc_receipt.png",
+                            "name": "LANGKAH 4 SELESAI",
+                            "information": "Anda akan menerima struk pembayaran sebagai bukti transaksi berhasil. Notifikasi pembayaran juga akan langsung diterima oleh Institusi Pendidikan"
+                        }
+                    ]
+                },
+                {
+                    "name": "Alfamart",
+                    "image": "alfamart.png",
+                    "children": [
+                        {
+                            "image": "../../assets/indomaret/icon_doc_cashier.png",
+                            "name": "LANGKAH 1 INFORMASI",
+                            "information": "Informasikan kepada kasir akan melakukan pembayaran Jaringan IDN, kemudian sebutkan Kode IDN dan NIS (Nomor Induk Siswa / Mahasiswa)."
+                        },
+                        {
+                            "image": "../../assets/indomaret/icon_doc_select.png",
+                            "name": "LANGKAH 2 VALIDASI",
+                            "information": "Pastikan data yang kasir informasikan valid dan total tagihan benar."
+                        },
+                        {
+                            "image": "../../assets/indomaret/icon_doc_cards.png",
+                            "name": "LANGKAH 3 PEMBAYARAN",
+                            "information": "Bayar sejumlah nominal dengan menggunakan tunai atau non tunai."
+                        },
+                        {
+                            "image": "../../assets/indomaret/icon_doc_receipt.png",
+                            "name": "LANGKAH 4 SELESAI",
+                            "information": "Anda akan menerima struk pembayaran sebagai bukti transaksi berhasil."
+                        }
+                    ]
+                },
+                {
+                    "name": "Gopay",
+                    "image": "gopay.png",
+                    "children": [
+                        {
+                            "image": "../../assets/gopay/gopay_screen01.png",
+                            "name": "LANGKAH 1 PILIH GO-BILLS",
+                            "information": "Pada aplikasi Gojek, pilih menu GO-BILLS"
+                        },
+                        {
+                            "image": "../../assets/gopay/gopay_screen02.png",
+                            "name": "LANGKAH 2 PILIH MENU SEKOLAH",
+                            "information": "Di halaman GO-BILLS,pilih menu Schools."
+                        },
+                        {
+                            "image": "../../assets/gopay/gopay_screen03.png",
+                            "name": "LANGKAH 3 CARI SEKOLAH",
+                            "information": "Pilih sekolah tujuan pada daftar sekolah yang ada, atau cari nama sekolah."
+                        },
+                        {
+                            "image": "../../assets/gopay/gopay_screen05.png",
+                            "name": "LANGKAH 4 MASUKAN NIS/NIM",
+                            "information": "Masukan NIS/NIM Anda pada kolom ID Pelajar."
+                        },
+                        {
+                            "image": "../../assets/gopay/gopay_screen06.png",
+                            "name": "LANGKAH 5 KONFIRMASI",
+                            "information": "Pastikan data tagihan sudah benar, lalu lakukan pembayaran dengan GO-PAY."
+                        },
+                        {
+                            "image": "../../assets/gopay/gopay_screen07.png",
+                            "name": "LANGKAH 6 SELESAI",
+                            "information": "Pembayaran Selesai. Anda dapat menyimpan atau mengirimkan bukti pembayaran dengan menekan tombol Send Receipt."
+                        }
+                    ]
+                },
+                {
+                    "name": "Tokopedia",
+                    "image": "tokopedia.png",
+                    "children": [
+                        {
+                            "image": "../../assets/tokopedia/toped_screen01.png",
+                            "name": "LANGKAH 1 PILIH TOPUP & TAGIHAN",
+                            "information": "Pada aplikasi Tokopedia,pilih menu Topup & Tagihan."
+                        },
+                        {
+                            "image": "../../assets/tokopedia/toped_screen02.png",
+                            "name": "LANGKAH 2 PILIH BIAYA PENDIDIKAN",
+                            "information": "Di halaman Topup & Tagihan,pilih menu Biaya Pendidikan."
+                        },
+                        {
+                            "image": "../../assets/tokopedia/toped_screen03.png",
+                            "name": "LANGKAH 3 PILIH JENIS LEMBAGA PENDIDIKAN",
+                            "information": "Pilih Cluster yang terdiri dari Kursus, Perguruan Tinggi dan Sekolah. Pilih sesuai kategori institusi Anda."
+                        },
+                        {
+                            "image": "../../assets/tokopedia/toped_screen04.png",
+                            "name": "LANGKAH 4PILIH INSTITUSI",
+                            "information": "Pilih Institusi Pendidikan dengan Nama Sekolah / Universitas Anda."
+                        },
+                        {
+                            "image": "../../assets/tokopedia/toped_screen05.png",
+                            "name": "LANGKAH 5 MASUKAN NIS/NIM",
+                            "information": "Masukkan NIS/NIM pada Nomor Pembayaran / Nomor Mahasiswa lalu klik cek tagihan."
+                        },
+                        {
+                            "image": "../../assets/tokopedia/toped_screen06.png",
+                            "name": "LANGKAH 6 KONFIRMASI",
+                            "information": "Pastikan data tagihan sudah benar serta Ikuti langkah pembayaran dari akun Tokopedia Anda."
+                        }
+                    ]
+                },
+                {
+                    "name": "Linkaja",
+                    "image": "linkaja.png",
+                    "children": [
+                        {
+                            "image": "../../assets/linkaja/linkaja_screen01.png",
+                            "name": "LANGKAH 1 MENU PENDIDIKAN",
+                            "information": "Pada aplikasi LinkAja,pilih menu Pendidikan"
+                        },
+                        {
+                            "image": "../../assets/linkaja/linkaja_screen02.png",
+                            "name": "LANGKAH 2 TIPE LEMBAGA PENDIDIKAN",
+                            "information": "Di halaman Pendidikan, pilih Jenis Lembaga Pendidikan yang anda inginkan."
+                        },
+                        {
+                            "image": "../../assets/linkaja/linkaja_screen03.png",
+                            "name": "LANGKAH 3 PILIH JENIS LEMBAGA PENDIDIKAN",
+                            "information": "Setelah memilih Jenis Lembaga Pendidikan, pilih/cari nama Lembaga Pendidikan yang anda tuju."
+                        },
+                        {
+                            "image": "../../assets/linkaja/linkaja_screen04.png",
+                            "name": "LANGKAH 4 MASUKAN NIS/NIM",
+                            "information": "Masukan NIS/NIM Anda pada kolom No. Induk Pelajar."
+                        },
+                        {
+                            "image": "../../assets/linkaja/linkaja_screen05.png",
+                            "name": "LANGKAH 5 KONFIRMASI",
+                            "information": "Pastikan data tagihan sudah benar, dan saldo pada akun LinkAja Anda cukup. Lalu lakukan pembayaran dengan LinkAja."
+                        }
+                    ]
+                },
+                {
+                    "name": "Blibli",
+                    "image": "blibli.png",
+                    "children": [
+                        {
+                            "image": "../../assets/Blibli/bli2_screen01.png",
+                            "name": "LANGKAH 1 MENU PENDIDIKAN",
+                            "information": "Pada aplikasi/web Blibli, pilih menu Pendidikan"
+                        },
+                        {
+                            "image": "../../assets/Blibli/bli2_screen02.png",
+                            "name": "LANGKAH 2 TIPE PILIH INSTITUSI",
+                            "information": "Di halaman Pendidikan, pilih Nama Institusi yang anda tuju."
+                        },
+                        {
+                            "image": "../../assets/Blibli/bli2_screen03.png",
+                            "name": "LANGKAH 3 MASUKAN NIS/NIM",
+                            "information": "Lalu masukan NIS/NIM pada kolom Nomor Pelajar, dan tagihan akan muncul otomatis jika ada."
+                        },
+                        {
+                            "image": "../../assets/Blibli/bli2_screen03.png",
+                            "name": "LANGKAH 4 KONFIRMASI",
+                            "information": "Periksa kembali semua data tagihan yang muncul sebelum lanjut ke pembayaran."
+                        },
+                        {
+                            "image": "../../assets/Blibli/bli2_screen05.png",
+                            "name": "LANGKAH 5 METODE PEMBAYARAN",
+                            "information": "Pilih metode pembayaran yang Anda inginkan, lalu klik tombol “Bayar Sekarang."
+                        }
+                    ]
+                },
+                {
+                    "name": "Bayarind",
+                    "image": "bayarind.png",
+                    "children": [
+                        {
+                            "image": "../../assets/bayarindo/bayarind_screen01.png",
+                            "name": "LANGKAH 1 PILIH SEE ALL",
+                            "information": "Pada aplikasi Bayarind pilih menu “See All”."
+                        },
+                        {
+                            "image": "../../assets/bayarindo/bayarind_screen02.png",
+                            "name": "LANGKAH 2 PILIH MENU EDUKASI",
+                            "information": "Pada halaman Category, pilih “Edukasi”"
+                        },
+                        {
+                            "image": "../../assets/bayarindo/bayarind_screen03.png",
+                            "name": "LANGKAH 3 PILIH SEKOLAH",
+                            "information": "Pilih Institusi Pendidikan yang anda tuju."
+                        },
+                        {
+                            "image": "../../assets/bayarindo/bayarind_screen04.png",
+                            "name": "LANGKAH 4 MASUKAN NIS/NIM",
+                            "information": "Lalu masukan NIS/NIM pada kolom yang tersedia."
+                        },
+                        {
+                            "image": "../../assets/bayarindo/bayarind_screen05.png",
+                            "name": "LANGKAH 5 PILIH TAGIHAN",
+                            "information": "Anda dapat memilih seluruh tagihan atau pilih yang ingin Anda bayarkan."
+                        },
+                        {
+                            "image": "../../assets/bayarindo/bayarind_screen06.png",
+                            "name": "LANGKAH 6 KONFIRMASI",
+                            "information": "Pastikan total tagihan (berikut admin fee) yang ingin anda bayarkan sudah sesuai."
+                        },
+                        {
+                            "image": "../../assets/bayarindo/bayarind_screen07.png",
+                            "name": "LANGKAH 7 METODE PEMBAYARAN",
+                            "information": "Anda dapat memilih metode pembayaran dengan Bayarind atau Oneklik."
+                        },
+                        {
+                            "image": "../../assets/bayarindo/bayarind_screen08.png",
+                            "name": "LANGKAH 8 PIN",
+                            "information": "Masukan PIN dan akan otomatis ke pembayaran."
+                        },
+                        {
+                            "image": "../../assets/bayarindo/bayarind_screen09.png",
+                            "name": "LANGKAH 9 SELESAI",
+                            "information": "Pembayaran Selesai"
+                        }
+                    ]
+                },
+                {
+                    "name": "Kaspro",
+                    "image": "kaspro.png",
+                    "children": [
+                        {
+                            "image": "../../assets/kaspro/kaspro_screen01.png",
+                            "name": "LANGKAH 1 PILIH MENU PEMBAYARAN",
+                            "information": "Setelah men-download aplikasi, lakukan login, dan pilih Bill & Voucher"
+                        },
+                        {
+                            "image": "../../assets/kaspro/kaspro_screen02.png",
+                            "name": "LANGKAH 2 PILIH MENU SEKOLAH",
+                            "information": "Kemudian pilih menu School."
+                        },
+                        {
+                            "image": "../../assets/kaspro/kaspro_screen03.png",
+                            "name": "LANGKAH 3 DETIL SISWA",
+                            "information": "Masukan Kode Sekolah pada kolom IDN Code (lihat disini) dan Nomor Induk Siswa"
+                        },
+                        {
+                            "image": "../../assets/kaspro/kaspro_screen04.png",
+                            "name": "LANGKAH 4 PILIH TAGIHAN",
+                            "information": "Setelah muncul tagihan siswa, Anda dapat memilih tagihan yang ingin dibayarkan. Lalu klik Next."
+                        },
+                        {
+                            "image": "../../assets/kaspro/kaspro_screen05.png",
+                            "name": "LANGKAH 5 KONFIRMASI TAGIHAN",
+                            "information": "Pastikan data tagihan yang muncul sudah sesuai."
+                        },
+                        {
+                            "image": "../../assets/kaspro/kaspro_screen06.png",
+                            "name": "LANGKAH 6 KEAMANAN TRANSAKSI",
+                            "information": "Untuk keamanan bertransaksi, Anda harus memasukan PIN yang diminta oleh aplikasi."
+                        },
+                        {
+                            "image": "../../assets/kaspro/kaspro_screen07.png",
+                            "name": "LANGKAH 7 SELESAI",
+                            "information": "Transaksi selesai. Anda dapat menyimpan bukti pembayaran."
+                        },
+                        {
+                            "image": "../../assets/kaspro/kaspro_screen08.png",
+                            "name": "LANGKAH 8 NOTIFIKASI",
+                            "information": "Selain bukti transaksi di dalam aplikasi, anda juga akan mendapatkan notifikasi SMS."
+                        }
+                    ]
+                },
+                {
+                    "name": "Ayopop",
+                    "image": "ayopop.png",
+                    "children": [
+                        {
+                            "image": "../../assets/ayopop/ayopop_screen01.png",
+                            "name": "LANGKAH 1 PILIH MENU PENDIDIKAN",
+                            "information": "Setelah men-download aplikasi, lakukan login, dan pilih Pendidikan (download di Google Play atau App Store)"
+                        },
+                        {
+                            "image": "../../assets/ayopop/ayopop_screen02.png",
+                            "name": "LANGKAH 2 PILIH SEKOLAH",
+                            "information": "Kemudian pilih menu School."
+                        },
+                        {
+                            "image": "../../assets/ayopop/ayopop_screen03.png",
+                            "name": "LANGKAH 3 MASUKAN NIS/NIM",
+                            "information": "Masukan Nomor Induk Siswa Anda"
+                        },
+                        {
+                            "image": "../../assets/ayopop/ayopop_screen04.png",
+                            "name": "LANGKAH 4 TAGIHAN",
+                            "information": "Setelah muncul tagihan siswa klik LANJUT KE PEMBAYARAN."
+                        },
+                        {
+                            "image": "../../assets/ayopop/ayopop_screen05.png",
+                            "name": "LANGKAH 5 PILIH METODE PEMBAYARAN",
+                            "information": "Pilih metode pembayaran yang anda inginkan (Transfer, Kredit, Retail, Virtual Account, e-Cash)."
+                        },
+                        {
+                            "image": "../../assets/ayopop/ayopop_screen06.png",
+                            "name": "LANGKAH 6 SELESAI",
+                            "information": "Simpan bukti pembayaran anda."
+                        }
+                    ]
+                },
+                {
+                    "name": "Mobilepulsa",
+                    "image": "mobilepulsa.png",
+                    "children": [
+                        {
+                            "image": "../../assets/mobilepulsa/icon_doc_pay1.png",
+                            "name": "LANGKAH 1 PILIH MENU",
+                            "information": "Pilih menu Tagihan, lalu pilih menu Pendidikan."
+                        },
+                        {
+                            "image": "../../assets/mobilepulsa/icon_doc_pay2.png",
+                            "name": "LANGKAH 2 KONFIRMASI",
+                            "information": "Kemudian pilih Sekolah Anda dan masukan NIS Anda."
+                        },
+                        {
+                            "image": "../../assets/mobilepulsa/icon_doc_pay3.png",
+                            "name": "LANGKAH 3 PEMBAYARAN",
+                            "information": "Halaman Ringkasan ditampilkan, pilih tagihan yang akan dibayarkan. Ikut petunjukan untuk melakukan pembayaran"
+                        },
+                        {
+                            "image": "../../assets/mobilepulsa/icon_doc_pay4.png",
+                            "name": "LANGKAH 4 SELESAI",
+                            "information": "Setelah selesai, Anda bisa Cek Notifikasi atau Download Struk."
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

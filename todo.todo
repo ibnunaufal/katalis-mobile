@@ -1,0 +1,66 @@
+ionic cordova build android --prod --release
+
+
+// keytool -genkey -v -keystore psplite.keystore -alias psplite -keyalg RSA -keysize 2048 -validity 10000
+// keytool -genkey -v -keystore bekalsantrinj.keystore -alias bekalsantrinj -keyalg RSA -keysize 2048 -validity 10000
+
+// keytool -genkey -v -keystore miftahululum.keystore -alias miftahululum -keyalg RSA -keysize 2048 -validity 10000
+
+// keytool -genkey -v -keystore poltekpel-surabaya.keystore -alias poltekpel-surabaya -keyalg RSA -keysize 2048 -validity 10000
+
+// keytool -genkey -v -keystore ukhuwahschool.keystore -alias ukhuwahschool -keyalg RSA -keysize 2048 -validity 10000
+
+// keytool -genkey -v -keystore barana-toraja.keystore -alias barana-toraja -keyalg RSA -keysize 2048 -validity 10000
+
+// KATALIS MOBILE
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore jks/pspEdmedia.keystore platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk pspEdmedia
+pass : pspedmedia123
+
+ zipalign -v 4 platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk platforms/android/app/build/outputs/apk/release/pspEdmedia-prod.apk
+
+// NURUL JADID
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore jks/nuruljadid.keystore platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk nuruljadid
+pass : nuruljadid123
+
+ zipalign -v 4 platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk platforms/android/app/build/outputs/apk/release/nurulJadid-prod.apk
+
+// MIFTAHUL ULUM
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore jks/miftahululum.keystore platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk miftahululum
+pass : miftahululum123
+
+ zipalign -v 4 platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk platforms/android/app/build/outputs/apk/release/miftahululum-prod.apk
+
+ // POLTEKPEL SURABAYA
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore jks/poltekpel-surabaya.keystore platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk poltekpel-surabaya
+pass : poltekpel-surabaya123
+
+ zipalign -v 4 platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk platforms/android/app/build/outputs/apk/release/poltekpel-surabaya-prod.apk
+
+
+ // BARANA TORAJA
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore jks/barana-toraja.keystore platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk barana-toraja
+pass : baranatoraja123
+
+ zipalign -v 4 platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk platforms/android/app/build/outputs/apk/release/barana-toraja-prod.apk
+
+
+ // KATALIS
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore jks/katalis.jks platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk katalis
+pass : katalis123
+
+ zipalign -v 4 platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk platforms/android/app/build/outputs/apk/release/katalis-prod.apk
+
+
+pass : psplite123
+Pass : zamzami123
+
+ 
+
+scp solusi@192.168.10.103:/home/solusi/frontend/katalis-mobile/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk .
+
+scp solusi@192.168.1.103:/home/solusi/frontend/katalis-mobile/platforms/android/app/build/outputs/apk/debug/app-debug.apk .
+--
+
+    

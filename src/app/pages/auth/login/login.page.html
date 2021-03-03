@@ -1,0 +1,73 @@
+<ion-content class="ion-padding" fullscreen>
+  <div class="header-img">
+    <img src="../../../../assets/logo-edmedia-biru.svg" class="top-logo ion-margin-top ion-margin-bottom">
+  </div>
+
+  <div class="content">
+
+    <form [formGroup]="validationForm" (ngSubmit)="login(validationForm.value)">
+      <ion-item lines="none">
+        <h2 class="title-login">Login</h2>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label class="ion-label" position="stacked">Username <ion-text color="danger">
+          </ion-text>
+        </ion-label>
+        <ion-input class="ion-input box-shadow" [(ngModel)]="username" formControlName="username" type="text"
+          (keyup.enter)="login(validationForm.value)"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validationMessages.username">
+          <div class="error-message"
+            *ngIf="validationForm.get('username').hasError(validation.type) && (validationForm.get('username').dirty || validationForm.get('username').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <ion-item lines="none">
+        <ion-label position="stacked" class="ion-label">Password <ion-text color="danger"></ion-text>
+        </ion-label>
+        <ion-input class="ion-input box-shadow" [(ngModel)]="password" formControlName="password"
+          [type]="showPassword ? 'text' : 'password'" (keyup.enter)="login(validationForm.value)"></ion-input>
+        <ion-icon slot="end" [name]="passwordToggleIcon" (click)="togglePassword()" class="eye-icon"></ion-icon>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validationMessages.password">
+          <div class="error-message"
+            *ngIf="validationForm.get('password').hasError(validation.type) && (validationForm.get('password').dirty || validationForm.get('password').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      <div class="ion-text-left ion-margin-top" style="float:right;margin-right: 10%;margin-top: 8px;">
+        <ion-label class="support" (click)="forgetPassword()" color="primary">{{ 'LOGIN.forget' | translate }}
+        </ion-label>
+      </div>
+      <div class="container">
+        <!-- <h1 class="title-login">{{ 'LOGIN.btn' | translate }}</h1> -->
+        <ion-button *ngIf="spinner" slot="end" type="button" expand="block" [disabled]="validationForm.invalid">
+          <ion-spinner name="lines-small"></ion-spinner>
+          {{ 'LOGIN.check' | translate }}
+        </ion-button>
+        <ion-button *ngIf="!spinner" slot="end" type="submit" expand="block" [disabled]="validationForm.invalid">
+          {{ 'LOGIN.btn' | translate }}
+        </ion-button>
+        <ion-button class="cs" slot="end" type="button" (click)="gotoSupport()" expand="block">
+          {{ 'LOGIN.cs' | translate }}
+        </ion-button>
+      </div>
+
+    </form>
+
+    <!-- <p class="text-bottom">{{ 'LOGIN.partner' | translate }}</p>
+    <div class="footer-image">
+      <p class="img-bottom">
+
+        <img class="img" src="../../../assets/bsi.svg">
+      </p>
+    </div> -->
+  </div>
+
+
+</ion-content>

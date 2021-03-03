@@ -1,0 +1,60 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>{{'ADD.addquestion' | translate}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()" strong>
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.description' | translate}}</ion-label>
+        <ion-textarea [(ngModel)]="input.description" name="description"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.option' | translate}}</ion-label>
+        <ion-input [(ngModel)]="input.opsia" placeholder="{{'ADD.optiona' | translate}}" name="opsia"></ion-input>
+        <ion-input [(ngModel)]="input.opsib" placeholder="{{'ADD.optionb' | translate}}" name="opsib"></ion-input>
+        <ion-input [(ngModel)]="input.opsic" placeholder="{{'ADD.optionc' | translate}}" name="opsic"></ion-input>
+        <ion-input [(ngModel)]="input.opsid" placeholder="{{'ADD.optiond' | translate}}" name="opsid"></ion-input>
+        <ion-input [(ngModel)]="input.opsie" placeholder="{{'ADD.optione' | translate}}" name="opsie"></ion-input>
+      </ion-item>
+      <ion-radio-group allow-empty-selection="true" name="radio-group" (ionChange)="radioGroupChange($event)"
+        #radioGroup>
+        <ion-list-header>
+          <ion-label>{{'ADD.answerkey' | translate}}</ion-label>
+        </ion-list-header>
+        <ion-item>
+          <ion-label class="radio-label">A</ion-label>
+          <ion-radio slot="start" color="warning" value="A" checked="false"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label class="radio-label">B</ion-label>
+          <ion-radio slot="start" color="warning" value="B" checked="false"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label class="radio-label">C</ion-label>
+          <ion-radio slot="start" color="warning" value="C" checked="false"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label class="radio-label">D</ion-label>
+          <ion-radio slot="start" color="warning" value="D" checked="false"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label class="radio-label">E</ion-label>
+          <ion-radio slot="start" color="warning" value="E" checked="false"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+    <div class="ion-padding">
+      <ion-button expand="block" color="warning" type="submit" class="ion-no-margin" (click)="addQuestion()">
+        {{'ADD.save' | translate}}
+      </ion-button>
+    </div>
+  </form>
+</ion-content>

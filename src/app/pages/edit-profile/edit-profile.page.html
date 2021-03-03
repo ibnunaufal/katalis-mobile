@@ -1,0 +1,51 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>{{'PROFILE.edit' | translate}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()" strong>
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+    <ion-list lines=" full" class="ion-no-margin ion-no-padding">
+      <ion-item lines='none'>
+        <ion-label>
+          <h2>
+            {{profile.name}}
+          </h2>
+        </ion-label>
+        <ion-avatar slot="start" class="avatar" (click)="presentActionSheet()">
+          <ion-icon name="image-outline" class="camera-icon"></ion-icon>
+          <!-- <img style="filter: brightness(0.7);" *ngIf="FileName !=''" src="{{ FileURI +'/'+ FileName }}"
+            class="box-shadow radius slide-image" alt="avatar" /> -->
+          <img style="filter: brightness(0.7);" *ngIf="profile.photoUrl == ''" src="../../../assets/user1.png"
+            alt="avatar">
+          <img style="filter: brightness(0.7);" *ngIf="profile.photoUrl !=''" [src]="getImgContent()"
+            class="box-shadow radius slide-image" alt="avatar" />
+        </ion-avatar>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label slot="end"></ion-label>
+        <ion-button slot="start" block color="medium" *ngIf="show" (click)="UploadFile()">{{'ADD.upload' | translate}}
+        </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input [(ngModel)]="input.email" name="email" type="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'PROFILE.phone' | translate}}</ion-label>
+        <ion-textarea [(ngModel)]="input.phone" name="phone" type="phone"></ion-textarea>
+      </ion-item>
+    </ion-list>
+
+    <div class="ion-padding">
+      <ion-button expand="block" type="submit" class="ion-no-margin" (click)="save()">{{'PROFILE.update' | translate}}
+      </ion-button>
+    </div>
+  </form>
+</ion-content>

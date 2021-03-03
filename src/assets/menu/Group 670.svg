@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="624" height="145.408" viewBox="0 0 624 145.408">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-2 {
+        fill: #010101;
+        font-size: 16px;
+        font-family: Metropolis-SemiBold, Metropolis;
+        font-weight: 600;
+      }
+
+      .cls-3 {
+        fill: url(#linear-gradient-3);
+      }
+
+      .cls-10, .cls-12, .cls-4 {
+        fill: none;
+      }
+
+      .cls-4 {
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+      }
+
+      .cls-5 {
+        fill: #fcfcfe;
+      }
+
+      .cls-6, .cls-7 {
+        fill: #fff;
+      }
+
+      .cls-6 {
+        font-size: 20px;
+        font-family: Metropolis-Medium, Metropolis;
+        font-weight: 500;
+      }
+
+      .cls-7 {
+        font-size: 10px;
+        font-family: Metropolis-Regular, Metropolis;
+      }
+
+      .cls-8 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-9 {
+        opacity: 0.46;
+      }
+
+      .cls-10 {
+        stroke: #fff;
+        stroke-width: 25px;
+      }
+
+      .cls-11 {
+        stroke: none;
+      }
+
+      .cls-13 {
+        filter: url(#Rectangle_7);
+      }
+
+      .cls-14 {
+        filter: url(#Rectangle_6);
+      }
+
+      .cls-15 {
+        filter: url(#Rectangle_9);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="0.038" y1="0.849" x2="0.834" y2="0.185" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#008fd0"/>
+      <stop offset="1" stop-color="#a4ffd4"/>
+    </linearGradient>
+    <filter id="Rectangle_9" x="0" y="19.408" width="315" height="126" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle_6" x="0" y="19.408" width="315" height="126" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-3" x1="0.583" y1="0.811" x2="0.074" y2="0.285" xlink:href="#linear-gradient"/>
+    <filter id="Rectangle_7" x="309" y="18.408" width="315" height="126" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-3"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-path">
+      <g class="cls-15" transform="matrix(1, 0, 0, 1, 0, 0)">
+        <rect id="Rectangle_9-2" data-name="Rectangle 9" class="cls-1" width="297" height="108" rx="8" transform="translate(21 622)"/>
+      </g>
+    </clipPath>
+  </defs>
+  <g id="Group_670" data-name="Group 670" transform="translate(-10 -551.592)">
+    <g id="Group_665" data-name="Group 665" transform="translate(-443 -28)">
+      <text id="Informasi" class="cls-2" transform="translate(466 593)"><tspan x="0" y="0">Informasi</tspan></text>
+      <g class="cls-14" transform="matrix(1, 0, 0, 1, 453, 579.59)">
+        <rect id="Rectangle_6-2" data-name="Rectangle 6" class="cls-1" width="297" height="108" rx="8" transform="translate(9 28.41)"/>
+      </g>
+      <g class="cls-13" transform="matrix(1, 0, 0, 1, 453, 579.59)">
+        <rect id="Rectangle_7-2" data-name="Rectangle 7" class="cls-3" width="297" height="108" rx="8" transform="translate(318 27.41)"/>
+      </g>
+      <path id="Path_264" data-name="Path 264" class="cls-4" d="M319.911,600l8.278,6.814-8.278,8.278" transform="translate(467 -19)"/>
+      <g id="Group_649" data-name="Group 649" transform="translate(170.526 355.882)">
+        <path id="Path_266" data-name="Path 266" class="cls-5" d="M315.592,301.969c-.354-.713.081-.991,1.41-1.114q17.516-1.624,35.008-3.388c.946-.094,1,.159.952.7q-1.051,11.8-2.079,23.6c-.122,1.387-.3,2.773-.334,4.16-.02.745-.392.754-1.193.591q-15.255-3.114-30.525-6.185c-.709-.142-.928-.393-.994-.925C317.122,313.663,316.365,307.927,315.592,301.969Z" transform="translate(0 1.426)"/>
+        <path id="Path_267" data-name="Path 267" class="cls-5" d="M317.694,301.362q5.574-2,11.15-4c4.305-1.538,8.624-3.042,12.914-4.622a2.079,2.079,0,0,1,2.072.18c1.683,1.08,3.415,2.084,5.5,3.341l-31.563,5.365Z" transform="translate(0.38 0.587)"/>
+        <path id="Path_268" data-name="Path 268" class="cls-5" d="M340.438,291.46l-23.106,10.156-.111-.214,13.523-8.847c1.6-1.047,3.219-2.066,4.79-3.153a1.137,1.137,0,0,1,1.482-.018C338.056,290.069,339.144,290.682,340.438,291.46Z" transform="translate(0.299)"/>
+      </g>
+      <text id="Silabus_Digital" data-name="Silabus Digital" class="cls-6" transform="translate(561 668)"><tspan x="0" y="0">Silabus Digital</tspan></text>
+      <text id="Solusi_belajar_online_terbaik" data-name="Solusi belajar online terbaik" class="cls-7" transform="translate(561 685)"><tspan x="0" y="0">Solusi belajar online terbaik</tspan></text>
+      <g id="Mask_Group_3" data-name="Mask Group 3" class="cls-8" transform="translate(441 -14)">
+        <g id="Group_650" data-name="Group 650" class="cls-9" transform="translate(-12 -328.258)">
+          <g id="Ellipse_11" data-name="Ellipse 11" class="cls-10" transform="translate(236 870.258)">
+            <circle class="cls-11" cx="77" cy="77" r="77"/>
+            <circle class="cls-12" cx="77" cy="77" r="64.5"/>
+          </g>
+          <g id="Ellipse_12" data-name="Ellipse 12" class="cls-10" transform="translate(184 819.258)">
+            <circle class="cls-11" cx="128.5" cy="128.5" r="128.5"/>
+            <circle class="cls-12" cx="128.5" cy="128.5" r="116"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

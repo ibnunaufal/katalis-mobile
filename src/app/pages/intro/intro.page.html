@@ -1,0 +1,88 @@
+<!-- <ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color='primary' (click)="startApp()" [hidden]="!showSkip">Skip</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content fullscreen="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <!-- <ion-button color='primary' (click)="startApp()" [hidden]="!showSkip">Skip</ion-button> -->
+      <!-- <ion-button color='primary' (click)="startApp()" [hidden]="!showCont">
+        Continue
+      </ion-button> -->
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-slides #slides (ionSlideWillChange)="onSlideChangeStart($event)" pager="false" [options]="slideOpts">
+    <ion-slide>
+      <img src="../../../assets/wizard/1.svg" class="animation">
+      <h2 class="slide-title">
+        PSP Edmedia
+      </h2>
+      <p>
+
+      </p>
+      <div>
+        <ion-button (click)="next(slides ,1)" color="primary" class="main-button buttonanim" shape="round">Get Started
+        </ion-button>
+      </div>
+
+    </ion-slide>
+
+    <ion-slide>
+      <img src="../../../assets/wizard/2.svg" class="animation">
+      <h2 class="slide-title">PSP Edmedia</h2>
+      <p>
+        Memiliki Fitur yang lengkap</p>
+      <div>
+        <ion-button (click)="next(slides , 2)" color="primary" class="main-button buttonanim" shape="round">Next
+        </ion-button>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="../../../assets/wizard/3.svg" class="animation">
+      <h2 class="slide-title">PSP Edmedia</h2>
+      <p>
+        Simpel, Fleksibel, dan Kuat</p>
+
+      <div>
+        <ion-button (click)="next(slides , 3)" color="primary" class="main-button buttonanim" shape="round">Next
+        </ion-button>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <h2 class="slide-title" style="margin-top:70px">PSP Edmedia</h2>
+      <p>{{'INTRO.title' | translate }}</p>
+      <div style="width: 187px; margin: 0px auto;">
+        <ion-radio-group value="en" [(ngModel)]="selectedLanguage" (ionChange)="languageChanged()">
+          <ion-item lines="none">
+            <img src="../../../assets/en.png" style="height: auto;width: 32px;margin-inline-end: 4px;">
+            <ion-label>English</ion-label>
+            <ion-radio slot="start" value="en"></ion-radio>
+
+          </ion-item>
+
+          <ion-item lines="none">
+            <img src="../../../assets/id.png" style="height: auto;width: 32px;margin-inline-end: 4px;">
+            <ion-label>Indonesia</ion-label>
+            <ion-radio slot="start" value="id"></ion-radio>
+
+          </ion-item>
+        </ion-radio-group>
+        <!-- <ion-select placeholder="Select One" [(ngModel)]="selectedLanguage" (ionChange)="languageChanged()">
+          <ion-select-option value="en"> <img src="../../../assets/en.png">English</ion-select-option>
+          <ion-select-option value="id"> <img src="../../../assets/id.png">Indonesia</ion-select-option>
+        </ion-select> -->
+      </div>
+      <div>
+        <ion-button (click)="startApp()" [hidden]="!showCont" color="primary" class="main-button buttonanim"
+          shape="round" style="position: relative;
+          bottom: -169px;">Done
+        </ion-button>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

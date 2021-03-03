@@ -1,0 +1,169 @@
+ion-content {
+  --background: #f8f8fa !important;
+  background-position: top;
+  background-size: cover;
+}
+.header-img {
+  text-align: center;
+  margin-top: 65px;
+  img {
+    width: 180px;
+  }
+}
+.content {
+  margin: 0px auto;
+  width: auto;
+  height: auto;
+  background: #f8f8fa;
+  border-radius: 20px;
+  padding: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+
+  margin-bottom: 38px;
+}
+.content-footer {
+  margin: 0px auto;
+  width: auto;
+  height: 90px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 7px 7px 90px #40417a;
+  border-radius: 20px;
+  padding: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+ion-button {
+  --border-radius: 62px;
+  height: 56px;
+  --background: #0054e6;
+  --box-shadow: none;
+  font-weight: 500 !important;
+  text-transform: capitalize;
+}
+
+.ion-input {
+  background-color: #fff;
+  margin-top: 14px;
+  border-radius: 30px;
+  padding-left: 21px !important;
+  padding-right: 21px !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  height: 50px !important;
+  input {
+    height: 50px;
+  }
+}
+ion-item {
+  --background: transparent !important;
+  --border-color: #1b1c1e !important;
+  --color: #1b1c1e;
+  width: 100%;
+  top: 50%;
+  left: 0%;
+  position: relative;
+}
+.item-has-focus .label-stacked.sc-ion-label-md-h {
+  color: #1b1c13;
+}
+.container {
+  margin-top: 65px;
+  margin-bottom: 16px;
+  margin-left: 14px;
+  margin-right: 14px;
+}
+ion-fab {
+  margin-left: 223px;
+}
+.title-login {
+  color: #1b1c1e;
+  font-weight: 500;
+}
+.title {
+  margin-left: 14px;
+  font-weight: 500;
+  font-family: "Montserrat";
+  font-size: 28px;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 75px;
+}
+* {
+  font-family: "Montserrat";
+}
+.bg {
+  position: absolute;
+  background-size: cover;
+  width: 199px;
+  right: 0;
+  top: 0;
+}
+.support {
+  color: #303030;
+  text-decoration: underline;
+  font-size: 12px;
+}
+ion-button {
+  font-weight: bold;
+}
+.title-login {
+  margin-top: 14px;
+  font-size: 18px;
+  line-height: 27px;
+  color: #0054e6;
+  font-weight: 700;
+}
+
+.top-logo {
+  width: 37px;
+  height: 65px;
+}
+.ion-label {
+  color: #b9b9b9 !important;
+  font-family: "montserrat";
+  font-size: 20px;
+  font-weight: 600;
+}
+ion-input {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.top-p {
+  margin-left: 60px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+  margin-top: 35px;
+  position: absolute;
+}
+.text-bottom {
+  margin-top: 32px;
+  text-align: center;
+  font-size: 12px;
+  color: #b9b9b9;
+}
+.img-bottom {
+  text-align: center;
+  font-size: 10px;
+}
+.footer-image {
+  margin: 0 auto;
+  .img {
+    width: 71px;
+  }
+}
+
+.eye-icon {
+  margin-top: 49px;
+  position: absolute;
+  right: 29px;
+  z-index: 2;
+  background-color: white;
+  padding: 2px;
+}
+.cs {
+  margin-top: 24px;
+  --background: #fa607e;
+}

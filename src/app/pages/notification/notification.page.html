@@ -1,0 +1,57 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>{{ 'INBOX.notification' | translate}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()" strong>
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="showNotification">
+
+    <ion-card *ngIf="notifications.length==0">
+      <ion-card-content>
+        <ion-note>
+          data not found.
+        </ion-note>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngFor="let inbox of notifications" class="no-box-shadow" (click)="presentInboxDetail(inbox)">
+      <ion-card-header>
+        <ion-card-subtitle>{{inbox.createTime | date : 'dd/MM/yyyy' }}</ion-card-subtitle>
+        <ion-card-title>{{inbox.title}}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p [innerHTML]="inbox.message"></p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div *ngIf="!showNotification">
+    <ion-card *ngFor="let item of [1, 2, 3, 4, 5,6,7,8,9,10]" class="no-box-shadow">
+      <ion-card-header>
+        <ion-card-subtitle>
+          <ion-skeleton-text animated style="width: 30%;"></ion-skeleton-text>
+        </ion-card-subtitle>
+        <ion-card-title>
+          <ion-skeleton-text animated style="width: 50%;"></ion-skeleton-text>
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-skeleton-text animated style="width: 80%;"></ion-skeleton-text>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Memuat..">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

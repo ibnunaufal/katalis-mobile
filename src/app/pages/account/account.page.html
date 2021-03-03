@@ -1,0 +1,98 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'ACCOUNT.title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingText="Pull to refresh"></ion-refresher-content>
+  </ion-refresher>
+
+  <!-- <ion-list>
+    <ion-list-header>
+      <ion-label>Bluetooth Devices:</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let item of bluetoothList" (click)="selectPrinter(item.id)">
+      {{item.name}} {{item.id}}
+    </ion-item>
+  </ion-list>
+  <div>
+    Selected Printer: {{selectedPrinter}}
+  </div>
+  <ion-button expand="full" color="danger" *ngIf='selectedPrinter' (click)="printStuff()">
+    PRINT!
+  </ion-button> -->
+  <div *ngIf="accounts">
+    <ng-container *ngIf="accountsLoaded else accountsLoadingTpl">
+      <ng-container *ngIf="!accountsError else accountsErrorTpl">
+        <ion-list *ngIf="accounts.length > 0" lines="none">
+          <ion-item *ngFor="let item of accounts" class="no-box-shadow">
+            <ion-avatar slot="start">
+              <img *ngIf="item.photoUrl else noPhoto" [src]="getImgContent(item.photoUrl)" />
+
+              <ng-template #noPhoto>
+                <img *ngIf="!item.photoUrl" src="../../../assets/default-image.jpg" />
+              </ng-template>
+            </ion-avatar>
+            <ion-label>
+              <h2>{{item.title}}</h2>
+              <h3>{{item.name}}</h3>
+              <p>{{item.callerId}}</p>
+
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ng-container>
+    </ng-container>
+
+    <ng-template #accountsLoadingTpl>
+      <ion-list>
+        <ion-item *ngFor="let ii of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+          <ion-avatar slot="start" class="no-box-shadow">
+            <ion-skeleton-text width="100%" animated></ion-skeleton-text>
+          </ion-avatar>
+          <ion-label>
+            <h2>
+              <ion-skeleton-text width="50%" animated></ion-skeleton-text>
+            </h2>
+            <h3>
+              <ion-skeleton-text width="50%" animated></ion-skeleton-text>
+            </h3>
+            <p>
+              <ion-skeleton-text width="50%" animated></ion-skeleton-text>
+            </p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ng-template>
+
+    <ng-template #accountsErrorTpl>
+      <ion-card>
+        <ion-card-content>
+          <ion-note color="danger">
+            Something went wrong. Click to retry.
+          </ion-note>
+        </ion-card-content>
+      </ion-card>
+    </ng-template>
+
+
+    <ng-template *ngIf="accounts.length<0">
+      <div style="width: 100%;
+    text-align: center;
+    background: #fff;
+    height: 100vh;">
+        <ion-icon name="md-data-not-found" style="zoom:16"></ion-icon>
+        <p style="font-family: 'montserrat';
+      margin: 0px 50px 0px 50px;
+      font-weight: 600;
+      color: #6ab856;
+      font-size: 13px;">{{'DATANOTFOUND.title' | translate}}</p>
+      </div>
+    </ng-template>
+  </div>
+</ion-content>

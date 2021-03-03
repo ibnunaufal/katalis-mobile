@@ -1,0 +1,48 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>{{'ADD.addclass' | translate}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()" strong>
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.year' | translate}}</ion-label>
+        <ion-select [(ngModel)]="input.year" name="year" placeholder="{{'ADD.chooseyear' | translate}}">
+          <ion-select-option value="{{item.year}}" *ngFor="let item of year;">{{item.year}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.semester' | translate}}</ion-label>
+        <ion-select [(ngModel)]="input.semester" name="semester" placeholder="{{'ADD.choosesem' | translate}}">
+          <ion-select-option value="{{item.semester}}" *ngFor="let item of semester;">{{item.semester}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.tingkatan' | translate}}</ion-label>
+        <ion-input [(ngModel)]="input.tingkatan" name="tingkatan"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.classname' | translate}}</ion-label>
+        <ion-input [(ngModel)]="input.classname" name="classname"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.tempclass' | translate}}</ion-label>
+        <ion-toggle slot="end" name="blueberry" checked [(ngModel)]="input.tempclass"></ion-toggle>
+      </ion-item>
+    </ion-list>
+    <div class="ion-padding">
+      <ion-button expand="block" color="primary" type="submit" class="ion-no-margin" (click)="addClass()">
+        {{'ADD.save' | translate}}
+      </ion-button>
+    </div>
+  </form>
+</ion-content>

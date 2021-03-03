@@ -1,0 +1,21 @@
+table {
+  font-size: 12px;
+  width: 100%;
+
+  th {
+    padding: 10px;
+    font-weight: 500;
+    color: #575757;
+    --backgroundVar: #efefed;
+  }
+
+  td {
+    padding: 10px;
+    font-weight: 400;
+    color: #575757;
+  }
+
+  tr:nth-child(even) {
+    --backgroundVar: #f2f2f2;
+  }
+}

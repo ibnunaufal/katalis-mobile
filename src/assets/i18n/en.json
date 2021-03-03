@@ -1,0 +1,248 @@
+{
+    "LOGIN": {
+        "title": "Welcome",
+        "forget": "Forget Password",
+        "languange": "Language",
+        "btn": "Sign in",
+        "check": "Checking Data..",
+        "powered": "Powered By",
+        "partner": "Our Partner",
+        "cs": "Customer Service"
+    },
+    "FORGET": {
+        "title": "Forget Password",
+        "email": "Email",
+        "otp": "OTP",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "confirm": "Confirmation",
+        "change": "Change Password"
+    },
+    "HOME": {
+        "title": "Home",
+        "account": "Account",
+        "invoice": "Invoice",
+        "mutation": "Mutation",
+        "transaction": "Transaction",
+        "service": "Service",
+        "support": "Support",
+        "digital": "Digital Card",
+        "shopping": "Shopping",
+        "topup": "Topup",
+        "balance": "Balance",
+        "news": "Headline News",
+        "donation": "Donation",
+        "attendance": "Attendance",
+        "access": "Smart Access"
+    },
+    "TOPUP": {
+        "title": "Topup",
+        "balance": "Balance",
+        "history": "History",
+        "transfer": "Bank Transfer",
+        "account": "Account Data",
+        "an": "Account Name",
+        "admin": "Bank Admin",
+        "accountnumber": "Account Number"
+    },
+    "TOPUPHISTORY": {
+        "title": "Topup History"
+    },
+    "ACCOUNT": {
+        "title": "Account"
+    },
+    "INVOICE": {
+        "title": "Invoice",
+        "invoice": "Invoice",
+        "history": "History",
+        "summary": "Summary",
+        "paid": "Paid",
+        "totaldue": "Total Due",
+        "duedate": "Due Date",
+        "status": "Status",
+        "pay": "Pay",
+        "detail": "Detail",
+        "discount": "Discount",
+        "credit": "Credit",
+        "amount": "Amount"
+    },
+    "MUTATION": {
+        "title": "Balance Mutation",
+        "last30": "Last 30 Days",
+        "older": "Over 30 days",
+        "filter": "Filter",
+        "start": "Start Date",
+        "ends": "Ends"
+    },
+    "TRANSACTION": {
+        "title": "Transaction",
+        "information": "Transaction Information",
+        "incoming": "Incoming Balance",
+        "outgoing": "Outgoing Balance",
+        "amount": "Amount",
+        "transaction": "Number of Transactions",
+        "detail": "detail",
+        "filter": "Filter",
+        "month": "Month",
+        "year": "Year"
+    },
+    "DETAILTRANSACTION": {
+        "title": "Detail Transaction"
+    },
+    "SUPPORT": {
+        "title": "Support",
+        "write": "Write a Message..."
+    },
+    "DIGITALCARD": {
+        "title": "Digital Card",
+        "information": "Card Information",
+        "balance": "Card Balance",
+        "limitmax": "Limit Max",
+        "dailylimit": "Daily Limit",
+        "cardholder": "Cardholder's Name"
+    },
+    "INFO": {
+        "title": "Information and News"
+    },
+    "INBOX": {
+        "title": "Inbox",
+        "notification": "Notification",
+        "broadcast": "Broadcast"
+    },
+    "PROFILE": {
+        "title": "Profile",
+        "changepass": "Change Password",
+        "changelang": "Change Language",
+        "logout": "Logout",
+        "faq": "FAQ",
+        "edit": "Edit Profile",
+        "update": "Update",
+        "phone": "Phone Number",
+        "unlimited": "Setting Unlimited"
+    },
+    "CHANGELANG": {
+        "title": "Change Language"
+    },
+    "CHANGEPASS": {
+        "title": "Change Password",
+        "oldpass": "Old Password",
+        "newpass": "New Password",
+        "renewpass": "Re-enter New Password"
+    },
+    "CREATEPASS": {
+        "email": "Email",
+        "phone": "Phone Number",
+        "title": "Create Password",
+        "newpass": "Password",
+        "reenterpass": "Re-enter Password"
+    },
+    "INTRO": {
+        "title": "Select language"
+    },
+    "EDMEDIA": {
+        "yourclasses": "Your Classes",
+        "yourclass": "Your Class",
+        "what": "What do you want to do ?",
+        "materi": "Materi",
+        "practice": "Practice",
+        "info": "Info",
+        "tugas": "Task",
+        "exam": "Exam",
+        "comment": "Comments",
+        "answer": "Answer",
+        "nodata": "No data",
+        "student": "Student"
+    },
+    "ADD": {
+        "exam": "Add Exam",
+        "materi": "Add Materi",
+        "practice": "Add Practice",
+        "info": "Add Information",
+        "tugas": "Add Tugas",
+        "schedule": "Schedule",
+        "session": "Session",
+        "title": "Title",
+        "namamateri": "Name Materi",
+        "description": "Description",
+        "link": "Link",
+        "share": "Share",
+        "uploadfile": "Upload File",
+        "post": "Post",
+        "upload": "Upload",
+        "fileuploaded": "File Uploaded",
+        "starttime": "Start Time",
+        "date": "Date",
+        "endtime": "End Time",
+        "duration": "Duration(minutes)",
+        "type": "Type",
+        "note": "Note",
+        "question": "Question",
+        "finish": "Finish",
+        "option": "Option",
+        "optiona": "Please Input Option A",
+        "optionb": "Please Input Option B",
+        "optionc": "Please Input Option C",
+        "optiond": "Please Input Option E",
+        "optione": "Please Input Option E",
+        "answerkey": "Answer Key",
+        "filename": "File Name",
+        "fileanswer": "File Answer",
+        "choosefile": "Choose File",
+        "chooseschedule": "Choose Schedule",
+        "choosesession": "Choose Session",
+        "choosetype": "Choose Type",
+        "choosedate": "Choose Date",
+        "edit": "Edit",
+        "delete": "Delete",
+        "answer": "Answer",
+        "addquestion": "Add Question",
+        "add": "Add",
+        "soal": "Soal",
+        "youranswer": "Your Answer",
+        "editquestion": "Edit Question",
+        "save": "Save",
+        "year": "Year",
+        "addclass": "Add Class",
+        "chooseclass": "Choose Class",
+        "semester": "Semester",
+        "addsem": "Add Semester",
+        "choosesem": "Choose Semester",
+        "tingkatan": "Stage",
+        "classname": "Class Name",
+        "chooseyear": "Choose Year",
+        "StudentData": "Student Data",
+        "hl": "Highlight",
+        "hldetail": "contains information about practices, assignments and exams",
+        "tempclass": "Temporary Class"
+    },
+    "ATTENDANCE": {
+        "title": "Attendance",
+        "punchin": "Punch In",
+        "punchout": "Punch Out",
+        "filter": "Searching Filter",
+        "student": "Student Name",
+        "sort": "Sort",
+        "selectStudent": "Select Student",
+        "selectMonth": "Select Month",
+        "selectYear": "Select Year"
+    },
+    "ACCESS": {
+        "title": "Smart Access",
+        "scan": "Scan QR",
+        "door": "Open the Door",
+        "list": "Data List",
+        "filter": "Searching Filter",
+        "student": "Student Name",
+        "sort": "Sort",
+        "today": "Today",
+        "selectStudent": "Select Student",
+        "selectMonth": "Select Month",
+        "selectYear": "Select Year"
+    },
+    "DONATION": {
+        "title": "Donation"
+    },
+    "DATANOTFOUND": {
+        "title": "Unfortunately, the data you wanted was not found."
+    }
+}

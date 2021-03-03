@@ -1,0 +1,42 @@
+
+Todo:
+  ✔ Login page @done(20-04-21 09:52)
+  ✔ Restructure pages folder @done(20-04-21 15:04)
+  ✔ Update login page @done(20-04-21 16:03)
+  ✔ Create necessary services @done(20-04-21 15:12)
+  ✔ Setup env @done(20-04-21 15:14)
+  ✔ Route guard @done(20-04-21 16:12)
+  ☐ Fix route guard
+  ✔ Create home page @done(20-04-23 11:48)
+  ✔ Create wizard @done(20-04-27 05:16)
+  ✔ Session checking @done(20-04-28 12:44)
+  ✔ Profile @done(20-04-28 13:10)
+  ✔ Logout function @done(20-04-29 04:38)
+  ✔ Update sidemenu @done(20-04-29 04:52)
+  ✔ Support page @done(20-04-29 04:46)
+  ✔ Change password page @done(20-04-29 04:28)
+  ✔ Inbox page @done(20-04-29 06:04)
+  ✔ Fix get balance @done(20-04-29 04:46)
+  ☐ Update topup page
+  ☐ History page
+  ✔ Inbox detail @done(20-04-29 06:22)
+  ☐ Inbox pull to refresh
+  ✔ Fix support page @done(20-04-30 13:33)
+  ✔ Invoice page @done(20-04-29 07:02)
+  ☐ Invoice detail
+  ✔ Fix account page @done(20-04-30 13:52)
+  ☐ Fix trx page
+  ✔ Integrate new backend @done(20-05-04 20:03)
+  ✔ Update support page @done(20-05-12 11:58)
+  ✔ Install firebase @done(20-05-05 15:23)
+  ✘ Setup ngrx @cancelled(20-05-12 11:58)
+  ☐ Update inbox / notification
+  ☐ Update info
+  ☐ fix back button
+  ☐ isFirstLogin flow
+  ✔ subscribe tags @done(20-05-19 09:19)
+  ☐ No data
+  ☐ remove JSON.parse(...)
+  ☐ Check invoice page (invoice, history, summary, pay button)
+  ☐ fix invoice tab
+  ☐ Lazy load invoice

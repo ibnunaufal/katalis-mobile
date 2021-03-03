@@ -1,0 +1,266 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar [class.show-background]="showToolbar" [class.show-background2]="showToolbarAgain">
+    <ion-title></ion-title>
+    <ion-buttons slot="end"
+      style="background-color: #fff;position: absolute;right: -4px;top: 0;border-radius: 0 0px 0px 10px;">
+      <ion-button (click)="dismiss()" strong [class.show-icon]="showToolbar" [class.show-icon2]="showToolbarAgain">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen [scrollEvents]="true" (ionScroll)="onScroll($event)">
+  <div *ngIf="showClass">
+    <ion-list class="container-class">
+      <ion-list-header>
+        {{'EDMEDIA.yourclass' | translate}}
+      </ion-list-header>
+      <ion-row>
+        <ion-col size="3">
+          <ion-card class="detail-class" (click)="dataKelas(detailClass.id)">
+            <div>
+              <img [style.background]=" classData.bgcolor" src="{{classData.icon}}" />
+            </div>
+          </ion-card>
+        </ion-col>
+        <ion-col (click)="dataKelas(detailClass.id)">
+          <ion-label *ngIf="detailClass">
+            <h2 style="font-weight: 600;margin-top: 6px;">{{classData.namaKelas}}</h2>
+            <p style="font-size: 12px;">{{ detailClass.jumlahSiswa }} {{'EDMEDIA.student' | translate}}</p>
+          </ion-label>
+        </ion-col>
+        <ion-col size="12">
+          <div class="multiple-student">
+            <ion-avatar *ngFor="let item of kelas | slice:0:7" (click)="dataKelas(detailClass.id)">
+              <!-- <img src="../../../assets/icon user.png"> -->
+              <div class="text-avatar-small">{{item.first | slice:0:1}}{{item.second | slice:0:1}}</div>
+            </ion-avatar>
+            <ion-avatar *ngIf="kelas.length > 7" class="end" (click)="dataKelas(detailClass.id)">
+              {{kelas.length - 7}}+
+            </ion-avatar>
+          </div>
+        </ion-col>
+        <ion-slides [options]="slideOpt" #slideStatus>
+          <ion-slide>
+            <ion-chip style="padding-right: 52px;" class="chip-detail-class" (click)="filter('tags','materi')">
+              <ion-label>{{'EDMEDIA.materi' | translate}}
+              </ion-label>
+            </ion-chip>
+          </ion-slide>
+          <ion-slide>
+            <ion-chip style="padding-right: 14px;" class="chip-detail-class" (click)="filter('tags','info')">
+              <ion-label>{{'EDMEDIA.info' | translate}}</ion-label>
+            </ion-chip>
+          </ion-slide>
+          <!-- <ion-slide>
+            <ion-chip style="padding-right: 58px;" class="chip-detail-class" (click)="filter('tags','latihan')">
+              <ion-label>{{'EDMEDIA.practice' | translate}}</ion-label>
+            </ion-chip>
+          </ion-slide> -->
+          <ion-slide>
+            <ion-chip style="padding-right: 15px;" class="chip-detail-class" (click)="filter('tags','tugas')">
+
+              <ion-label>{{'EDMEDIA.tugas' | translate}}</ion-label>
+            </ion-chip>
+          </ion-slide>
+          <ion-slide>
+            <ion-chip style="padding-right: 12px;" class="chip-detail-class" (click)="filter('tags','ujian')">
+              <ion-label>{{'EDMEDIA.exam' | translate}}</ion-label>
+            </ion-chip>
+          </ion-slide>
+        </ion-slides>
+      </ion-row>
+      <ion-progress-bar type="indeterminate" *ngIf="!showfilter"></ion-progress-bar>
+    </ion-list>
+  </div>
+  <div *ngIf="!showClass">
+    <ion-list class="container-class">
+      <ion-list-header>
+        <ion-skeleton-text animated style="width:76px;height: 18px"></ion-skeleton-text>
+      </ion-list-header>
+      <ion-row>
+        <ion-col size="3">
+          <ion-card class="detail-class">
+            <div>
+              <ion-skeleton-text animated style="width:60px;height: 56.59px; border-radius: 8px;"></ion-skeleton-text>
+            </div>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-label *ngIf="detailClass">
+            <ion-skeleton-text animated style="width:75px;height: 19px"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width:50px;height: 15px"></ion-skeleton-text>
+          </ion-label>
+        </ion-col>
+        <ion-col size="12">
+          <div class="multiple-student">
+
+            <ion-avatar *ngFor="let item of [1,2,3,4,5,6]" (click)="dataKelas(detailClass.id)">
+              <!-- <img src="../../../assets/icon user.png"> -->
+              <ion-skeleton-text animated style="width:30px;height: 30px"></ion-skeleton-text>
+            </ion-avatar>
+          </div>
+        </ion-col>
+        <ion-slides [options]="slideOpt" #slideStatus>
+          <ion-slide>
+            <ion-skeleton-text animated style="width:60px;height: 32px; border-radius: 25px;"></ion-skeleton-text>
+          </ion-slide>
+          <ion-slide>
+            <ion-skeleton-text animated style="width:60px;height: 32px; border-radius: 25px;"></ion-skeleton-text>
+          </ion-slide>
+          <ion-slide>
+            <ion-skeleton-text animated style="width:60px;height: 32px; border-radius: 25px;"></ion-skeleton-text>
+          </ion-slide>
+          <ion-slide>
+            <ion-skeleton-text animated style="width:60px;height: 32px; border-radius: 25px;"></ion-skeleton-text>
+          </ion-slide>
+          <ion-slide>
+            <ion-skeleton-text animated style="width:60px;height: 32px; border-radius: 25px;"></ion-skeleton-text>
+          </ion-slide>
+          <ion-slide>
+            <ion-skeleton-text animated style="width:60px;height: 32px; border-radius: 25px;"></ion-skeleton-text>
+          </ion-slide>
+        </ion-slides>
+      </ion-row>
+    </ion-list>
+  </div>
+
+  <div style="width: 100%;height:4px;background-color: #eee;" *ngIf="user =='employee'"></div>
+  <ion-card class="status" *ngIf="user =='employee'">
+    <ion-card-content>
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <img src="../../../assets/icon user.png">
+        </ion-avatar>
+
+        <ion-textarea disabled readonly placeholder="What do you want to do?"></ion-textarea>
+      </ion-item>
+      <ion-slides [options]="slideOpt2" #slideStatus>
+        <ion-slide>
+          <ion-chip (click)="openAdd('materi')">
+            <ion-icon name="clipboard-outline" class="materi"></ion-icon>
+            <ion-label class="materi">{{'EDMEDIA.materi' | translate}}</ion-label>
+          </ion-chip>
+        </ion-slide>
+        <ion-slide>
+          <ion-chip (click)="openAdd('info')">
+            <ion-icon name="information-circle-outline" class="info"></ion-icon>
+            <ion-label class="info">{{'EDMEDIA.info' | translate}}</ion-label>
+          </ion-chip>
+        </ion-slide>
+        <!-- <ion-slide>
+          <ion-chip (click)="openAdd('latihan')">
+            <ion-icon name="thermometer-outline" class="latihan"></ion-icon>
+            <ion-label class="latihan">{{'EDMEDIA.practice' | translate}}</ion-label>
+          </ion-chip>
+        </ion-slide> -->
+        <ion-slide>
+          <ion-chip (click)="openAdd('tugas')">
+            <ion-icon name="flash-outline" class="tugas"></ion-icon>
+            <ion-label class="tugas">{{'EDMEDIA.tugas' | translate}}</ion-label>
+          </ion-chip>
+        </ion-slide>
+        <ion-slide>
+          <ion-chip (click)="openAdd('ujian')">
+            <ion-icon name="trophy-outline" class="ujian"></ion-icon>
+            <ion-label class="ujian">{{'EDMEDIA.exam' | translate}}</ion-label>
+          </ion-chip>
+        </ion-slide>
+      </ion-slides>
+    </ion-card-content>
+  </ion-card>
+  <div style="width: 100%;height:6px;background-color: #eee;"></div>
+  <p style="text-align: center;
+  font-size: 11px;
+  font-weight: 600;color:#1b1c1e" *ngIf="!timelines">{{'EDMEDIA.nodata' | translate}}</p>
+  <div *ngIf="showTimeline">
+    <div *ngFor="let item of timelines">
+      <ion-card class="info" (click)="openCommentPage(item)">
+        <ion-card-header>
+          <ion-item lines="none">
+            <ion-avatar slot="start">
+              <div class="text-avatar">{{item.first | slice:0:1}}{{item.second | slice:0:1}}</div>
+            </ion-avatar>
+            <ion-label *ngIf="item.tipe =='info'">
+              <h3>{{item.accountName}}</h3>
+              <p class="date">{{item.newDate | timeago}}</p>
+            </ion-label>
+            <ion-label *ngIf="item.tipe !='info'">
+              <h3>{{item.accountName}} <span> untuk kelas</span>
+                {{item.kelasName}}</h3>
+              <p class="date">{{item.newDate | timeago}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-card-header>
+
+        <ion-card-content>
+          <p class="text-title">{{item.title}}</p>
+          <p class="attachments" *ngFor="let item of item.attachments">{{item}}</p>
+          <div class="text-desc" [innerHTML]="item.description"></div>
+          <a [href]="item.linkDetail">{{item.linkDetail}}</a>
+        </ion-card-content>
+
+        <ion-footer>
+          <ion-row>
+            <ion-col center text-center>
+              <a (click)="openCommentPage(item)">
+                <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+                <div>{{'EDMEDIA.comment' | translate}}</div>
+              </a>
+            </ion-col>
+            <ion-col center text-center *ngIf="item.tipe=='tugas'">
+              <a (click)="openAnswer(item)">
+                <ion-icon name="pencil-outline"></ion-icon>
+                <div>{{'EDMEDIA.answer' | translate}}</div>
+              </a>
+            </ion-col>
+            <!-- <ion-col center text-center>
+
+          </ion-col> -->
+          </ion-row>
+        </ion-footer>
+      </ion-card>
+      <div style="width: 100%;height:4px;background-color: #eee;"></div>
+    </div>
+  </div>
+
+
+
+  <div *ngIf="!showTimeline">
+    <div *ngFor="let item of [1,2,3,4,5,6]">
+      <ion-card class="info">
+        <ion-card-header>
+          <ion-item lines="none">
+            <ion-skeleton-text animated style="width: 40px;height: 40px;margin-inline-end: 16px; border-radius: 25px;">
+            </ion-skeleton-text>
+            <ion-label>
+              <ion-skeleton-text animated style="width:auto;height: 21px"></ion-skeleton-text>
+              <ion-skeleton-text animated style="width: 52.05px;height: 15px"></ion-skeleton-text>
+            </ion-label>
+          </ion-item>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-skeleton-text animated style="width: auto;height: 21px"></ion-skeleton-text>
+          <ion-skeleton-text animated style="width: autopx;height: 40px"></ion-skeleton-text>
+        </ion-card-content>
+
+        <ion-footer>
+          <ion-row>
+            <ion-col center text-center>
+              <ion-skeleton-text animated style="width: 40;height: 40px"></ion-skeleton-text>
+            </ion-col>
+            <ion-col center text-center>
+              <ion-skeleton-text animated style="width: 40;height: 40px"></ion-skeleton-text>
+
+            </ion-col>
+            <!-- <ion-col center text-center>
+
+          </ion-col> -->
+          </ion-row>
+        </ion-footer>
+      </ion-card>
+      <div style="width: 100%;height:4px;background-color: #eee;"></div>
+    </div>
+  </div>
+</ion-content>

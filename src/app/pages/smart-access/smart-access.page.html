@@ -1,0 +1,99 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'ACCESS.title' | translate}}</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <div *ngIf="data">
+
+    <ion-card class="no-box-shadow card-header" style="padding:10px">
+      <p style="margin: 0px 24px 0px 16px;
+    font-size: 14px;">{{'ACCESS.door' | translate}}</p>
+      <div class="date">
+        <h2>{{'ACCESS.today' | translate}}, {{currentDate}}</h2>
+      </div>
+      <div (click)="scanCode()" class="container-header">
+        <ion-icon name="md-open-door-white"></ion-icon>
+      </div>
+    </ion-card>
+
+    <ion-card class=" card-filter" style="padding:10px">
+      <p style="margin: 0px 24px 0px 16px;
+    font-size: 14px;">{{'ACCESS.list' | translate}}</p>
+
+      <div (click)="OpenSheet()" class="container-filter">
+        <ion-icon name="options-outline"></ion-icon>
+      </div>
+    </ion-card>
+
+    <div style="width: 100%;
+    text-align: center;
+    background: #fff;
+    height: 67vh" *ngIf="data.length==0">
+      <ion-icon name="md-data-not-found" style="zoom:16"></ion-icon>
+      <p style="font-family: 'montserrat';
+      margin: 0px 50px 0px 50px;
+      font-weight: 600;
+      color: #6ab856;
+      font-size: 13px;">{{'DATANOTFOUND.title' | translate}}</p>
+    </div>
+
+    <ion-card *ngFor="let item of data" class=" card-data" style="padding:10px">
+      <ion-card-content>
+        <h2>{{ currentStudent }}</h2>
+        <p>{{item.akses.namaMesin}}</p>
+        <div class="date">
+          <span>{{item.akses.createTime | date : 'dd MMMM yyyy' }}</span>
+        </div>
+
+      </ion-card-content>
+    </ion-card>
+
+
+
+    <bottom-sheet [(State)]="BottomSheetState" (StateChange)="StateChanged($event)">
+      <ion-grid class="bottom-sheet">
+        <p class="bs-title">
+          {{'ACCESS.filter' | translate}}
+        </p>
+        <ion-item lines="none">
+          <h2> {{'ACCESS.student' | translate}}</h2>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-select [(ngModel)]="SelectedStudent" class="select-left"
+            placeholder="{{'ACCESS.selectStudent' | translate}}">
+            <ion-select-option *ngFor="let item of students" [(value)]="item.callerId+'.'+item.name">{{item.name}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item lines="none">
+          <h2>{{'TRANSACTION.month' | translate}}</h2>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-datetime value="January" [(ngModel)]="input.month" name="input.month" displayFormat="MMMM"
+            placeholder="{{'ACCESS.selectMonth' | translate}}">
+          </ion-datetime>
+        </ion-item>
+        <ion-item lines="none">
+          <h2>{{'TRANSACTION.year' | translate}}</h2>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-datetime value="2021" [(ngModel)]="input.year" name="input.year" displayFormat="YYYY"
+            placeholder="{{'ACCESS.selectYear' | translate}}">
+          </ion-datetime>
+        </ion-item>
+        <ion-button class="no-box-shadow" expand="block" shape="round" (click)="filter()"> {{'ACCESS.sort' | translate}}
+        </ion-button>
+
+
+      </ion-grid>
+
+    </bottom-sheet>
+
+  </div>
+</ion-content>

@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Broadcast</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()" strong>
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>{{ inbox.createTime | date : 'dd/MM/yyyy' }}</ion-card-subtitle>
+      <!-- <ion-card-title>{{ inbox.title }}</ion-card-title> -->
+    </ion-card-header>
+
+    <ion-card-content [innerHTML]="inbox.message">
+    </ion-card-content>
+  </ion-card>
+</ion-content>

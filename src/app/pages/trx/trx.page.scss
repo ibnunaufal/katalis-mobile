@@ -1,0 +1,82 @@
+h2 {
+    font-size: 14px;
+    font-family: "montserrat";
+    font-weight: 600;
+    margin-top: 6px;
+    color: black;
+}
+h3 {
+    font-size: 13px;
+}
+p {
+    font-size: 12px;
+}
+
+.money {
+    font-family: "montserrat";
+    font-weight: 500;
+    font-size: 14px;
+    margin-top: 5px;
+}
+ion-note {
+    font-size: 14px;
+    font-family: "montserrat";
+    color: #5a5a5a;
+    font-weight: 400;
+}
+.box-shadow {
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+ion-card {
+    border-radius: 8px;
+}
+.border1 {
+    border-left: 6px solid #7bd573;
+}
+.border2 {
+    border-left: 6px solid #eb445a;
+}
+ion-button {
+    margin-top: 10px;
+}
+
+.color1 {
+    color: rgb(52, 224, 81);
+}
+.color2 {
+    color: rgb(224, 52, 52);
+}
+
+.ion-text-center {
+    text-align: right !important;
+}
+
+.saldo-masuk {
+    color: rgb(52, 224, 81) !important;
+    font-weight: 500;
+    text-align: right;
+    display: inherit;
+    font-family: "montserrat";
+    font-size: 16px;
+}
+.saldo-keluar {
+    color: rgb(224, 52, 52) !important;
+    font-weight: 500;
+    text-align: right;
+    display: inherit;
+    font-family: "montserrat";
+    font-size: 16px;
+}
+
+.bottom-sheet {
+    .title {
+        margin-bottom: 10px;
+        text-align: left;
+        font-size: 14px;
+        font-weight: 600;
+        font-family: "montserrat";
+        margin-left: 8px;
+    }
+}

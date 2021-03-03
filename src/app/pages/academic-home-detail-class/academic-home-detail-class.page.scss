@@ -1,0 +1,247 @@
+* {
+    font-family: "montserrat";
+}
+
+ion-toolbar {
+    --background: transparent;
+    --ion-color-base: transparent !important;
+}
+ion-content {
+    position: relative;
+    top: -12px;
+    --background: #fff;
+}
+.show-background {
+    border-style: none;
+    transition: all 0.7s ease-in-out;
+    transform: translateX(60px);
+}
+.show-background2 {
+    border-style: none;
+    transition: all 0.4s ease-in-out;
+    transform: translateX(0px);
+}
+.show-icon {
+    transition: all 0.7s ease-in-out;
+    transform: rotate(60deg);
+}
+.show-icon2 {
+    position: relative;
+    transition: all 0.4s ease-in-out;
+    transform: rotate(0deg);
+}
+ion-list {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+ion-list-header {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: -9px;
+    margin-top: -15px;
+    color: #1b1c1e;
+}
+h2 {
+    color: #1f1f1f;
+}
+
+ion-card-title {
+    font-size: 12px;
+    font-weight: 600;
+}
+ion-card {
+    box-shadow: none !important;
+}
+ion-footer {
+    color: #303030;
+    ion-col {
+        text-align: center;
+        margin-top: 4px;
+    }
+    a {
+        margin-top: 3px;
+    }
+    ion-icon {
+        color: #303030;
+    }
+    div {
+        color: #303030;
+        font-size: 10px;
+    }
+}
+.container-class {
+    .class {
+        box-shadow: none !important;
+        img {
+            padding: 16px;
+            // border: 1px solid #444;
+            border-radius: 8px;
+        }
+        ion-card-header {
+            padding: 6px;
+        }
+    }
+    ion-slides {
+        margin-left: 7px;
+        ion-slide {
+            margin-right: -9px;
+        }
+    }
+}
+h3 {
+    font-weight: 600;
+    color: #1f1f1f;
+    text-transform: capitalize !important;
+    white-space: pre-line;
+    span {
+        text-transform: lowercase;
+        line-height: 21px;
+        font-weight: 700;
+        font-size: 12px;
+        background-color: #4397cd;
+        color: #fff;
+        border-radius: 5px;
+        padding: 0 5px 2px 5px;
+        background: linear-gradient(135deg, #5fc5fb, #5fa4fb);
+        // background: linear-gradient(to right, #8360c3, #2ebf91);
+        margin-left: 3px;
+    }
+}
+
+.detail-class {
+    box-shadow: none !important;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    img {
+        padding: 16px;
+        border-radius: 8px;
+        width: 64px;
+    }
+    ion-card-header {
+        padding: 6px;
+    }
+}
+
+.chip-detail-class {
+    background-color: #f1f1f1;
+    margin-bottom: 10px;
+
+    ion-label {
+        color: #303030;
+    }
+}
+
+.status {
+    ion-card-content {
+        padding: 0;
+    }
+    ion-card-header {
+        padding: 0;
+    }
+}
+.info {
+    ion-card-header {
+        padding: 0;
+    }
+}
+.date {
+    font-size: 11px;
+}
+
+ion-chip {
+    background: #7fffd400;
+    ion-label {
+        font-size: 11px;
+        font-weight: 600;
+    }
+    .kuis {
+        color: rgb(255, 157, 0);
+    }
+    .materi {
+        color: rgb(0, 89, 255);
+    }
+    .info {
+        color: rgb(255, 157, 0);
+    }
+    .latihan {
+        color: rgb(0, 89, 255);
+    }
+    .tugas {
+        color: rgb(255, 157, 0);
+    }
+    .ujian {
+        color: rgb(255, 0, 34);
+    }
+}
+ion-textarea {
+    font-size: 12px;
+}
+
+.text-avatar {
+    background-color: #5fc5fb;
+    background: linear-gradient(135deg, #5fc5fb, #5fa4fb);
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 500;
+}
+.text-avatar-small {
+    background-color: #ffac7f;
+    background: linear-gradient(135deg, #5fc5fb, #5fa4fb);
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 31px;
+    border-radius: 50%;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 500;
+    font-size: 13px;
+}
+.text-title {
+    color: #2b2b2b;
+    font-weight: 600;
+    font-size: 12px !important;
+    text-transform: capitalize;
+}
+.text-desc {
+    font-size: 10px !important;
+    margin-bottom: 6px;
+
+    p {
+        font-size: 12px !important;
+    }
+}
+
+.multiple-student {
+    height: 30px;
+    display: flex;
+    ion-avatar {
+        width: 30px;
+        height: 30px;
+        -webkit-margin-start: 10px;
+        margin-inline-start: 10px;
+        margin-inline-end: -15px;
+        border: 1px solid #fff;
+    }
+    .end {
+        margin-inline-start: 22px;
+        border: 1px solid #f44336;
+        text-align: center;
+        font-size: 12px;
+        line-height: 28px;
+        color: #f44336;
+    }
+}
+
+.attachments {
+    background-color: #e2e2e2;
+    padding: 5px 5px 5px 8px;
+    border-radius: 7px;
+    border: 1px solid #ffffff;
+    margin-bottom: 5px;
+}

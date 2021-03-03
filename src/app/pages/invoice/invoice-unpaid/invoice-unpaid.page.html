@@ -1,0 +1,247 @@
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingText="Pull to refresh"></ion-refresher-content>
+  </ion-refresher>
+
+  <ng-container *ngIf="invoicesLoaded else invoicesLoadingTpl">
+    <ng-container *ngIf="!invoicesError else invoicesErrorTpl">
+      <ng-container *ngIf="invoices.length > 0 else invoicesEmptyTpl">
+        <ion-card *ngFor="let invoice of invoices" class="no-box-shadow">
+          <div *ngIf="invoice.detail.length>1">
+            <div *ngIf="invoice.detail[0].discount!=0" class="ribbon ribbon-top-right scanner">
+              <ion-label class="glow">
+                &nbsp;</ion-label>
+              <span>{{'INVOICE.discount' | translate}}</span>
+            </div>
+          </div>
+          <ion-card-header>
+            <ion-card-subtitle>{{ invoice.invoiceDate | date : 'dd/MM/yyyy'
+              }}</ion-card-subtitle>
+            <ion-card-title>{{ invoice.title }}</ion-card-title>
+            <p class="callerName"> {{invoice.callerName}}</p>
+          </ion-card-header>
+          <ion-card-content class=" ion-no-padding">
+            <ion-list>
+              <ion-item>
+                <ion-label>
+                  <p class="ion-float-left">{{ invoice.actorName }}</p>
+                  <h3 class="ion-float-right" style="color: #397ffb;">
+                    {{ invoice.amount | currency: 'Rp. ':true:'1.0' | replace:
+                    ',':'.' }}
+                  </h3>
+                </ion-label>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>
+                  <ion-grid class="ion-no-padding">
+                    <ion-row>
+                      <ion-col size="4" class="ion-no-padding">
+                        <ion-note>{{'INVOICE.paid' | translate}}</ion-note>
+                      </ion-col>
+                      <ion-col size="1" class="ion-no-padding">
+                        <ion-note>:</ion-note>
+                      </ion-col>
+                      <ion-col size="7" class="ion-no-padding ion-text-right">
+                        <ion-note>
+                          {{ invoice.paidAmount
+                          |currency:'Rp.':true:'1.0'|replace:',':'.' }}
+                        </ion-note>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-label>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>
+                  <ion-grid class="ion-no-padding">
+                    <ion-row>
+                      <ion-col size="4" class="ion-no-padding">
+                        <ion-note>{{'INVOICE.totaldue' | translate}}</ion-note>
+                      </ion-col>
+                      <ion-col size="1" class="ion-no-padding">
+                        <ion-note>:</ion-note>
+                      </ion-col>
+                      <ion-col size="7" class="ion-no-padding ion-text-right">
+                        <ion-note>
+                          {{invoice.amount - invoice.paidAmount | currency:'Rp.
+                          ':true:'1.0' | replace: ',':'.' }}
+                        </ion-note>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-label>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>
+                  <ion-grid class="ion-no-padding">
+                    <ion-row>
+                      <ion-col size="4" class="ion-no-padding">
+                        <ion-note>{{'INVOICE.duedate' | translate}}</ion-note>
+                      </ion-col>
+                      <ion-col size="1" class="ion-no-padding">
+                        <ion-note>:</ion-note>
+                      </ion-col>
+                      <ion-col size="7" class="ion-no-padding ion-text-right">
+                        <ion-note>
+                          {{ invoice.dueDate | date : 'dd/MM/yyyy' }}
+                        </ion-note>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-label>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>
+                  <ion-grid class="ion-no-padding">
+                    <ion-row>
+                      <ion-col size="4" class="ion-no-padding">
+                        <ion-note>{{'INVOICE.credit' | translate}}</ion-note>
+                      </ion-col>
+                      <ion-col size="1" class="ion-no-padding">
+                        <ion-note>:</ion-note>
+                      </ion-col>
+                      <ion-col size="7" class="ion-no-padding ion-text-right">
+                        <ion-note>
+                          <ng-container *ngIf="invoice.partialMethod else noPartialTpl">
+                            Yes
+                          </ng-container>
+
+                          <ng-template #noPartialTpl>
+                            No
+                          </ng-template>
+                        </ion-note>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-label>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>
+                  <ion-grid class="ion-no-padding">
+                    <ion-row>
+                      <ion-col size="4" class="ion-no-padding">
+                        <ion-note>Status</ion-note>
+                      </ion-col>
+                      <ion-col size="1" class="ion-no-padding">
+                        <ion-note>:</ion-note>
+                      </ion-col>
+                      <ion-col size="7" class="ion-no-padding ion-text-right">
+                        <ion-note>
+                          <div class="status">{{ invoice.status }}</div>
+                        </ion-note>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-label>
+              </ion-item>
+            </ion-list>
+
+            <ion-grid>
+              <ion-row>
+                <ion-col size="6" class="ion-text-center">
+                  <ion-button (click)="payInvoice(invoice)">
+                    <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
+                    {{'INVOICE.pay' | translate}}
+                  </ion-button>
+                </ion-col>
+                <ion-col size="6" class="ion-text-center">
+                  <ion-button (click)="openDetail(invoice)" fill="outline">
+                    <ion-icon slot="start" name="reader-outline"></ion-icon>
+                    {{'INVOICE.detail' | translate}}
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+
+  <ng-template #invoicesLoadingTpl>
+    <ion-card *ngFor="let ii of [0, 1, 2]" class="no-box-shadow">
+      <ion-card-header>
+        <ion-card-subtitle>
+          <ion-skeleton-text width="50%" animated></ion-skeleton-text>
+        </ion-card-subtitle>
+        <ion-card-title>
+          <ion-skeleton-text width="80%" animated></ion-skeleton-text>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content class="ion-no-padding">
+        <ion-list>
+          <ion-item>
+            <ion-label>
+              <ion-skeleton-text width="40%" animated class="ion-float-left"></ion-skeleton-text>
+              <ion-skeleton-text width="40%" animated class="ion-float-right"></ion-skeleton-text>
+            </ion-label>
+          </ion-item>
+
+          <ion-item *ngFor="let ii of [1, 2, 3, 4, 5]">
+            <ion-label>
+              <ion-grid class="ion-no-padding">
+                <ion-row>
+                  <ion-col size="4" class="ion-no-padding">
+                    <ion-skeleton-text width="50%" animated></ion-skeleton-text>
+                  </ion-col>
+                  <ion-col size="1" class="ion-no-padding">
+                    <ion-note>:</ion-note>
+                  </ion-col>
+                  <ion-col size="7" class="ion-no-padding">
+                    <ion-skeleton-text width="50%" animated class="ion-float-right"></ion-skeleton-text>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+
+        <ion-grid>
+          <ion-row>
+            <ion-col size="6" class="ion-text-center">
+              <ion-skeleton-text width="79.7px" style="height: 36px; --background: #3880ff; margin: auto">
+              </ion-skeleton-text>
+            </ion-col>
+            <ion-col size="6" class="ion-text-center">
+              <ion-skeleton-text width="79.7px" style="height: 36px; margin: auto" animated></ion-skeleton-text>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </ng-template>
+
+  <ng-template #invoicesErrorTpl>
+    <ion-card class="no-box-shadow">
+      <ion-card-content>
+        <ion-note color="danger" (click)="getData(start,limit)">
+          Something went wrong. Click to retry.
+        </ion-note>
+      </ion-card-content>
+    </ion-card>
+  </ng-template>
+
+  <ng-template #invoicesEmptyTpl>
+    <div style="width: 100%;
+    text-align: center;
+    background: #fff;
+    height: 100%;">
+      <ion-icon name="md-data-not-found" style="zoom:16"></ion-icon>
+      <p style="font-family: 'montserrat';
+      margin: 0px 50px 0px 50px;
+      font-weight: 600;
+      color: #6ab856;
+      font-size: 13px;">{{'DATANOTFOUND.title' | translate}}</p>
+    </div>
+  </ng-template>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

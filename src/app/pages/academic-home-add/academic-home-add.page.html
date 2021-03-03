@@ -1,0 +1,351 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title *ngIf="headerName=='materi'">{{'ADD.materi' | translate}}</ion-title>
+    <ion-title *ngIf="headerName=='info'">{{'ADD.info' | translate}}</ion-title>
+    <ion-title *ngIf="headerName=='latihan'">{{'ADD.practice' | translate}}</ion-title>
+    <ion-title *ngIf="headerName=='tugas'">{{'ADD.tugas' | translate}}</ion-title>
+    <ion-title *ngIf="headerName=='ujian'">{{'ADD.exam' | translate}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()" strong>
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form *ngIf="headerName=='materi'">
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.schedule' | translate}}</ion-label>
+        <ion-select (ionChange)="getComboSesi($event)" [(ngModel)]="input.jadwal" name="class"
+          placeholder="{{'ADD.chooseschedule' | translate}}">
+          <ion-select-option value="{{item.id}}" *ngFor="let item of kelas;">{{item.mapelName}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.session' | translate}}</ion-label>
+        <ion-select value="" [(ngModel)]="input.sesi" name="class" placeholder="{{'ADD.choosesession' | translate}}">
+          <ion-select-option value="{{item.id}}" *ngFor="let item of sesi;">{{item.title}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.title' | translate}}</ion-label>
+        <ion-input [(ngModel)]="input.title" name="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.namamateri' | translate}}</ion-label>
+        <ion-input [(ngModel)]="input.materi" name="materi"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.description' | translate}}</ion-label>
+        <ion-textarea [(ngModel)]="input.description" name="description"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.link' | translate}}</ion-label>
+        <ion-input [(ngModel)]="input.link" name="link"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.share' | translate}}</ion-label>
+        <ion-toggle slot="end" name="blueberry" checked [(ngModel)]="input.date"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label" slot="start">{{'ADD.uploadfile' | translate}}</ion-label>
+        <ion-button (click)="openUpload()" fill="outline" slot="end">{{'ADD.choosefile' | translate}}</ion-button>
+      </ion-item>
+      <ion-item *ngIf="tempFile">
+        <div>
+          <p style="font-size: 10px;" *ngFor="let item of tempFile;"> {{item.fileUrl}}</p>
+        </div>
+      </ion-item>
+    </ion-list>
+
+    <div class="ion-padding">
+      <ion-button expand="block" type="submit" class="ion-no-margin" (click)="addMateri()">{{'ADD.post' | translate}}
+      </ion-button>
+    </div>
+  </form>
+  <!---INFO -->
+  <form *ngIf=" headerName=='info'">
+    <ion-list lines=" full" class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.title' | translate}}</ion-label>
+        <ion-input [(ngModel)]="input.title" name="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.description' | translate}}</ion-label>
+        <ion-textarea [(ngModel)]="input.description" name="description"></ion-textarea>
+      </ion-item>
+    </ion-list>
+
+    <div class="ion-padding">
+      <ion-button expand="block" type="submit" class="ion-no-margin" (click)="addInfo()">{{'ADD.post' | translate}}
+      </ion-button>
+    </div>
+  </form>
+
+
+
+  <!---Tugas -->
+  <form *ngIf="headerName=='tugas'">
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.schedule' | translate}}</ion-label>
+        <ion-select (ionChange)="getComboSesi($event)" [(ngModel)]="input.jadwal" name="class"
+          placeholder="{{'ADD.chooseschedule' | translate}}">
+          <ion-select-option value="{{item.id}}" *ngFor="let item of kelas;">{{item.mapelName}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.session' | translate}}</ion-label>
+        <ion-select value="" [(ngModel)]="input.sesi" name="class" placeholder="{{'ADD.choosesession' | translate}}">
+          <ion-select-option value="{{item.id}}" *ngFor="let item of sesi;">{{item.title}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.title' | translate}}</ion-label>
+        <ion-input [(ngModel)]="input.title" name="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.description' | translate}}</ion-label>
+        <ion-textarea [(ngModel)]="input.description" name="description"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.share' | translate}}</ion-label>
+        <ion-toggle slot="end" name="blueberry" checked [(ngModel)]="input.share"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label" slot="start">{{'ADD.uploadfile' | translate}}</ion-label>
+        <ion-button (click)="openUpload()" fill="outline" slot="end">{{'ADD.choosefile' | translate}}</ion-button>
+      </ion-item>
+      <ion-item *ngIf="tempFile">
+        <div>
+          <p style="font-size: 10px;" *ngFor="let item of tempFile;"> {{item.fileUrl}}</p>
+        </div>
+      </ion-item>
+    </ion-list>
+
+    <div class="ion-padding">
+      <ion-button expand="block" type="submit" class="ion-no-margin" (click)="addTugas()">{{'ADD.post' | translate}}
+      </ion-button>
+    </div>
+  </form>
+
+  <!-- UJIAN-->
+  <form *ngIf="headerName=='ujian'">
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.title' | translate}}</ion-label>
+        <ion-input [(ngModel)]="input.title" name="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.schedule' | translate}}</ion-label>
+        <ion-select (ionChange)="getComboSesi($event)" [(ngModel)]="input.jadwal" name="class"
+          placeholder="{{'ADD.chooseschedule' | translate}}">
+          <ion-select-option value="{{item.id}}" *ngFor="let item of kelas;">{{item.mapelName}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.date' | translate}}</ion-label>
+        <ion-datetime value="15-12-1994" [(ngModel)]="input.tanggalPelaksanaan" name="tanggalPelaksanaan"
+          displayFormat="DD MMMM YYYY" placeholder="{{'ADD.choosedate' | translate}}">
+        </ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.starttime' | translate}}</ion-label>
+        <ion-datetime value="00:00" [(ngModel)]="input.awal" name="awal" displayFormat="HH:mm"
+          placeholder="{{'ADD.choosedate' | translate}}">
+        </ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.endtime' | translate}}</ion-label>
+        <ion-datetime value="00:00" [(ngModel)]="input.akhir" name="akhir" displayFormat="HH:mm"
+          placeholder="{{'ADD.choosedate' | translate}}">
+        </ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.duration' | translate}}</ion-label>
+        <ion-input [(ngModel)]="input.duration" name="duration" type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.type' | translate}}</ion-label>
+        <ion-select value="UTS" [(ngModel)]="input.type" name="type" placeholder="{{'ADD.type' | translate}}">
+          <ion-select-option value="UTS">UTS</ion-select-option>
+          <ion-select-option value="UTS">UAS</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.note' | translate}}</ion-label>
+        <ion-textarea [(ngModel)]="input.note" name="note"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label" slot="start">{{'ADD.addquestion' | translate}}</ion-label>
+        <ion-button (click)="openQuestion()" color="warning" fill="outline" slot="end">{{'ADD.add' | translate}}
+        </ion-button>
+      </ion-item>
+      <ion-item *ngIf="tempQuestion">
+        <ion-grid>
+          <ion-row style="overflow-y: scroll;
+          max-height: 280px;">
+            <ion-col *ngFor="let item of tempQuestion;let i of index;" size="12">
+              <div>
+
+                <h3 style="font-size: 11px;font-weight: 600;margin-top:0px;">{{'ADD.soal' | translate}}:
+                  {{item.description}}</h3>
+                <div *ngFor="let opsi of item.opsi;">
+                  <p style="font-size:10px"><span style="font-weight: 600;">A.</span> {{opsi.a}}</p>
+                  <p style="font-size:10px"><span style="font-weight: 600;">B.</span> {{opsi.b}}</p>
+                  <p style="font-size:10px"><span style="font-weight: 600;">C.</span> {{opsi.c}}</p>
+                  <p style="font-size:10px"><span style="font-weight: 600;">D.</span> {{opsi.d}}</p>
+                  <p style="font-size:10px"><span style="font-weight: 600;">E.</span> {{opsi.e}}</p>
+                </div>
+                <p style="font-size: 11px;font-weight: 600;">{{'ADD.answer' | translate}}: {{item.jawaban.value}}
+                  <a style="text-decoration: underline;" (click)="openEditQuestion(item)">{{'ADD.edit' | translate}}</a>
+                  |
+                  <a style="text-decoration: underline; color:red;"
+                    (click)="deleteQuestion(item)">{{'ADD.delete' | translate}}</a>
+                </p>
+
+              </div>
+              <div style="width: 100%;height:4px;background-color: #eee;"></div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.share' | translate}}</ion-label>
+        <ion-toggle slot="end" name="blueberry" checked [(ngModel)]="input.share"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.finish' | translate}}</ion-label>
+        <ion-toggle slot="end" name="blueberry" checked [(ngModel)]="input.finish"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label" slot="start">{{'ADD.uploadfile' | translate}}</ion-label>
+        <ion-button (click)="openUpload()" fill="outline" slot="end">{{'ADD.choosefile' | translate}}</ion-button>
+      </ion-item>
+      <ion-item *ngIf="tempFile">
+        <div>
+          <p style="font-size: 10px;" *ngFor="let item of tempFile;"> {{item.fileUrl}}</p>
+        </div>
+      </ion-item>
+    </ion-list>
+
+    <div class="ion-padding">
+      <ion-button expand="block" type="submit" class="ion-no-margin" (click)="addUjian()">{{'ADD.post' | translate}}
+      </ion-button>
+    </div>
+  </form>
+
+  <!-- Latihan-->
+  <form *ngIf="headerName=='latihan'">
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.title' | translate}}</ion-label>
+        <ion-input [(ngModel)]="input.title" name="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.schedule' | translate}}</ion-label>
+        <ion-select (ionChange)="getComboSesi($event)" [(ngModel)]="input.jadwal" name="class"
+          placeholder="{{'ADD.chooseschedule' | translate}}">
+          <ion-select-option value="{{item.id}}" *ngFor="let item of kelas;">{{item.mapelName}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.starttime' | translate}}</ion-label>
+        <ion-datetime value="15-12-1994 00:00" [(ngModel)]="input.awal" name="awal" displayFormat="DD MMMM YYYY HH:mm"
+          placeholder="{{'ADD.choosedate' | translate}}">
+        </ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.endtime' | translate}}</ion-label>
+        <ion-datetime value="15-12-1994 00:00" [(ngModel)]="input.akhir" name="akhir" displayFormat="DD MMMM YYYY HH:mm"
+          placeholder="{{'ADD.choosedate' | translate}}">
+        </ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.duration' | translate}}</ion-label>
+        <ion-input [(ngModel)]="input.duration" name="duration" type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.type' | translate}}</ion-label>
+        <ion-select selected="latihan" [(ngModel)]="input.type" name="type"
+          placeholder="{{'ADD.choosetype' | translate}}">
+          <ion-select-option value="latihan" selected>Latihan</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.type' | translate}}</ion-label>
+        <ion-input [(ngModel)]="input.type" name="type"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.note' | translate}}</ion-label>
+        <ion-textarea [(ngModel)]="input.note" name="note"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label" slot="start">{{'ADD.addquestion' | translate}}</ion-label>
+        <ion-button (click)="openQuestion()" color="warning" fill="outline" slot="end">{{'ADD.add' | translate}}
+        </ion-button>
+      </ion-item>
+      <ion-item *ngIf="tempQuestion">
+        <ion-grid>
+          <ion-row style="overflow-y: scroll;
+          max-height: 280px;">
+            <ion-col *ngFor="let item of tempQuestion;let i of index;" size="12">
+              <div>
+
+                <h3 style="font-size: 11px;font-weight: 600;margin-top:0px;">{{'ADD.soal' | translate}}:
+                  {{item.description}}</h3>
+                <div *ngFor="let opsi of item.opsi;">
+                  <p style="font-size:10px"><span style="font-weight: 600;">A.</span> {{opsi.a}}</p>
+                  <p style="font-size:10px"><span style="font-weight: 600;">B.</span> {{opsi.b}}</p>
+                  <p style="font-size:10px"><span style="font-weight: 600;">C.</span> {{opsi.c}}</p>
+                  <p style="font-size:10px"><span style="font-weight: 600;">D.</span> {{opsi.d}}</p>
+                  <p style="font-size:10px"><span style="font-weight: 600;">E.</span> {{opsi.e}}</p>
+                </div>
+                <p style="font-size: 11px;font-weight: 600;">{{'ADD.answer' | translate}}: {{item.jawaban.value}}
+                  <a style="text-decoration: underline;" (click)="openEditQuestion(item)">{{'ADD.edit' | translate}}</a>
+                  |
+                  <a style="text-decoration: underline; color:red;"
+                    (click)="deleteQuestion(item)">{{'ADD.delete' | translate}}</a>
+                </p>
+
+              </div>
+              <div style="width: 100%;height:4px;background-color: #eee;"></div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.share' | translate}}</ion-label>
+        <ion-toggle slot="end" name="blueberry" checked [(ngModel)]="input.share"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{'ADD.finish' | translate}}</ion-label>
+        <ion-toggle slot="end" name="blueberry" checked [(ngModel)]="input.finish"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label" slot="start">{{'ADD.uploadfile' | translate}}</ion-label>
+        <ion-button (click)="openUpload()" fill="outline" slot="end">{{'ADD.choosefile' | translate}}</ion-button>
+      </ion-item>
+      <ion-item *ngIf="tempFile">
+        <div>
+          <p style="font-size: 10px;" *ngFor="let item of tempFile;"> {{item.fileUrl}}</p>
+        </div>
+      </ion-item>
+    </ion-list>
+
+    <div class="ion-padding">
+      <ion-button expand="block" type="submit" class="ion-no-margin" (click)="addUjian()">{{'ADD.post' | translate}}
+      </ion-button>
+    </div>
+  </form>
+</ion-content>

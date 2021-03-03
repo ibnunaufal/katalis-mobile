@@ -1,0 +1,27 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/home/trx"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'DETAILTRANSACTION.title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="box-shadow" *ngFor="let transaction of transactions; let i = index;"
+    [class]="transaction.debit>'0' ? 'box-shadow border2' : 'box-shadow border1'">
+    <ion-card-content>
+      <ion-label>
+        <p>
+          {{ transaction.createDate | date : 'dd/MM/yyyy HH:mm' }}
+        </p>
+        <h2>{{ transaction.transactionName }}</h2>
+        <h3>{{ transaction.actor }}</h3>
+        <p *ngIf="transaction.credit >0" class="money">Rp {{ transaction.credit | currency: '
+            ':true:'1.0' }}</p>
+        <p *ngIf="transaction.debit >0" class="money">Rp {{ transaction.debit | currency: '
+            ':true:'1.0' }}</p>
+      </ion-label>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

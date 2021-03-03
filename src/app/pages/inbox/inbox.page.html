@@ -1,0 +1,134 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>{{'INBOX.title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-segment [(ngModel)]="segment">
+    <ion-segment-button value="notification">
+      {{'INBOX.notification' | translate}}
+    </ion-segment-button>
+    <ion-segment-button value="broadcast">
+      {{'INBOX.broadcast' | translate}}
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="segment">
+    <div *ngSwitchCase="'notification'">
+      <div *ngIf="showNotification">
+
+        <div style="width: 100%;
+    text-align: center;
+    background: #fff;
+    height: 67vh" *ngIf="notifications.length==0">
+          <ion-icon name="md-data-not-found" style="zoom:16"></ion-icon>
+          <p style="font-family: 'montserrat';
+      margin: 0px 50px 0px 50px;
+      font-weight: 600;
+      color: #6ab856;
+      font-size: 13px;">{{'DATANOTFOUND.title' | translate}}</p>
+        </div>
+
+
+        <ion-card *ngFor="let inbox of notifications" class="no-box-shadow" (click)="presentInboxDetail(inbox)">
+          <ion-card-header>
+            <ion-card-subtitle>{{inbox.createTime | date : 'dd/MM/yyyy' }}</ion-card-subtitle>
+            <ion-card-title>{{inbox.title}}</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <p [innerHTML]="inbox.message"></p>
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+      <div *ngIf="!showNotification">
+        <ion-card *ngFor="let item of [1, 2, 3, 4, 5,6,7,8,9,10]" class="no-box-shadow">
+          <ion-card-header>
+            <ion-card-subtitle>
+              <ion-skeleton-text animated style="width: 30%;"></ion-skeleton-text>
+            </ion-card-subtitle>
+            <ion-card-title>
+              <ion-skeleton-text animated style="width: 50%;"></ion-skeleton-text>
+            </ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-skeleton-text animated style="width: 80%;"></ion-skeleton-text>
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+
+      <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Memuat..">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </div>
+
+    <div *ngSwitchCase="'broadcast'">
+      <!-- <ion-list>
+        <ion-item (click)="presentBroadcastDetail(inbox)" *ngFor="let inbox of broadcasts">
+          <ion-label>
+            <ion-note>{{ inbox.createTime | date : 'dd/MM/yyyy' }}</ion-note>
+            <h3>{{ inbox.title }}</h3>
+            <p [innerHTML]="inbox.message"></p>
+          </ion-label>
+        </ion-item>
+      </ion-list> -->
+
+      <div *ngIf="showBroadcast">
+
+
+        <div style="width: 100%;
+    text-align: center;
+    background: #fff;
+    height: 100vh" *ngIf="broadcasts.length==0">
+          <ion-icon name="md-data-not-found" style="zoom:16"></ion-icon>
+          <p style="font-family: 'montserrat';
+      margin: 0px 50px 0px 50px;
+      font-weight: 600;
+      color: #6ab856;
+      font-size: 13px;">{{'DATANOTFOUND.title' | translate}}</p>
+        </div>
+
+
+
+        <ion-card *ngFor="let inbox of broadcasts" class="no-box-shadow" (click)="presentInboxDetail(inbox)">
+          <img src="{{ apiUrl + 'main_a/image/get/'+ inbox.image + '/thumb' }}"
+            class="no-box-shadow radius slide-image" />
+          <ion-card-header>
+            <ion-card-subtitle>{{inbox.createTime | date : 'dd/MM/yyyy' }}</ion-card-subtitle>
+            <ion-card-title>{{inbox.title}}</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <p [innerHTML]="inbox.message"></p>
+          </ion-card-content>
+        </ion-card>
+      </div>
+      <div *ngIf="!showBroadcast">
+        <ion-card *ngFor=" let item of [1, 2, 3, 4, 5,6,7,8,9,10]" class="no-box-shadow">
+          <ion-card-header>
+            <ion-card-subtitle>
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+
+
+      <!-- <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Memuat..">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll> -->
+    </div>
+  </div>
+</ion-content>

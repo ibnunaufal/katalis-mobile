@@ -1,0 +1,64 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title></ion-title>
+    <ion-buttons slot="end" style="margin-right: 16px;" (click)="editProfile()">
+      <button>
+        {{'PROFILE.edit' | translate}}
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-card class="profile no-box-shadow" *ngIf="user">
+    <ion-card-content>
+      <ion-item lines='none' class="ion-no-padding">
+        <ion-label>
+          <h2>{{ user.name }}</h2>
+          <p>{{company}}</p>
+        </ion-label>
+        <ion-avatar slot="start" class="avatar" (click)="editProfile()">
+          <img *ngIf="user.photoUrl == ''" src="../../../assets/user1.png" alt="avatar">
+          <img *ngIf="user.photoUrl !=''" [src]="getImgContent()" class="box-shadow radius slide-image" alt="avatar" />
+        </ion-avatar>
+      </ion-item>
+      <ion-item lines='none' class="ion-no-padding">
+        <ion-label>
+          <p *ngIf="user.email ==null">-</p>
+          <p *ngIf="user.email !=null">{{user.email}}</p>
+        </ion-label>
+        <ion-icon slot="start" name="mail-outline"></ion-icon>
+      </ion-item>
+      <ion-item lines='none' class="ion-no-padding">
+        <ion-label>
+          <p *ngIf="user.phone ==null">-</p>
+          <p *ngIf="user.phone !=null">{{user.phone}}</p>
+        </ion-label>
+        <ion-icon slot="start" name="call-outline"></ion-icon>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <div style="border-bottom: 1px solid #a1a1a1;">
+
+  </div>
+
+  <div *ngIf="user" class="ion-padding-top ion-text-center">
+    <ion-list>
+
+      <ion-item lines="none" (click)="presentChangePassword()">
+        <ion-icon slot="start" name="key-outline"></ion-icon>{{'PROFILE.changepass' | translate}}
+      </ion-item>
+      <ion-item lines="none" (click)="changeLanguage()">
+        <ion-icon slot="start" name="globe-outline"></ion-icon>{{'PROFILE.changelang' | translate}}
+      </ion-item>
+      <ion-item lines="none" (click)="faq()">
+        <ion-icon slot="start" name="help-outline"></ion-icon>{{'PROFILE.faq' | translate}}
+      </ion-item>
+      <!-- <ion-item lines="none" (click)="presentSupport()">Support</ion-item> -->
+      <ion-item lines="none" (click)="presentLogout()">
+        <ion-icon slot="start" name="exit-outline"></ion-icon>{{'PROFILE.logout' | translate}}
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

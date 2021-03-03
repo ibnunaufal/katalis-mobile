@@ -1,0 +1,53 @@
+h2 {
+    font-size: 14px;
+    font-family: "montserrat";
+    font-weight: 600;
+    margin-top: 6px;
+}
+h3 {
+    font-size: 12px;
+}
+p {
+    font-size: 12px;
+}
+
+.money {
+    font-family: "montserrat";
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 5px;
+}
+ion-note {
+    font-size: 14px;
+    font-family: "montserrat";
+    color: #5a5a5a;
+    font-weight: 400;
+}
+.box-shadow {
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+ion-card {
+    border-radius: 8px;
+}
+.border1 {
+    border-left: 6px solid #7bd573;
+}
+.border2 {
+    border-left: 6px solid #eb445a;
+}
+
+.bottom-sheet {
+    .title {
+        margin-bottom: 10px;
+        text-align: left;
+        font-size: 14px;
+        font-weight: 600;
+        font-family: "montserrat";
+        margin-left: 8px;
+    }
+}
+ion-label {
+    font-size: 14px;
+}

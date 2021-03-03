@@ -1,0 +1,124 @@
+ion-card {
+    border-radius: 8px;
+}
+.box-shadow {
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+}
+ion-card-title {
+    font-family: "montserrat";
+    font-weight: 600;
+}
+ion-card-subtitle {
+    font-size: 12px;
+}
+h3 {
+    font-family: "montserrat";
+    font-weight: 500;
+    font-size: 21px;
+}
+ion-card-header {
+    padding-bottom: 5px;
+}
+
+ion-label {
+    margin-top: 5px;
+}
+.ribbon {
+    width: 100px;
+    height: 125px;
+    overflow: hidden;
+    position: absolute;
+    z-index: 1;
+}
+.ribbon::before,
+.ribbon::after {
+    position: absolute;
+    z-index: -1;
+    content: "";
+    display: block;
+    // border: 5px solid #2980b9;
+}
+.ribbon span {
+    position: absolute;
+    display: block;
+    width: 166px;
+    padding: 10px 0;
+    background: rgb(96, 188, 250);
+    background: radial-gradient(circle, #59b4ff 0%, #397ffb 100%);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    font: 700 12px/1 "Lato", sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* top right*/
+.ribbon-top-right {
+    top: -10px;
+    right: -10px;
+}
+.ribbon-top-right::before,
+.ribbon-top-right::after {
+    border-top-color: transparent;
+    border-right-color: transparent;
+}
+.ribbon-top-right::before {
+    top: 0;
+    left: 0;
+}
+.ribbon-top-right::after {
+    bottom: 0;
+    right: 0;
+}
+.ribbon-top-right span {
+    left: -25px;
+    top: 30px;
+    transform: rotate(45deg);
+}
+
+.glow {
+    transform: rotate(135deg);
+    position: absolute;
+    background: aqua;
+    z-index: 2;
+    height: 25px;
+    // background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.52), rgba(255, 255, 255, 0));
+    width: 34px;
+    height: 28px;
+    background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.52), rgba(255, 255, 255, 0));
+
+    animation: scanner-loop 1.5s ease-in-out infinite;
+    animation-delay: 2s;
+    left: -9px;
+    top: -22px;
+}
+@keyframes scanner-loop {
+    0% {
+        left: -9px;
+        top: -22px;
+    }
+    100% {
+        top: 100%;
+        left: 140%;
+    }
+}
+.callerName {
+    margin-top: 4px;
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+
+.status {
+    text-align: center;
+    background: #fb3939;
+    color: #fff;
+    border-radius: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    width: 79px;
+    float: right;
+    font-weight: 700;
+}

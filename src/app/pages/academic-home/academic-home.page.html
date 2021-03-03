@@ -1,0 +1,680 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar [class.show-background]="showToolbar" [class.show-background2]="showToolbarAgain">
+    <ion-buttons slot="start" [class.show-icon]="showToolbar" [class.show-icon2]="showToolbarAgain">
+      <ion-icon style="margin-left: 10px;" name="arrow-back-outline" (click)="turnBack()"></ion-icon>
+    </ion-buttons>
+    <ion-title style="padding-left: 10;" [class.show-img]="showToolbar" [class.show-img2]="showToolbarAgain"><img
+        style="width: 32%;padding-top: 3px;" src="../../../assets/logo-edu.png">
+    </ion-title>
+    <ion-buttons slot="end" [class.show-icon]="showToolbar" [class.show-icon2]="showToolbarAgain">
+      <ion-icon style="margin-right: 10px;zoom:1.5" name="bookmark-outline" (click)="presentLogout()"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content fullscreen [scrollEvents]="true" (ionScroll)="onScroll($event)">
+  <ion-refresher (ionRefresh)="doRefresh($event)" slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <!-- <div class="fixed-top" [class.show-top]="showTop" [class.show-top2]="showTopAgain">
+    <ion-slides [options]="sliderTop" #slideStatus>
+      <ion-slide>
+        <ion-chip class="chip-detail-class" (click)="filter('tags','materi')">
+          <ion-label>{{'EDMEDIA.materi' | translate}}
+          </ion-label>
+        </ion-chip>
+      </ion-slide>
+      <ion-slide>
+        <ion-chip class="chip-detail-class" (click)="filter('tags','info')">
+          <ion-label>{{'EDMEDIA.info' | translate}}</ion-label>
+        </ion-chip>
+      </ion-slide>
+      <ion-slide>
+        <ion-chip class="chip-detail-class" (click)="filter('tags','tugas')">
+          <ion-label>{{'EDMEDIA.tugas' | translate}}</ion-label>
+        </ion-chip>
+      </ion-slide>
+      <ion-slide>
+        <ion-chip class="chip-detail-class" (click)="filter('tags','ujian')">
+          <ion-label>{{'EDMEDIA.exam' | translate}}</ion-label>
+        </ion-chip>
+      </ion-slide>
+    </ion-slides>
+  </div> -->
+  <ion-list class="container-class">
+    <ion-list-header *ngIf="user=='employee'">
+      {{'EDMEDIA.yourclasses' | translate}}
+    </ion-list-header>
+
+    <ion-list-header *ngIf="user=='student'">
+      {{'EDMEDIA.yourclass' | translate}}
+    </ion-list-header>
+    <div *ngIf="showClass">
+      <ion-slides [options]="sliderMenu" #slidemenu>
+        <ion-slide *ngFor="let item of classes">
+          <ion-card class="class" (click)="detailClass(item)">
+            <div>
+              <img [style.background]="item.bgcolor" src="{{item.icon}}" />
+            </div>
+            <ion-card-header>
+              <ion-card-title>{{item.namaKelas}}</ion-card-title>
+            </ion-card-header>
+          </ion-card>
+        </ion-slide>
+        <ion-slide *ngIf="user=='employee'">
+          <ion-card class="class" (click)="addClass()">
+            <div>
+              <img style.backgroundColor="#fff" src="../../../assets/icon/add.png" />
+            </div>
+
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+    </div>
+    <div *ngIf="!showClass">
+      <ion-slides [options]="sliderMenu" #slidemenu>
+        <ion-slide *ngFor="let item of [1,2,3,4,5,6,7,8]">
+          <ion-card class="class">
+            <ion-skeleton-text animated style="margin-top:-5px;width: 64.05px;height: 64.05px; border-radius: 8px;">
+            </ion-skeleton-text>
+            <ion-card-header>
+              <ion-card-title>
+                <ion-skeleton-text animated style="width: 52.05px;height: 15px;margin: 0px"></ion-skeleton-text>
+              </ion-card-title>
+            </ion-card-header>
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+    </div>
+
+    <ion-slides [options]="sliderStatus" #slideStatus>
+      <ion-slide>
+        <ion-chip class="chip-detail-class" (click)="filter('tags','materi')">
+          <ion-label>{{'EDMEDIA.materi' | translate}}
+          </ion-label>
+        </ion-chip>
+      </ion-slide>
+      <ion-slide>
+        <ion-chip class="chip-detail-class" (click)="filter('tags','info')">
+          <ion-label>{{'EDMEDIA.info' | translate}}</ion-label>
+        </ion-chip>
+      </ion-slide>
+      <ion-slide>
+        <ion-chip class="chip-detail-class" (click)="filter('tags','latihan')">
+          <ion-label>{{'EDMEDIA.practice' | translate}}</ion-label>
+        </ion-chip>
+      </ion-slide>
+      <ion-slide>
+        <ion-chip class="chip-detail-class" (click)="filter('tags','tugas')">
+          <ion-label>{{'EDMEDIA.tugas' | translate}}</ion-label>
+        </ion-chip>
+      </ion-slide>
+      <ion-slide>
+        <ion-chip class="chip-detail-class" (click)="filter('tags','ujian')">
+          <ion-label>{{'EDMEDIA.exam' | translate}}</ion-label>
+        </ion-chip>
+      </ion-slide>
+    </ion-slides>
+    <ion-progress-bar type="indeterminate" *ngIf="!showfilter"></ion-progress-bar>
+  </ion-list>
+  <div style="width: 100%;height:4px;background-color: #eee;" *ngIf="user=='employee'"></div>
+  <ion-card class="status" *ngIf="user=='employee'">
+    <ion-card-content>
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <img src="../../../assets/icon user.png">
+        </ion-avatar>
+
+        <ion-textarea disabled readonly placeholder="What do you want to do?"></ion-textarea>
+      </ion-item>
+      <ion-slides [options]="sliderStatus" #slideStatus>
+        <ion-slide>
+          <ion-chip (click)="openAdd('materi')">
+            <ion-icon name="clipboard-outline" class="materi"></ion-icon>
+            <ion-label class="materi">{{'EDMEDIA.materi' | translate}}</ion-label>
+          </ion-chip>
+        </ion-slide>
+        <ion-slide>
+          <ion-chip (click)="openAdd('info')">
+            <ion-icon name="information-circle-outline" class="info"></ion-icon>
+            <ion-label class="info">{{'EDMEDIA.info' | translate}}</ion-label>
+          </ion-chip>
+        </ion-slide>
+        <ion-slide>
+          <ion-chip (click)="openAdd('latihan')">
+            <ion-icon name="thermometer-outline" class="latihan"></ion-icon>
+            <ion-label class="latihan">{{'EDMEDIA.practice' | translate}}</ion-label>
+          </ion-chip>
+        </ion-slide>
+        <ion-slide>
+          <ion-chip (click)="openAdd('tugas')">
+            <ion-icon name="flash-outline" class="tugas"></ion-icon>
+            <ion-label class="tugas">{{'EDMEDIA.tugas' | translate}}</ion-label>
+          </ion-chip>
+        </ion-slide>
+        <ion-slide>
+          <ion-chip (click)="openAdd('ujian')">
+            <ion-icon name="trophy-outline" class="ujian"></ion-icon>
+            <ion-label class="ujian">{{'EDMEDIA.exam' | translate}}</ion-label>
+          </ion-chip>
+        </ion-slide>
+      </ion-slides>
+    </ion-card-content>
+  </ion-card>
+  <div style="width: 100%;height:4px;background-color: #eee;"></div>
+  <div *ngIf="showHl">
+    <div>
+      <h3 class="h3-hl">
+        {{'ADD.hl' | translate}}
+      </h3>
+      <p class="p-hl">
+        {{'ADD.hldetail' | translate}}
+      </p>
+    </div>
+    <ion-grid>
+      <ion-slides [options]="sliderHeadline" #slideHeadline>
+        <ion-slide *ngFor="let item of highlight">
+          <ion-card class="box-shadow hl" (click)="openDetail(item)">
+
+            <div class="now-hl"
+              *ngIf="item.tipe=='ujian' && between(dateNow,item.hightlightDate,item.hightlightExpiredDate) == true">
+              <span class="dot-animation-hl"></span>Sedang Berlangsung
+            </div>
+            <div class="container-hl">
+              <h1 class="tgl-hl" *ngIf="item.hightlightDate !='None'">
+                {{item.hightlightDate | date : 'dd MMM yyyy hh:mm'}}
+              </h1>
+              <h1 class="tgl-hl" *ngIf="item.hightlightDate =='None'"> s</h1>
+              <p class="title-hl">{{item.title}}</p>
+              <h1 class="kelas-hl">{{item.kelasName}}</h1>
+              <h1 class="acc-hl">{{item.accountName}}</h1>
+            </div>
+            <div class="bg-hl" *ngIf="item.tipe=='ujian'">
+              <img src="../../../assets/ujian.png" class="bg-img-hl img-hl">
+            </div>
+            <div class="bg2-hl" *ngIf="item.tipe=='tugas'">
+              <img src="../../../assets/tugas.png" class="bg2-img-hl img-hl">
+            </div>
+            <div class="bg3-hl" *ngIf="item.tipe=='latihan'">
+              <img src="../../../assets/latihan.png" class="bg3-img-hl img-hl">
+            </div>
+
+            <!-- <ion-card-header class="card-header-hl">
+            <ion-card-title class="card-title-hl">{{item.title}}</ion-card-title>
+            <ion-card-subtitle class="card-subtitle-hl"></ion-card-subtitle>
+          </ion-card-header> -->
+            <!-- <ion-card-content>
+            <p [innerHTML]="item.descText  | slice:0:80"> ...</p>
+          </ion-card-content> -->
+          </ion-card>
+
+        </ion-slide>
+      </ion-slides>
+    </ion-grid>
+  </div>
+  <div *ngIf="!showHl">
+    <div>
+      <h3 class="h3-hl">
+        <ion-skeleton-text animated style="width: 85px;height: 19px;margin-bottom: 12px;"></ion-skeleton-text>
+      </h3>
+      <p class="p-hl">
+        <ion-skeleton-text animated style="width: 300px;height: 12px"></ion-skeleton-text>
+      </p>
+    </div>
+    <ion-grid>
+      <ion-slides [options]="sliderHeadline" #slideHeadline>
+        <ion-slide *ngFor="let item of [1,2,3]">
+          <ion-skeleton-text animated style="width: 290.5px;height: 182px; margin-top: 10px;
+          margin-left: 10px;"></ion-skeleton-text>
+        </ion-slide>
+      </ion-slides>
+    </ion-grid>
+  </div>
+
+  <div style="width: 100%;height:6px;background-color: #eee;"></div>
+  <p style="text-align: center;
+  font-size: 11px;
+  font-weight: 600;color:#1b1c1e" *ngIf="!timelines">{{'EDMEDIA.nodata' | translate}}</p>
+  <div *ngIf="showTimeline">
+    <div *ngFor="let item of timelines">
+      <ion-card class="info">
+        <ion-card-header (click)="openCommentPage(item)">
+          <ion-item lines="none">
+            <ion-avatar slot="start">
+              <div class="text-avatar">{{item.first | slice:0:1}}{{item.second | slice:0:1}}</div>
+              <!-- <img src="../../../assets/icon user.png"> -->
+            </ion-avatar>
+            <ion-label *ngIf="item.tipe =='info'">
+              <h3>{{item.accountName}}</h3>
+              <p class="date">{{item.newDate | timeago}}</p>
+            </ion-label>
+            <ion-label *ngIf="item.tipe !='info'">
+              <h3>{{item.accountName}} <span> untuk kelas</span>
+                {{item.kelasName}}</h3>
+              <p class="date">{{item.newDate | timeago}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-card-header>
+
+        <ion-card-content>
+          <div (click)="openCommentPage(item)">
+            <p class="text-title">{{item.title}}</p>
+
+            <div class="text-desc" [innerHTML]="item.description"></div>
+          </div>
+          <div>
+            <a [href]="item.linkDetail">{{item.linkDetail}}</a>
+            <div *ngIf="item.attachmentImage.length >0">
+              <ion-slides [options]="sliderGaleri">
+                <ion-slide *ngFor="let img of item.attachmentImage">
+                  <img class="img-slide" src="{{ apiUrl + 'media/view/'+ img.fileUrl }}" alt="" tappable
+                    (click)="openPreview(item.fileUrl)">
+                </ion-slide>
+              </ion-slides>
+            </div>
+            <div *ngIf="item.attachmentOther.length>0">
+              <p class="attachments" *ngFor="let other of item.attachmentOther">{{other.fileUrl}}</p>
+            </div>
+          </div>
+        </ion-card-content>
+
+        <ion-footer>
+          <ion-row>
+            <ion-col center text-center>
+              <a (click)="openCommentPage(item)">
+                <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+                <div>{{'EDMEDIA.comment' | translate}}</div>
+              </a>
+            </ion-col>
+            <ion-col center text-center *ngIf="item.tipe=='tugas'">
+              <a (click)="openAnswer(item)">
+                <ion-icon name="pencil-outline"></ion-icon>
+                <div>{{'EDMEDIA.answer' | translate}}</div>
+              </a>
+            </ion-col>
+            <!-- <ion-col center text-center>
+
+          </ion-col> -->
+          </ion-row>
+        </ion-footer>
+      </ion-card>
+      <div style="width: 100%;height:4px;background-color: #eee;"></div>
+    </div>
+  </div>
+
+  <div *ngIf="!showTimeline">
+    <div *ngFor="let item of [1,2,3,4,5,6]">
+      <ion-card class="info">
+        <ion-card-header>
+          <ion-item lines="none">
+            <ion-skeleton-text animated style="width: 40px;height: 40px;margin-inline-end: 16px; border-radius: 25px;">
+            </ion-skeleton-text>
+            <ion-label>
+              <ion-skeleton-text animated style="width:auto;height: 21px"></ion-skeleton-text>
+              <ion-skeleton-text animated style="width: 52.05px;height: 15px"></ion-skeleton-text>
+            </ion-label>
+          </ion-item>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-skeleton-text animated style="width: auto;height: 21px"></ion-skeleton-text>
+          <ion-skeleton-text animated style="width: autopx;height: 40px"></ion-skeleton-text>
+        </ion-card-content>
+
+        <ion-footer>
+          <ion-row>
+            <ion-col center text-center>
+              <ion-skeleton-text animated style="width: 40;height: 40px"></ion-skeleton-text>
+            </ion-col>
+            <ion-col center text-center>
+              <ion-skeleton-text animated style="width: 40;height: 40px"></ion-skeleton-text>
+
+            </ion-col>
+            <!-- <ion-col center text-center>
+
+          </ion-col> -->
+          </ion-row>
+        </ion-footer>
+      </ion-card>
+      <div style="width: 100%;height:4px;background-color: #eee;"></div>
+    </div>
+  </div>
+
+  <!--BOTTOM SHEET 1--->
+
+  <!-- <bottom-sheet [(State)]="BottomSheetState" (StateChange)="StateChanged($event)">
+    <div *ngIf="bottomsheetShow">
+      <ion-list class="container-class">
+        <ion-list-header>
+          {{'EDMEDIA.yourclass' | translate}}
+        </ion-list-header>
+        <ion-row>
+          <ion-col size="3">
+            <ion-card class="detail-class">
+              <div>
+                <img [style.backgroundColor]=" bottomSheetData.bgcolor" src="{{bottomSheetData.icon}}" />
+              </div>
+            </ion-card>
+          </ion-col>
+          <ion-col>
+            <ion-label>
+              <h2 style="font-weight: 600;margin-top: 6px;">{{bottomSheetData.namaKelas}}</h2>
+              <p style="font-size: 12px;">{{detailClass.capacity}} {{'EDMEDIA.student' | translate}}</p>
+            </ion-label>
+          </ion-col>
+          <ion-col size="12">
+            <div class="multiple-student">
+              <ion-avatar *ngFor="let item of [1,2,3,4,5,6,7]">
+                <img src="../../../assets/icon user.png">
+              </ion-avatar>
+              <ion-avatar class="end" (click)="dataKelas(detailClass.id)">
+                10+
+              </ion-avatar>
+            </div>
+          </ion-col>
+          <ion-slides [options]="sliderStatus" #slideStatus>
+            <ion-slide>
+              <ion-chip class="chip-detail-class" (click)="filter('tipe','materi')">
+                <ion-label>{{'EDMEDIA.materi' | translate}}
+                </ion-label>
+              </ion-chip>
+            </ion-slide>
+            <ion-slide>
+              <ion-chip class="chip-detail-class" (click)="filter('tipe','info')">
+                <ion-label>{{'EDMEDIA.info' | translate}}</ion-label>
+              </ion-chip>
+            </ion-slide>
+            <ion-slide>
+              <ion-chip class="chip-detail-class" (click)="filter('tipe','latihan')">
+                <ion-label>{{'EDMEDIA.practice' | translate}}</ion-label>
+              </ion-chip>
+            </ion-slide>
+            <ion-slide>
+              <ion-chip class="chip-detail-class" (click)="filter('tipe','tugas')">
+
+                <ion-label>{{'EDMEDIA.tugas' | translate}}</ion-label>
+              </ion-chip>
+            </ion-slide>
+            <ion-slide>
+              <ion-chip class="chip-detail-class" (click)="filter('tipe','ujian')">
+                <ion-label>{{'EDMEDIA.exam' | translate}}</ion-label>
+              </ion-chip>
+            </ion-slide>
+          </ion-slides>
+        </ion-row>
+      </ion-list>
+      <div style="width: 100%;height:4px;background-color: #eee;"></div>
+      <ion-card class="status">
+        <ion-card-content>
+          <ion-item lines="none">
+            <ion-avatar slot="start">
+              <img src="../../../assets/icon user.png">
+            </ion-avatar>
+
+            <ion-textarea placeholder="What do you want to do?"></ion-textarea>
+          </ion-item>
+          <ion-slides [options]="sliderStatus" #slideStatus>
+            <ion-slide>
+              <ion-chip>
+                <ion-icon name="clipboard-outline" class="materi"></ion-icon>
+                <ion-label class="materi">{{'EDMEDIA.exam' | translate}}</ion-label>
+              </ion-chip>
+            </ion-slide>
+            <ion-slide>
+              <ion-chip>
+                <ion-icon name="information-circle-outline" class="info"></ion-icon>
+                <ion-label class="info">{{'EDMEDIA.info' | translate}}</ion-label>
+              </ion-chip>
+            </ion-slide>
+            <ion-slide>
+              <ion-chip>
+                <ion-icon name="thermometer-outline" class="latihan"></ion-icon>
+                <ion-label class="latihan">{{'EDMEDIA.exam' | translate}}</ion-label>
+              </ion-chip>
+            </ion-slide>
+            <ion-slide>
+              <ion-chip>
+                <ion-icon name="flash-outline" class="tugas"></ion-icon>
+                <ion-label class="tugas">{{'EDMEDIA.exam' | translate}}</ion-label>
+              </ion-chip>
+            </ion-slide>
+            <ion-slide>
+              <ion-chip>
+                <ion-icon name="trophy-outline" class="ujian"></ion-icon>
+                <ion-label class="ujian">{{'EDMEDIA.exam' | translate}}</ion-label>
+              </ion-chip>
+            </ion-slide>
+          </ion-slides>
+        </ion-card-content>
+      </ion-card>
+      <div style="width: 100%;height:8px;background-color: #eee;"></div>
+      <div *ngFor="let item of detailTimelines">
+        <ion-card class="info">
+          <ion-card-header>
+            <ion-item lines="none">
+              <ion-avatar slot="start">
+                <div class="text-avatar">{{item.accountName | slice:0:2}}</div>
+  </ion-avatar>
+  <ion-label *ngIf="item.tipe =='info'">
+    <h3>{{item.accountName}}</h3>
+    <p class="date">{{item.newDate | timeago:live}}</p>
+  </ion-label>
+  <ion-label *ngIf="item.tipe !='info'">
+    <h3>{{item.accountName}} <span> untuk kelas</span>
+      {{item.kelasName}}</h3>
+    <p class="date">{{item.newDate | timeago:live}}</p>
+  </ion-label>
+  </ion-item>
+  </ion-card-header>
+
+  <ion-card-content>
+    <p class="text-title">{{item.title}}</p>
+    <div class="text-desc" [innerHTML]="item.description"></div>
+  </ion-card-content>
+  <ion-footer>
+    <ion-row>
+      <ion-col center text-center>
+        <a (click)="openCommentPage(item)">
+          <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+          <div>{{'EDMEDIA.comment' | translate}}</div>
+        </a>
+      </ion-col>
+      <ion-col center text-center>
+        <a (click)="openAnswer()">
+          <ion-icon name="pencil-outline"></ion-icon>
+          <div>{{'EDMEDIA.answer' | translate}}</div>
+        </a>
+      </ion-col>
+    </ion-row>
+  </ion-footer>
+  </ion-card>
+  <div style="width: 100%;height:4px;background-color: #eee;"></div>
+  </div>
+  </div>
+  </bottom-sheet> -->
+  <!-- 
+  <bottom-sheet [(State)]="BottomSheetState2" (StateChange)="StateChanged($event)">
+    <ion-list class="container-class">
+      <ion-list-header>
+        {{'EDMEDIA.exam' | translate}} 2
+      </ion-list-header>
+
+      <ion-row>
+        <ion-col size="3">
+          <ion-card class="detail-class">
+            <div>
+              <img class="img-class" src="../../../assets/mockup/icon/003-analytics.png" />
+            </div>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-label>
+            <h2 style="font-weight: 600;margin-top: 6px;">Kelas 2</h2>
+            <p style="font-size: 12px;">20 Siswa</p>
+          </ion-label>
+        </ion-col>
+
+        <ion-slides [options]="sliderStatus" #slideStatus>
+          <ion-slide>
+            <ion-chip class="chip-detail-class">
+
+              <ion-label>{{'EDMEDIA.exam' | translate}}</ion-label>
+            </ion-chip>
+          </ion-slide>
+          <ion-slide>
+            <ion-chip class="chip-detail-class">
+
+              <ion-label>{{'EDMEDIA.info' | translate}}</ion-label>
+            </ion-chip>
+          </ion-slide>
+          <ion-slide>
+            <ion-chip class="chip-detail-class">
+
+              <ion-label>{{'EDMEDIA.practice' | translate}}</ion-label>
+            </ion-chip>
+          </ion-slide>
+          <ion-slide>
+            <ion-chip class="chip-detail-class">
+
+              <ion-label>{{'EDMEDIA.tugas' | translate}}</ion-label>
+            </ion-chip>
+          </ion-slide>
+          <ion-slide>
+            <ion-chip class="chip-detail-class">
+              <ion-label>{{'EDMEDIA.exam' | translate}}</ion-label>
+            </ion-chip>
+          </ion-slide>
+        </ion-slides>
+      </ion-row>
+    </ion-list>
+    <div style="width: 100%;height:4px;background-color: #eee;"></div>
+    <ion-card class="status">
+      <ion-card-content>
+        <ion-item lines="none">
+          <ion-avatar slot="start">
+            <img src="../../../assets/icon user.png">
+          </ion-avatar>
+
+          <ion-textarea placeholder="What do you want to do?"></ion-textarea>
+        </ion-item>
+        <ion-slides [options]="sliderStatus" #slideStatus>
+          <ion-slide>
+            <ion-chip>
+              <ion-icon name="clipboard-outline" class="materi"></ion-icon>
+              <ion-label class="materi">{{'EDMEDIA.materi' | translate}}</ion-label>
+            </ion-chip>
+          </ion-slide>
+          <ion-slide>
+            <ion-chip>
+              <ion-icon name="information-circle-outline" class="info"></ion-icon>
+              <ion-label class="info">{{'EDMEDIA.info' | translate}}</ion-label>
+            </ion-chip>
+          </ion-slide>
+          <ion-slide>
+            <ion-chip>
+              <ion-icon name="thermometer-outline" class="latihan"></ion-icon>
+              <ion-label class="latihan">{{'EDMEDIA.exam' | translate}}</ion-label>
+            </ion-chip>
+          </ion-slide>
+          <ion-slide>
+            <ion-chip>
+              <ion-icon name="flash-outline" class="tugas"></ion-icon>
+              <ion-label class="tugas">{{'EDMEDIA.exam' | translate}}</ion-label>
+            </ion-chip>
+          </ion-slide>
+          <ion-slide>
+            <ion-chip>
+              <ion-icon name="trophy-outline" class="ujian"></ion-icon>
+              <ion-label class="ujian">{{'EDMEDIA.exam' | translate}}</ion-label>
+            </ion-chip>
+          </ion-slide>
+        </ion-slides>
+      </ion-card-content>
+    </ion-card>
+    <div style="width: 100%;height:8px;background-color: #eee;"></div>
+    <div *ngFor="let item of [1,2,3,4]">
+      <ion-card class="info">
+        <ion-card-header>
+          <ion-item lines="none">
+            <ion-avatar slot="start">
+              <img src="../../../assets/icon user.png">
+            </ion-avatar>
+            <ion-label>
+              <h3>Lorem ipsum</h3>
+              <p>consectetur adipiscing elit. Duis ut urna neque.</p>
+            </ion-label>
+          </ion-item>
+        </ion-card-header>
+
+        <ion-card-content>
+
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+      </ion-card>
+      <div style="width: 100%;height:4px;background-color: #eee;"></div>
+    </div>
+  </bottom-sheet> -->
+
+
+  <div style=" position: relative;
+  bottom: -41px;">
+    <img style="position: absolute;
+    top: 25px;
+    width: 137px;
+    left: -1px;z-index: 10;" [class.show-left]="showToolbar" [class.show-left2]="showToolbarAgain"
+      src="../../../assets/bottom/left.png">
+    <img style="position: absolute;
+    top: 10px;
+    right: 0;
+    width: 108px;z-index: 10;" [class.show-right]="showToolbar" [class.show-right2]="showToolbarAgain"
+      src="../../../assets/bottom/right.png">
+    <img style="width: 51px;
+    position: absolute;
+    top: 47px;
+    left: 128px;
+    z-index: 11;" src="../../../assets/bottom/b-moon.png">
+    <img style="position: absolute;
+    right: 24px;
+    z-index: 11;
+    top: 21px;
+    width: 23px;" [class.show-bsmall2]="showToolbar" [class.show-bsmall22]="showToolbarAgain"
+      src="../../../assets/bottom/b-small.png">
+    <img style="position: absolute;
+    top: 8px;
+    left: 47px;
+    width: 21px;" [class.show-bsmall2]="showToolbar" [class.show-bsmall22]="showToolbarAgain"
+      src="../../../assets/bottom/b-small2.png">
+    <img style="position: absolute;
+    right: 73px;
+    top: 30px;
+    width: 16px;" [class.show-blue-t]="showToolbar" [class.show-blue-t2]="showToolbarAgain"
+      src="../../../assets/bottom/blue-t.png">
+    <img style="position: absolute;
+    top: 28px;
+    left: 166px;
+    width: 15px;
+" [class.show-blue]="showToolbar" [class.show-blue2]="showToolbarAgain" src="../../../assets/bottom/blue.png">
+    <img style="position: absolute;
+    left: 32px;
+    width: 91px;
+    top: 25px;" src="../../../assets/bottom/moon.png">
+    <img style="position: absolute;
+    right: 82px;
+    width: 89px;
+    top: 27px;" src="../../../assets/bottom/moon2.png">
+    <img style="position: absolute;
+    top: 41px;
+    width: 15px;
+    z-index: 11;
+    left: 8px;" [class.show-rightblue]="showToolbar" [class.show-rightblue2]="showToolbarAgain"
+      src="../../../assets/bottom/rightblue.png">
+
+
+  </div>
+  <ion-infinite-scroll (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

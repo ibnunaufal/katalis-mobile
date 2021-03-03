@@ -1,0 +1,40 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>{{donation.title}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()" strong>
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-item lines="none">
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label class="ion-label" position="stacked">Nama Donasi <ion-text color="danger">
+        </ion-text>
+      </ion-label>
+      <ion-input class="ion-input" [(ngModel)]="donationName" type="text" readonly></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label class="ion-label" position="stacked">Input Nominal Donasi <ion-text color="danger">
+        </ion-text>
+      </ion-label>
+      <ion-input #autofocus class="input-nominal" type="string" elastic placeholder='Rp 0' [(ngModel)]="nominal"
+        (ionInput)='onChangePrice($event.target.value)'></ion-input>
+      <!-- <ion-input class="ion-input" [(ngModel)]="nominal" type="number"></ion-input> -->
+    </ion-item>
+    <div class="container-button">
+      <ion-button expand="block" type="button" (click)="ADD_DONATION()">
+        {{'DONATION.title' | translate}}
+      </ion-button>
+    </div>
+
+
+  </div>
+
+
+</ion-content>

@@ -1,0 +1,32 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'SUPPORT.title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="main">
+    <div class="chat-box">
+      <div class="message-area" #scrollMe>
+        <div class="message" *ngFor="let message of messages" [ngClass]="getClasses(message.writerName)">
+          <p>{{message.message}}</p>
+        </div>
+      </div>
+      <div class="emo-area">
+        <!-- emoji-panel component comes here -->
+      </div>
+      <div class="input-area">
+        <form (submit)="sendMessage()" name="messageForm" #messageForm="ngForm">
+          <ion-input type="text" name="message" id="message" [(ngModel)]="message"
+            placeholder="{{'SUPPORT.write' | translate}}"></ion-input>
+          <button>
+            <ion-icon name="send"></ion-icon>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</ion-content>

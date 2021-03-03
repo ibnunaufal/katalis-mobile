@@ -1,0 +1,136 @@
+* {
+    font-family: "montserrat";
+}
+.container-header {
+    position: absolute;
+    top: 11px;
+    right: 8px;
+    width: 58px;
+    border-radius: 8px;
+    align-items: center;
+    text-align: center;
+    ion-icon {
+        zoom: 3;
+        color: #909090;
+        padding: 2px;
+    }
+}
+.container-filter {
+    position: absolute;
+    top: 13px;
+    right: 24px;
+    width: 33px;
+    background-color: #ececec;
+    border-radius: 8px;
+    align-items: center;
+    text-align: center;
+    ion-icon {
+        zoom: 2;
+        color: #1b1c1e;
+        padding-top: 1px;
+    }
+}
+
+.card-header {
+    --background: #0054e5;
+    margin: 24px;
+    border-radius: 24px;
+    color: #fff;
+    p {
+        margin: 0px 24px 0px 16px !important;
+        font-size: 24px !important;
+        font-weight: 600;
+        color: #ffffff;
+    }
+    .date {
+        h2 {
+            font-size: 12px;
+            margin-left: 16px;
+            margin-top: 4px;
+            color: #ffffff;
+        }
+    }
+}
+.card-data {
+    --background: #ffffff;
+    margin: 24px;
+    border-radius: 24px;
+    color: #1b1c1e;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+    p {
+        text-transform: lowercase;
+    }
+    p::first-line {
+        font-size: 11px;
+        text-transform: capitalize;
+    }
+    h2 {
+        text-transform: lowercase;
+    }
+    h2::first-line {
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: capitalize;
+    }
+    .date {
+        position: absolute;
+        right: 18px;
+        top: 12px;
+
+        span {
+            font-size: 11px;
+        }
+    }
+}
+.card-filter {
+    --background: #ffffff;
+    margin: 24px;
+    border-radius: 24px;
+    height: 60px;
+    color: #1b1c1e;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+    p {
+        margin: 4px 24px 0px 16px !important;
+        font-size: 24px !important;
+        font-weight: 600;
+        color: #1b1c1e;
+    }
+    .date {
+        h2 {
+            font-size: 12px;
+            margin-left: 16px;
+            margin-top: 4px;
+            color: #1b1c1e;
+        }
+    }
+}
+
+.bottom-sheet {
+    .bs-title {
+        margin-top: 0px;
+        margin-left: 24px;
+        margin-bottom: 16px;
+        font-size: 16px;
+        font-weight: 600;
+    }
+    h2 {
+        font-size: 14px;
+    }
+    ion-button {
+        height: 56px;
+        margin: 24px;
+        --background: #235ec3;
+    }
+    ion-item {
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+    ion-select,
+    ion-datetime {
+        max-width: 100% !important;
+        width: 100%;
+        border: 1px solid #c4c4c4;
+        padding: 17px;
+        border-radius: 8px;
+    }
+}

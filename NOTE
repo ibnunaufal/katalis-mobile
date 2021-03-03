@@ -1,0 +1,30 @@
+I change the dependencies of the gradle file inside the folder platforms
+
+folder > {project}/platforms/android/cordova-plugin-firebase/{projectname}-build.gradle
+
+// compile 'com.google.firebase:firebase-auth:+' this line
+compile 'com.google.firebase:firebase-auth:15.1.0'
+
+and in the project properties file inside the folder:
+
+{project}/platforms/android/project.properties
+
+cordova.system.library.2=com.google.android.gms:play-services-tagmanager:15.0.2
+cordova.system.library.3=com.google.firebase:firebase-core:15.0.2
+cordova.system.library.4=com.google.firebase:firebase-messaging:15.0.2
+cordova.system.library.5=com.google.firebase:firebase-config:15.0.2
+cordova.system.library.6=com.google.firebase:firebase-perf:15.1.0
+
+I downgrade to that version, but just need to found that is required for your projects
+
+https://mvnrepository.com/artifact/com.google.android.gms/play-services-basement/17.0.0
+in that link you can found what is
+
+
+I found that if you update this line in the project's build.gradle:
+
+classpath 'com.google.gms:google-services:4.1.0' // google-services dependency from cordova-plugin-firebase
+to
+
+classpath 'com.google.gms:google-services:4.2.0' // google-services dependency from cordova-plugin-firebase
+Then it works. Not sure if there's a way to upgrade this in this plugin directly. Hope this helps!

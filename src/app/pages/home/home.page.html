@@ -1,0 +1,247 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar [class.show-background]="showToolbar" [class.show-background2]="showToolbarAgain">
+
+    <ion-title>{{company}}</ion-title>
+    <ion-buttons slot="end" style="margin-right: 16px;" (click)="presentNotification()">
+      <ion-icon style="zoom: 1.1;" name="md-bell">
+        <ion-badge color="warning"></ion-badge>
+      </ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen [scrollEvents]="true" (ionScroll)="onScroll($event)">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div *ngIf="balanceLoaded">
+    <ion-card class="profile no-box-shadow">
+      <ion-card-content>
+        <p>My Balance</p>
+        <ion-item lines='none' class="ion-no-padding">
+          <ion-label class="balance" (click)="presentHistoryTopup()">
+            <ng-container *ngIf="balanceLoaded else balanceLoadingTpl">
+              <ng-container *ngIf="!balanceError else balanceErrorTpl">
+                {{ balance | currency: 'Rp. ':true:'1.0' | replace: ',':'.' }}
+              </ng-container>
+            </ng-container>
+
+            <ng-template #balanceErrorTpl>
+              <ion-note color="danger" (click)="getBalance()">Something went wrong. Click to retry.</ion-note>
+            </ng-template>
+
+          </ion-label>
+          <ion-avatar slot="end" class="avatar" (click)="editProfile()">
+            <img *ngIf="profile.photoUrl != null && profile.photoUrl != '-' && profile.photoUrl != ''"
+              [src]="getImgContent(profile.photoUrl)">
+            <img *ngIf="profile.photoUrl === null || profile.photoUrl == '-' || profile.photoUrl == ''"
+              src="../../../assets/user1.png">
+          </ion-avatar>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="top-menu no-box-shadow">
+      <ion-card-content style="text-align: center;">
+        <ion-row>
+          <ion-col style="border-right: 1.5px solid #fff;">
+            <div (click)="openPage(topMenu[0])">
+              <ion-icon class="top-icon" name="md-topup"></ion-icon>
+              <p>{{ 'HOME.topup' | translate}}</p>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div (click)="openPage(topMenu[1])">
+              <ion-icon class="top-icon" name="md-invoice"></ion-icon>
+              <p>{{ 'HOME.invoice' | translate}}</p>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div (click)="openPage(topMenu[2])">
+              <ion-icon class="top-icon" name="md-mutation"></ion-icon>
+              <p>{{ 'HOME.mutation' | translate}}</p>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div (click)="openPage(topMenu[3])">
+              <ion-icon class="top-icon" name="md-edmedia"></ion-icon>
+              <p>EdMedia</p>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="menu no-box-shadow">
+      <ion-card-header>
+        <ion-card-title>Menu</ion-card-title>
+      </ion-card-header>
+      <ion-card-content style="text-align: center;">
+        <ion-row>
+          <ion-col size="3" *ngFor="let item of menus">
+            <div (click)="openPage(item)" [ngClass]=" {disable: !item.active}">
+              <ion-icon class="bottom-icon" [name]="item.icon"></ion-icon>
+              <p>{{item.name | translate}}</p>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="menu no-box-shadow" *ngIf="headlineData">
+      <ion-card-header>
+        <ion-card-title> {{ 'HOME.news' | translate}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content style="text-align: center;">
+        <ion-slides pager="false" [options]="sliderheadline" #sliderHeadline *ngIf="headlineData.length>0">
+          <ion-slide *ngFor="let item of headlineData" class="no-box-shadow" (click)="presentInfoDetail(item)">
+            <div class="slide">
+              <img [src]="getImgContent(item.image)" style="width: 306px;height: 172px; object-fit: cover;"
+                class="box-shadow radius slide-image" />
+              <!-- <img src="../../../assets/slide.png" class="box-shadow radius slide-image" /> -->
+            </div>
+          </ion-slide>
+        </ion-slides>
+
+        <ion-slides pager="false" [options]="sliderheadline" #sliderHeadline *ngIf="headlineData.length<1">
+          <ion-slide *ngFor="let item of [1]" class="no-box-shadow">
+            <div class="slide">
+              <img src="../../../assets/slide.png" class="box-shadow radius slide-image" />
+            </div>
+          </ion-slide>
+        </ion-slides>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div *ngIf="!balanceLoaded">
+    <ion-card class="profile no-box-shadow">
+      <ion-card-content>
+        <p>
+          <ion-skeleton-text animated style="width: 63px; height: 12px;"></ion-skeleton-text>
+        </p>
+        <ion-item lines='none' class="ion-no-padding">
+          <ion-label class="balance">
+            <ion-skeleton-text animated style="width: 137px; height: 20px;"></ion-skeleton-text>
+          </ion-label>
+          <ion-avatar slot="end" class="avatar">
+            <ion-skeleton-text animated style="width: 40px; height: 40px;"></ion-skeleton-text>
+          </ion-avatar>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="top-menu no-box-shadow">
+      <ion-card-content style="text-align: center;">
+        <ion-row>
+          <ion-col style="border-right: 1.5px solid #fff;">
+            <div (click)="presentTopup()">
+              <ion-icon class="top-icon" name="md-topup"></ion-icon>
+              <p>{{ 'HOME.topup' | translate}}</p>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div (click)="openPage(topMenu[1])">
+              <ion-icon class="top-icon" name="md-invoice"></ion-icon>
+              <p>{{ 'HOME.invoice' | translate}}</p>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div (click)="openPage(topMenu[2])">
+              <ion-icon class="top-icon" name="md-mutation"></ion-icon>
+              <p>{{ 'HOME.mutation' | translate}}</p>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div (click)="openPage(topMenu[3])">
+              <ion-icon class="top-icon" name="md-edmedia"></ion-icon>
+              <p>EdMedia</p>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="menu no-box-shadow">
+      <ion-card-header>
+        <ion-card-title>Menu</ion-card-title>
+      </ion-card-header>
+      <ion-card-content style="text-align: center;">
+        <ion-row>
+          <ion-col size="3" *ngFor="let item of menus">
+            <div (click)="openPage(item)" [ngClass]=" {disable: !item.active}">
+              <ion-icon class="bottom-icon" [name]="item.icon"></ion-icon>
+              <p>{{item.name | translate}}</p>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="menu no-box-shadow">
+      <ion-card-header>
+        <ion-card-title> {{ 'HOME.news' | translate}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content style="text-align: center;">
+        <ion-slides pager="false" [options]="sliderheadline" #sliderHeadline>
+          <ion-slide class="no-box-shadow">
+            <div class="slide">
+              <ion-skeleton-text animated style="width: 1600px; height: 900px;"></ion-skeleton-text>
+            </div>
+          </ion-slide>
+        </ion-slides>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div style="position: relative;margin-top: 85px;">
+    <img style="position: absolute;
+    top: -43px;
+    width: 137px;
+    left: -1px;z-index: 10;" [class.show-left]="showToolbar" [class.show-left2]="showToolbarAgain"
+      src="../../../assets/bottom/left.png">
+    <img style="position: absolute;
+    top: -55px;
+    right: 0;
+    width: 108px;z-index: 10;" [class.show-right]="showToolbar" [class.show-right2]="showToolbarAgain"
+      src="../../../assets/bottom/right.png">
+    <img style="width: 51px;
+    position: absolute;
+    top: -20px;
+    left: 128px;
+    z-index: 11;" src="../../../assets/bottom/b-moon.png">
+    <img style="position: absolute;
+    right: 25px;
+    z-index: 11;
+    top: -6px;
+    width: 23px;" [class.show-bsmall2]="showToolbar" [class.show-bsmall22]="showToolbarAgain"
+      src="../../../assets/bottom/b-small.png">
+    <img style="position: absolute;
+    top: -24px;
+    left: 47px;
+    width: 21px;" [class.show-bsmall2]="showToolbar" [class.show-bsmall22]="showToolbarAgain"
+      src="../../../assets/bottom/b-small2.png">
+    <img style="position: absolute;
+    right: 73px;
+    top: -23px;
+    width: 16px;" [class.show-blue-t]="showToolbar" [class.show-blue-t2]="showToolbarAgain"
+      src="../../../assets/bottom/blue-t.png">
+    <img style="position: absolute;
+    top: -25px;
+    left: 166px;
+    width: 15px;
+" [class.show-blue]="showToolbar" [class.show-blue2]="showToolbarAgain" src="../../../assets/bottom/blue.png">
+    <img style="position: absolute;
+    left: 32px;
+    width: 91px;
+    top: -42px;" src="../../../assets/bottom/moon.png">
+    <img style="position: absolute;
+    right: 82px;
+    width: 89px;
+    top: -37px;" src="../../../assets/bottom/moon2.png">
+    <img style="position: absolute;
+    top: -62px;
+    width: 15px;
+    z-index: 11;
+    left: 8px;" [class.show-rightblue]="showToolbar" [class.show-rightblue2]="showToolbarAgain"
+      src="../../../assets/bottom/rightblue.png">
+
+
+  </div>
+
+</ion-content>

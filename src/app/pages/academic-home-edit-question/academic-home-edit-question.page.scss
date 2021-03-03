@@ -1,0 +1,28 @@
+* {
+    font-family: "montserrat" !important;
+}
+ion-content {
+    --background: #fff;
+}
+ion-label {
+    font-family: "montserrat";
+}
+
+.label {
+    font-family: "montserrat";
+    font-size: 13px !important;
+}
+ion-input,
+ion-textarea {
+    font-size: 12px;
+}
+
+.radio-label {
+    font-size: 14px;
+}
+ion-datetime {
+    font-size: 13px;
+}
+ion-select {
+    font-size: 13px;
+}

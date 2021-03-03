@@ -1,0 +1,62 @@
+<ion-backdrop visible="false" *ngIf="showBackdrop"></ion-backdrop>
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/academic-home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{data.title}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon style="margin-right: 10px;" name="send-outline" (click)="SendResult()"
+        *ngIf="answerResult.length == examLenght"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-progress-bar [value]="progressValue" buffer="{{progressValue + progress}}"></ion-progress-bar>
+</ion-header>
+
+<ion-content fullscreen>
+  <div style="margin-bottom:10px;margin-top: 16px;">
+    <ion-label style="margin-left: 27px;
+    font-size: 12px;
+    font-weight: 600;">Que : <span (click)="selectSlide(que+1)" style="text-decoration: underline;">{{que+1}}</span> /
+      {{examLenght}}</ion-label>
+    <div class="time-hl">
+      <p style="color:#2b2b2b">Time:</p>
+      <span style="color:#2b2b2b" [class.dot-animation-hl]="blink">{{displayTime}}</span>
+    </div>
+  </div>
+  <!-- <ion-list> -->
+  <ion-slides #slides (ionSlideWillChange)="slideChange($event)" pager="false" [options]="slideOpts">
+    <ion-slide *ngFor="let item of exam; index as i">
+      <div class="container">
+        <div>
+          <h1>
+            Question {{que+1}} / {{exam.length}}
+          </h1>
+          <p [innerHTML]="item.bankSoal.question"></p>
+        </div>
+        <!-- <div *ngFor="let q of item.bankSoal.answers">
+            <p>{{q.option}}. {{q.answer}}</p>
+          </div> -->
+        <ion-list>
+          <ion-radio-group [(ngModel)]="answerResult[i]">
+            <ion-item lines="none" class="radio-group" *ngFor="let q of item.bankSoal.answers">
+              <ion-label style="font-size: 13px;
+                font-weight: 500">{{q.option}}. {{q.answer}}</ion-label>
+              <ion-radio [value]="q.answer"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+      </div>
+
+
+      <!-- <div>
+          <ion-button (click)="next(slides ,1)" color="primary" class="main-button buttonanim" shape="round">Get Started
+          </ion-button>
+        </div> -->
+
+    </ion-slide>
+
+  </ion-slides>
+  <!-- </ion-list> -->
+
+</ion-content>

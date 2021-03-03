@@ -1,0 +1,76 @@
+<ion-app [class.dark-theme]="dark">
+  <ion-split-pane contentId="main-content">
+
+    <ion-menu contentId="main-content">
+      <ion-content>
+        <ion-list lines="none">
+          <ion-list-header>
+            Menu
+          </ion-list-header>
+
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/app/tabs/home" routerLinkActive="selected" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="md-homepage"></ion-icon>
+              <ion-label>
+                Home
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/app/tabs/info" routerLinkActive="selected" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="md-info"></ion-icon>
+              <ion-label>
+                Info
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/app/tabs/inbox" routerLinkActive="selected" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="md-notification"></ion-icon>
+              <ion-label>
+                Kotak Masuk
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/app/tabs/profile" routerLinkActive="selected" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="md-profile"></ion-icon>
+              <ion-label>
+                Profil
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <!-- <ion-menu-toggle autoHide="false">
+            <ion-item (click)="presentTopup()">
+              <ion-icon slot="start" name="md-wallet"></ion-icon>
+              <ion-label>
+                Topup
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle> -->
+        </ion-list>
+
+        <ion-list lines="none">
+          <ion-list-header>
+            Konfigurasi
+          </ion-list-header>
+
+          <!-- <ion-item>
+            <ion-icon slot="start" name="md-moon"></ion-icon>
+            <ion-label>
+              Mode Gelap
+            </ion-label>
+            <ion-toggle [(ngModel)]="dark"></ion-toggle>
+          </ion-item> -->
+        </ion-list>
+
+      </ion-content>
+    </ion-menu>
+
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

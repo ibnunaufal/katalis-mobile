@@ -1,0 +1,28 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/smart-access"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'ACCESS.title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card class="no-box-shadow">
+    <ion-card-content>
+      <h2>Scan QR Code</h2>
+      <p>
+        Silahkan Arahkan Kamera ke Kode QR
+      </p>
+    </ion-card-content>
+  </ion-card>
+  <div style="text-align: center;margin-top: 24px;">
+    <ion-icon style="zoom:20;" name="md-scan-qr"></ion-icon>
+  </div>
+  <ion-button class="no-box-shadow" expand="block" shape="round" (click)="scanCode()">Scan</ion-button>
+
+  <!-- <ion-card>
+    <ion-card-content>
+      {{scannedCode}}
+    </ion-card-content>
+  </ion-card> -->
+</ion-content>

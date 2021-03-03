@@ -1,0 +1,19 @@
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="container">
+          <ion-icon *ngIf="type=='success'" name="md-success"></ion-icon>
+          <ion-icon *ngIf="type=='error'" name="md-failed"></ion-icon>
+          <h2>
+            {{title}}
+
+          </h2>
+          <p>
+            {{message}}
+          </p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

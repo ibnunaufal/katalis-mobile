@@ -1,0 +1,77 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Tagihan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="invoices.length > 0; else noData">
+    <ion-card *ngFor="let invoice of invoices">
+      <ion-card-header>
+        <ion-card-subtitle>{{ invoice.invoiceDate | date : 'dd/MM/yyyy' }}</ion-card-subtitle>
+        <ion-card-title>{{ invoice.title }}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-row>
+          <ion-col>Total</ion-col>
+          <ion-col>:</ion-col>
+          <ion-col class="ion-text-right">{{ invoice.amount | currency:'Rp. ':true:'1.0' | replace: ',':'.' }}</ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>Terbayar</ion-col>
+          <ion-col>:</ion-col>
+          <ion-col class="ion-text-right">{{ invoice.paidAmount | currency:'Rp. ':true:'1.0' | replace: ',':'.' }}
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>Sisa</ion-col>
+          <ion-col>:</ion-col>
+          <ion-col class="ion-text-right">
+            {{ (invoice.amount - invoice.paidAmount) | currency:'Rp. ':true:'1.0' | replace: ',':'.' }}</ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+
+  <ng-template #noData>
+    <ion-card>
+      <ion-card-content>
+        Tidak ada tagihan.
+      </ion-card-content>
+    </ion-card>
+  </ng-template>
+</ion-content> -->
+
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/home"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>{{'INVOICE.title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-tabs>
+    <ion-tab-bar slot="top">
+      <ion-tab-button tab="invoice-unpaid">
+        <ion-label>{{'INVOICE.invoice' | translate}}</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="invoice-history">
+        <ion-label>{{'INVOICE.history' | translate}}</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="invoice-summary">
+        <ion-label>{{'INVOICE.summary' | translate}}</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

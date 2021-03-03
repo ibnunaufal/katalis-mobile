@@ -1,0 +1,20 @@
+ion-card-title {
+    font-family: "montserrat";
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+ion-card-header {
+    padding-bottom: 3px;
+}
+ion-card-content {
+    font-size: 12px;
+}
+
+ion-card-subtitle {
+    font-size: 10px;
+}
+.box-shadow {
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+}

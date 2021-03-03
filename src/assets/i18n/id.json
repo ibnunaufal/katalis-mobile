@@ -1,0 +1,248 @@
+{
+    "LOGIN": {
+        "title": "Selamat Datang",
+        "forget": "Lupa Kata Sandi",
+        "languange": "Bahasa",
+        "btn": "Masuk",
+        "check": "Mengecek Data..",
+        "powered": "Didukung oleh",
+        "partner": "Partner Kami",
+        "cs": "Layanan Pelanggan"
+    },
+    "FORGET": {
+        "title": "Lupa Kata Sandi",
+        "email": "Email",
+        "otp": "Kode OTP",
+        "password": "Kata Sandi",
+        "confirmPassword": "Konfirmasi Kata Sandi",
+        "confirm": "Konfirmasi",
+        "change": "Ganti Kata Sandi"
+    },
+    "HOME": {
+        "title": "Home",
+        "account": "Akun",
+        "invoice": "Tagihan",
+        "mutation": "Mutasi",
+        "transaction": "Transaksi",
+        "service": "Layanan",
+        "support": "bantuan",
+        "digital": "Kartu Digital",
+        "shopping": "Belanja",
+        "topup": "Isi Ulang",
+        "balance": "Saldo",
+        "news": "Berita Utama",
+        "donation": "Donasi",
+        "attendance": "Absensi",
+        "access": "Akses Pintar"
+    },
+    "TOPUP": {
+        "title": "Isi Ulang",
+        "balance": "Saldo",
+        "history": "Riwayat",
+        "transfer": "Transfer Bank",
+        "account": "Data Akun",
+        "an": "Nama Akun",
+        "admin": "Admin Bank",
+        "accountnumber": "Nomor Rekening"
+    },
+    "TOPUPHISTORY": {
+        "title": "Riwayat Isi Saldo"
+    },
+    "ACCOUNT": {
+        "title": "Akun"
+    },
+    "INVOICE": {
+        "title": "Tagihan",
+        "invoice": "Tagihan",
+        "history": "Riwayat",
+        "summary": "Ringkasan",
+        "paid": "Terbayar",
+        "totaldue": "Sisa",
+        "duedate": "Batas Waktu",
+        "status": "Status",
+        "pay": "Bayar",
+        "detail": "Detail",
+        "discount": "Potongan",
+        "credit": "Credit",
+        "amount": "Jumlah"
+    },
+    "MUTATION": {
+        "title": "Mutasi Saldo",
+        "last30": "30 Hari Akhir",
+        "older": "Diatas 30 Hari",
+        "filter": "Filter",
+        "start": "Tanggal Awal",
+        "ends": "Akhir"
+    },
+    "TRANSACTION": {
+        "title": "Transaksi",
+        "information": "Informasi Transaksi",
+        "incoming": "Saldo Masuk",
+        "outgoing": "Saldo Keluar",
+        "amount": "Jumlah",
+        "transaction": "Jumlah Transaksi",
+        "detail": "Detail",
+        "filter": "Filter",
+        "month": "Bulan",
+        "year": "Tahun"
+    },
+    "DETAILTRANSACTION": {
+        "title": "Detail Transaksi"
+    },
+    "SUPPORT": {
+        "title": "Bantuan",
+        "write": "Menulis Pesan..."
+    },
+    "DIGITALCARD": {
+        "title": "Kartu Digital",
+        "information": "Informasi Kartu",
+        "balance": "Saldo Kartu",
+        "limitmax": "Batas Maks",
+        "dailylimit": "Batas Harian",
+        "cardholder": "Nama Pemegang Kartu"
+    },
+    "INFO": {
+        "title": "Informasi dan Berita"
+    },
+    "INBOX": {
+        "title": "Kotak Masuk",
+        "notification": "Notifikasi",
+        "broadcast": "Siaran"
+    },
+    "PROFILE": {
+        "title": "Profil",
+        "changepass": "Ubah Kata Sandi",
+        "changelang": "Ubah Bahasa",
+        "logout": "Keluar",
+        "faq": "FAQ",
+        "edit": "Sunting Profil",
+        "update": "Update",
+        "phone": "Nomor telepon",
+        "unlimited": "Pengaturan Tidak Terbatas"
+    },
+    "CHANGELANG": {
+        "title": "Ubah Bahasa"
+    },
+    "CHANGEPASS": {
+        "title": "Ubah Kata Sandi",
+        "oldpass": "Kata Sandi Lama",
+        "newpass": "Kata Sandi Baru",
+        "renewpass": "Masukkan kembali Kata Sandi Baru"
+    },
+    "CREATEPASS": {
+        "email": "Email",
+        "phone": "No.Hp",
+        "title": "Buat Password Baru",
+        "newpass": "Password",
+        "reenterpass": "Masukkan Kembali Password"
+    },
+    "INTRO": {
+        "title": "Pilih Bahasa"
+    },
+    "EDMEDIA": {
+        "yourclasses": "Daftar Kelas Anda",
+        "yourclass": "Kelas Anda",
+        "what": "Apa yang akan anda lakukan ?",
+        "materi": "Materi",
+        "practice": "Latihan",
+        "info": "Info",
+        "tugas": "Tugas",
+        "exam": "Ujian",
+        "comment": "Komentar",
+        "answer": "Jawaban",
+        "nodata": "Tidak ada data",
+        "student": "Siswa"
+    },
+    "ADD": {
+        "exam": "Tambah Ujian",
+        "materi": "Tambah Materi",
+        "practice": "Tambah Latihan",
+        "info": "Tambah Info",
+        "tugas": "Tambah Tugas",
+        "schedule": "Jadwal",
+        "session": "Sesi",
+        "title": "Judul",
+        "namamateri": "Nama Materi",
+        "description": "Deskripsi",
+        "link": "Link",
+        "share": "bagikan",
+        "uploadfile": "Unggah File",
+        "post": "Posting",
+        "upload": "Unggah",
+        "fileuploaded": "File yang diunggah",
+        "starttime": "Waktu Mulai",
+        "endtime": "Waktu Berakhir",
+        "date": "Tanggal Pelaksanaan",
+        "duration": "Durasi(menit)",
+        "type": "Tipe",
+        "note": "Catatan",
+        "question": "Pertanyaan",
+        "finish": "Selesai",
+        "option": "Pilihan",
+        "optiona": "Masukkan Pilihan A",
+        "optionb": "Masukkan Pilihan B",
+        "optionc": "Masukkan Pilihan C",
+        "optiond": "Masukkan Pilihan E",
+        "optione": "Masukkan Pilihan E",
+        "answerkey": "Kunci Jawaban",
+        "filename": "Nama File",
+        "fileanswer": "File jawaban",
+        "choosefile": "Pilih File",
+        "chooseschedule": "Pilih Jadwal",
+        "choosesession": "Pilih Sesi",
+        "choosetype": "Pilih Tipe",
+        "choosedate": "Pilih Tanggal",
+        "edit": "Sunting",
+        "delete": "Hapus",
+        "answer": "Jawaban",
+        "addquestion": "Tambah Pertanyaan",
+        "add": "Tambah",
+        "soal": "Soal",
+        "youranswer": "Jawaban Anda",
+        "editquestion": "Sunting Pertanyaan",
+        "save": "Simpan",
+        "year": "tahun",
+        "addclass": "Tambah Kelas",
+        "chooseclass": "Pilih Kelas",
+        "chooseyear": "Pilih Tahun",
+        "semester": "Semester",
+        "addsem": "Tambah Semester",
+        "choosesem": "Pilih Semester",
+        "tingkatan": "Tingkatan",
+        "classname": "Nama Kelas",
+        "StudentData": "Data Siswa",
+        "hl": "Sorotan",
+        "hldetail": "Berisi informasi latihan, tugas dan ujian",
+        "tempclass": "Kelas Sementara"
+    },
+    "ATTENDANCE": {
+        "title": "Absensi",
+        "punchin": "Masuk",
+        "punchout": "Keluar",
+        "filter": "Filter Pencarian",
+        "student": "Nama Siswa",
+        "sort": "Urutkan",
+        "selectStudent": "Pilih Siswa",
+        "selectMonth": "Pilih Bulan",
+        "selectYear": "Pilih Tahun"
+    },
+    "ACCESS": {
+        "title": "Akses Pintar",
+        "scan": "Pindai QR",
+        "door": "Buka Pintu",
+        "list": "Daftar Data",
+        "filter": "Filter Pencarian",
+        "student": "Nama Siswa",
+        "sort": "Urutkan",
+        "today": "Hari ini",
+        "selectStudent": "Pilih Siswa",
+        "selectMonth": "Pilih Bulan",
+        "selectYear": "Pilih Tahun"
+    },
+    "DONATION": {
+        "title": "Donasi"
+    },
+    "DATANOTFOUND": {
+        "title": "Sayang Sekali, Data yang anda inginkan tidak ditemukan."
+    }
+}

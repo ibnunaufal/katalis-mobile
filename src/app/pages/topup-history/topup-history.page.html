@@ -1,0 +1,82 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>{{'TOPUPHISTORY.title'| translate}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()" strong>
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingText="Pull to refresh"></ion-refresher-content>
+  </ion-refresher>
+
+  <ng-container *ngIf="vaHistoriesLoaded else vaHistoriesLoadingTpl">
+    <ng-container *ngIf="!vaHistoriesError else vaHistoriesErrorTpl">
+      <ion-list *ngIf="vaHistories.length > 0 else vaHistoriesEmptyTpl">
+        <!-- FIXME add datetime -->
+        <ion-item *ngFor="let history of vaHistories">
+          <ion-avatar slot="start">
+            <ion-icon name="checkmark-circle-outline" size="large" color="success"></ion-icon>
+          </ion-avatar>
+          <ion-label>
+            <p>
+              {{ history.dateTime | date : 'dd/MM/yyyy hh:mm' }}
+            </p>
+            <p class="money">
+              {{ history.amount | currency:'Rp
+              ':true:'1.0' | replace: ',':'.' }}
+            </p>
+            <h3>{{ history.name }}</h3>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ng-container>
+  </ng-container>
+
+  <ng-template #vaHistoriesLoadingTpl>
+    <ion-list>
+      <ion-item *ngFor="let ii of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+        <ion-avatar slot="start">
+          <ion-skeleton-text width="100%" style="width: 40px; --background: #10dc60;"></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <h2>
+            <ion-skeleton-text width="50%" animated></ion-skeleton-text>
+          </h2>
+          <p>
+            <ion-skeleton-text width="40%" animated></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-template>
+
+  <ng-template #vaHistoriesErrorTpl>
+    <ion-card>
+      <ion-card-content>
+        <ion-note color="danger" (click)="getData(start, limit)">
+          Something went wrong. Click to retry.
+        </ion-note>
+      </ion-card-content>
+    </ion-card>
+  </ng-template>
+
+  <ng-template #vaHistoriesEmptyTpl>
+    <ion-card>
+      <ion-card-content>
+        <ion-note>
+          Data tidak ditemukan.
+        </ion-note>
+      </ion-card-content>
+    </ion-card>
+  </ng-template>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

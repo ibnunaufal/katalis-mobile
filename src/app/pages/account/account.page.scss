@@ -1,0 +1,44 @@
+ion-avatar {
+    width: 100px;
+    height: 100px;
+    margin: 0px 10px 0px -16px;
+    img {
+        border-radius: 0;
+    }
+}
+ion-list {
+    margin-left: 8px;
+    margin-right: 8px;
+}
+h2 {
+    font-family: "montserrat";
+    font-weight: 400;
+}
+.item-inner {
+    border-bottom: 0px !important;
+}
+ion-item {
+    border-right: 4px solid #2c8cff;
+    border-radius: 4px;
+    margin-top: 12px;
+}
+ion-item:first-child {
+    border-right: 4px solid #2c8cff;
+}
+ion-item:nth-child(2) {
+    border-right: 4px solid #ffae2c;
+}
+ion-item:nth-child(3) {
+    border-right: 4px solid #b22cff;
+}
+.box-shadow {
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+h3 {
+    text-transform: lowercase;
+}
+h3::first-line {
+    text-transform: capitalize;
+}

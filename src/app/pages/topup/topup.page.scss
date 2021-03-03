@@ -1,0 +1,89 @@
+* {
+    font-family: "montserrat" !important;
+}
+.nominal {
+    font-weight: 600;
+    font-family: "montserrat";
+    font-size: 21px;
+}
+ion-card-subtitle {
+    color: #666;
+    font-size: 12px;
+    font-family: "montserrat";
+    font-weight: 500;
+}
+
+.button-history {
+    position: absolute;
+    right: 7px;
+    top: 0px;
+}
+
+.box-shadow {
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+ion-label {
+    font-size: 14px;
+    font-family: "montserrat";
+    font-weight: 600;
+    margin-top: 6px;
+    color: #1b1c1e;
+    margin-left: 19px;
+}
+
+.topup-title {
+    text-align: center;
+    color: #397ffb;
+    font-size: 12px;
+    margin-top: 3px;
+}
+.box-shadow {
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+ion-card {
+    border-radius: 12px;
+    padding-left: 8px;
+}
+img {
+    width: 108px;
+    margin-top: 7px;
+    margin-left: 3px;
+}
+h2 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2b2b2b;
+}
+
+h3 {
+    font-weight: 400;
+    font-size: 12px;
+    color: #2b2b2b;
+}
+
+span {
+    font-weight: 600;
+    font-size: 12px;
+    color: #303030;
+}
+ion-card-header {
+    padding-bottom: 6px;
+}
+.merchant {
+    margin-bottom: 8px;
+    p {
+        font-size: 12px;
+        margin-bottom: 18px;
+    }
+    span {
+        background: #fbc739;
+        padding: 8px 15px 8px 15px;
+        border-radius: 6px;
+        color: #fff;
+        font-size: 13px;
+    }
+}

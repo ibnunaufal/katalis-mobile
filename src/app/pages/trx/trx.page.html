@@ -1,0 +1,173 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'TRANSACTION.title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="transactions">
+
+  <!-- <ion-item class="no-box-shadow-bottom">
+    <ion-select (ionChange)="updateFilter()" [(ngModel)]="month" class="select-left">
+      <ion-select-option value="">All</ion-select-option>
+      <ion-select-option value="01">Januari</ion-select-option>
+      <ion-select-option value="02">Februari</ion-select-option>
+      <ion-select-option value="03">Maret</ion-select-option>
+      <ion-select-option value="04">April</ion-select-option>
+      <ion-select-option value="05">Mei</ion-select-option>
+      <ion-select-option value="06">Juni</ion-select-option>
+      <ion-select-option value="07">Juli</ion-select-option>
+      <ion-select-option value="08">Agustus</ion-select-option>
+      <ion-select-option value="09">September</ion-select-option>
+      <ion-select-option value="10">Oktober</ion-select-option>
+      <ion-select-option value="11">November</ion-select-option>
+      <ion-select-option value="12">Desember</ion-select-option>
+    </ion-select>
+    <ion-select (ionChange)="updateFilter()" [(ngModel)]="year" class="select-right">
+      <ion-select-option value="">All</ion-select-option>
+      <ion-select-option value="2023">2023</ion-select-option>
+      <ion-select-option value="2022">2022</ion-select-option>
+      <ion-select-option value="2021">2021</ion-select-option>
+      <ion-select-option value="2020">2020</ion-select-option>
+      <ion-select-option value="2019">2019</ion-select-option>
+    </ion-select>
+  </ion-item> -->
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed" style="left: 43%;">
+    <ion-button color="light" size="small" shape="round" mode="ios" (click)="OpenSheet()">
+      <ion-icon name="options-outline"></ion-icon> | Filter
+    </ion-button>
+  </ion-fab>
+
+  <ion-list style="margin-bottom: 10px;padding:12px;">
+    <h2>{{'TRANSACTION.information' | translate}} :</h2>
+    <ion-row>
+      <ion-col card-body-text col-3
+        style="font-weight: 500 !important;font-size: 13px !important;font-family: 'montserrat';">
+        {{'TRANSACTION.incoming' | translate}}
+      </ion-col>
+      <ion-col card-body-text col-1>:</ion-col>
+      <ion-col card-body-text col-7 class="saldo-masuk">
+        Rp {{ saldoMasuk | currency: '
+        ':true:'1.0' }}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col card-body-text col-3
+        style="font-weight: 500 !important;font-size: 13px !important;font-family: 'montserrat';">
+        {{'TRANSACTION.outgoing' | translate}}
+      </ion-col>
+      <ion-col card-body-text col-1>:</ion-col>
+      <ion-col card-body-text col-7 class="saldo-keluar">
+        Rp {{ saldokeluar | currency: '
+        ':true:'1.0' }}</ion-col>
+    </ion-row>
+  </ion-list>
+
+  <ion-col col-12 *ngIf="transactions.length == 0">
+    <div style="width: 100%; text-align: center; background: #fff; height: 100vh;">
+      <ion-icon name="md-data-not-found" style="zoom:16"></ion-icon>
+      <p style="font-family: 'montserrat';
+      margin: 0px 50px 0px 50px;
+      font-weight: 600;
+      color: #6ab856;
+      font-size: 13px;">Sayang Sekali, Data yang anda inginkan tidak ditemukan.</p>
+    </div>
+  </ion-col>
+
+  <ion-card *ngFor="let transaction of transactions; let i = index;" class="no-box-shadow">
+    <ion-card-content>
+      <h2>{{ transaction.transactionName }}</h2>
+
+      <ion-item>
+        <ion-label>
+          <ion-grid class="ion-no-padding">
+            <ion-row>
+              <ion-col size="5" class="ion-no-padding">
+                <ion-note>{{'TRANSACTION.amount' | translate}}</ion-note>
+              </ion-col>
+              <ion-col size="1" class="ion-no-padding">
+                <ion-note>:</ion-note>
+              </ion-col>
+              <ion-col size="6" class="ion-no-padding ion-text-right">
+                <ion-note>
+                  {{ transaction.amount * -1 | currency : 'Rp ':true:'1.0' }}
+                </ion-note>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <ion-grid class="ion-no-padding">
+            <ion-row>
+              <ion-col size="5" class="ion-no-padding">
+                <ion-note>{{'TRANSACTION.transaction' | translate}}</ion-note>
+              </ion-col>
+              <ion-col size="1" class="ion-no-padding">
+                <ion-note>:</ion-note>
+              </ion-col>
+              <ion-col size="6" class="ion-no-padding ion-text-right">
+                <ion-note>
+                  {{transaction.total}}
+                </ion-note>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-label>
+      </ion-item>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6" offset="6" class="ion-text-center">
+            <ion-button size="small" fill="outline"
+              (click)="viewDetail(month, year, transaction.tag,transaction.transactionName)">
+              <ion-icon slot="start" name="reader-outline"></ion-icon> {{'TRANSACTION.detail' | translate}}
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-card-content>
+  </ion-card>
+
+  <bottom-sheet [(State)]="BottomSheetState" (StateChange)="StateChanged($event)">
+    <ion-grid class="bottom-sheet">
+      <p class="title">
+        {{'TRANSACTION.filter' | translate}}
+      </p>
+      <ion-item lines="none">
+        <ion-label>{{'TRANSACTION.month' | translate}}</ion-label>
+        <ion-select (ionChange)="updateFilter()" [(ngModel)]="month" class="select-left">
+          <ion-select-option value="">All</ion-select-option>
+          <ion-select-option value="01">Januari</ion-select-option>
+          <ion-select-option value="02">Februari</ion-select-option>
+          <ion-select-option value="03">Maret</ion-select-option>
+          <ion-select-option value="04">April</ion-select-option>
+          <ion-select-option value="05">Mei</ion-select-option>
+          <ion-select-option value="06">Juni</ion-select-option>
+          <ion-select-option value="07">Juli</ion-select-option>
+          <ion-select-option value="08">Agustus</ion-select-option>
+          <ion-select-option value="09">September</ion-select-option>
+          <ion-select-option value="10">Oktober</ion-select-option>
+          <ion-select-option value="11">November</ion-select-option>
+          <ion-select-option value="12">Desember</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>{{'TRANSACTION.year' | translate}}</ion-label>
+        <ion-select (ionChange)=" updateFilter()" [(ngModel)]="year" class="select-right">
+          <ion-select-option value="">All</ion-select-option>
+          <ion-select-option value="2023">2023</ion-select-option>
+          <ion-select-option value="2022">2022</ion-select-option>
+          <ion-select-option value="2021">2021</ion-select-option>
+          <ion-select-option value="2020">2020</ion-select-option>
+          <ion-select-option value="2019">2019</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-grid>
+
+  </bottom-sheet>
+</ion-content>

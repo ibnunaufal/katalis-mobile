@@ -1,0 +1,131 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>{{'TOPUP.title'| translate}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card class="no-box-shadow" style="padding-bottom: 9px;">
+    <div class="button-history">
+      <ion-fab vertical="top" horizontal="end" slot="fixed" (click)="openHistory()">
+        <ion-fab-button color="primary">
+          <ion-icon name="reader-outline"></ion-icon>
+        </ion-fab-button>
+        <div class="topup-title">{{'TOPUP.history'| translate}}</div>
+      </ion-fab>
+
+    </div>
+    <ion-card-header>
+      <ion-card-subtitle>{{'TOPUP.balance'| translate}}</ion-card-subtitle>
+      <ion-card-title>
+        <div class="nominal">
+          {{ balance | currency: 'Rp. ':true:'1.0' | replace: ',':'.' }}
+        </div>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+    </ion-card-content>
+  </ion-card>
+
+
+  <ng-container *ngIf="vaLoaded; else vaLoadingTpl">
+    <ng-container *ngIf="!vaError; else vaErrorTpl">
+      <ion-card *ngFor="let va of vaAccount.vaNumbers" class="no-box-shadow">
+        <ion-card-header>
+          <ion-card-title>{{'TOPUP.transfer'| translate}}</ion-card-title>
+          <img src="../../../assets/bnis.svg" alt="BNI Syariah" *ngIf="va.bankName == 'BNI SYARIAH'" />
+        </ion-card-header>
+        <ion-card-content>
+          <h2>
+            {{'TOPUP.account'| translate}}
+          </h2>
+          <div>
+          </div>
+          <ion-grid>
+            <ion-row>
+              <ion-col size="3">
+                <h3> {{'TOPUP.an'| translate}}</h3>
+              </ion-col>
+              <ion-col size="1">:</ion-col>
+              <ion-col><span>
+                  {{ vaAccount.name }}
+                </span></ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col size="3">
+                <h3>
+                  {{'TOPUP.admin'| translate}}
+                </h3>
+              </ion-col>
+
+              <ion-col size="1">:</ion-col>
+              <ion-col><span>
+                  {{ va.adminBank | currency: 'Rp. ':true:'1.0' | replace: ',':'.' }}
+                </span></ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="3">
+                <h3>
+                  {{'TOPUP.accountnumber'| translate}}
+                </h3>
+              </ion-col>
+              <ion-col size="1">:</ion-col>
+              <ion-col><span style="    color: #397ffb;">
+                  {{ vaFormat(va.number) }}
+                  <ion-icon name="copy-outline" (click)="copyVa(vaFormat(va.number) )"></ion-icon>
+                </span>
+              </ion-col>
+            </ion-row>
+
+            <div style="background: #1b1c1e;
+            height: 1px;
+            margin-bottom: 15px;
+            margin-top: 13px;"></div>
+            <div class="merchant">
+              <p>Isi ulang dengan Metode topup yang lain</p>
+              <span (click)="topup_merchant()">
+                Pilih Metode Isi Ulang
+              </span>
+            </div>
+
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+  </ng-container>
+
+  <ng-template #vaErrorTpl>
+    <ion-card>
+      <ion-card-content>
+        <ion-note color=" danger" (click)="getData()">
+          Something went wrong. Click to retry.
+        </ion-note>
+      </ion-card-content>
+    </ion-card>
+  </ng-template>
+
+  <ng-template #vaLoadingTpl>
+    <ion-card class="no-box-shadow">
+      <ion-card-header>
+        <ion-skeleton-text animated style="width: 108px;
+       margin-top: 7px;
+       margin-left: 3px; height:53px"></ion-skeleton-text>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-skeleton-text animated style="width:75px; height:16px;"></ion-skeleton-text>
+        <div>
+        </div>
+        <ion-grid>
+          <ion-skeleton-text animated style="width:315px; height:136px;"></ion-skeleton-text>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </ng-template>
+</ion-content>

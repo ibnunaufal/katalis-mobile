@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{'CHANGELANG.title' | translate}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()" strong>
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-radio-group value="en" [(ngModel)]="selectedLanguage" (ionChange)="languageChanged()">
+      <ion-list-header>
+        <ion-label>{{'CHANGELANG.title' | translate}}</ion-label>
+      </ion-list-header>
+      <ion-item lines="none">
+        <img src="../../../assets/en.png" style="height: auto;width: 32px;margin-inline-end: 4px;">
+        <ion-label>English</ion-label>
+        <ion-radio slot="start" value="en"></ion-radio>
+
+      </ion-item>
+
+      <ion-item lines="none">
+        <img src="../../../assets/id.png" style="height: auto;width: 32px;margin-inline-end: 4px;">
+        <ion-label>Indonesia</ion-label>
+        <ion-radio slot="start" value="id"></ion-radio>
+
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,92 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'DIGITALCARD.title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides pager="true" autoplay="5000" spaceBetween="-18" slidesPerView="1"
+    (ionSlideDidChange)="slideChanged($event)" #slides>
+    <ion-slide *ngFor="let item of cards">
+      <div>
+        <span class="header">{{'DIGITALCARD.title' | translate}}</span>
+        <!-- <img src="../../../assets/logo putih.png" class="logo"> -->
+        <h4>{{item.nfcId}}</h4>
+        <div class="container">
+          <span class="title-card">{{'DIGITALCARD.cardholder' | translate}}</span>
+          <span class="name-card">{{item.name}}</span>
+        </div>
+      </div>
+    </ion-slide>
+  </ion-slides>
+  <ion-list *ngIf="detailCard">
+    <ion-list-header>
+      {{'DIGITALCARD.information' | translate}} :
+
+      <div style="position: absolute;
+      right: 16px;">
+        <ion-button shape="round" size="small" (click)="setLimit()">
+          <ion-icon name="settings-outline" slot="start"></ion-icon> Set Limit
+        </ion-button>
+      </div>
+
+    </ion-list-header>
+    <ion-grid style="margin-left: 12px;margin-right: 12px;">
+
+      <ion-row>
+        <ion-col>
+          <ion-note>
+            {{'DIGITALCARD.balance' | translate}}
+          </ion-note>
+        </ion-col>
+        <ion-col>
+          <ion-note>
+            :
+          </ion-note>
+        </ion-col>
+        <ion-col style="text-align: right;font-family: 'montserrat';">
+          <ion-note style="font-family: 'montserrat';">
+            {{ detailCard.cardBalance | currency:'Rp. ':true:'1.0' | replace: ',':'.' }}
+          </ion-note>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-note>
+            {{'DIGITALCARD.limitmax' | translate}}
+          </ion-note>
+        </ion-col>
+        <ion-col>
+          <ion-note>
+            :
+          </ion-note>
+        </ion-col>
+        <ion-col style="text-align: right;font-family: 'montserrat';">
+          <ion-note style="font-family: 'montserrat';">
+            {{detailCard.limitMax| currency:'Rp. ':true:'1.0' | replace: ',':'.' }}
+          </ion-note>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-note>
+            {{'DIGITALCARD.dailylimit' | translate}}
+          </ion-note>
+        </ion-col>
+        <ion-col>
+          <ion-note>
+            :
+          </ion-note>
+        </ion-col>
+        <ion-col style="text-align: right;">
+          <ion-note style="font-family: 'montserrat';">
+            {{detailCard.limitDaily| currency:'Rp. ':true:'1.0' | replace: ',':'.' }}
+          </ion-note>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,57 @@
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingText="Pull to refresh"></ion-refresher-content>
+  </ion-refresher>
+  <ion-card class="no-box-shadow">
+    <ion-card-content>
+
+
+      <div style="overflow-x:auto;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>{{'INVOICE.invoice' | translate}}</th>
+              <th>{{'INVOICE.amount' | translate}}</th>
+              <th>{{'INVOICE.paid' | translate}}</th>
+              <th>{{'INVOICE.totaldue' | translate}}</th>
+            </tr>
+          </thead>
+
+          <tbody *ngIf="summaryLists.length > 0 else summaryListsEmptyTpl">
+            <!-- <tr>
+          <td>#</td>
+          <td>Invoice Name</td>
+          <td>Amount</td>
+          <td>Paid</td>
+          <td>Insufficient</td>
+        </tr> -->
+            <tr *ngFor="let list of summaryLists; let ii = index">
+              <td>{{ ii+1 }}</td>
+              <td class="ion-text-capitalize">{{ list.title.toLowerCase() }}</td>
+              <td class="ion-text-nowrap ion-text-right">
+                {{ list.amount | currency: 'Rp ':true:'1.0' | replace: ',':'.' }}
+              </td>
+              <td class="ion-text-nowrap ion-text-right">
+                {{ list.paidAmount | currency:'Rp ':true:'1.0' | replace: ',':'.'
+              }}
+              </td>
+              <td class="ion-text-nowrap ion-text-right">
+                {{ list.paidAmount - list.amount | currency:'Rp ':true:'1.0' |
+              replace: ',':'.' }}
+              </td>
+            </tr>
+          </tbody>
+          <tbody>
+            <ng-template #summaryListsEmptyTpl>
+              <tr>
+                <td colspan="5">Data tidak ditemukan.</td>
+              </tr>
+            </ng-template>
+
+          </tbody>
+        </table>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

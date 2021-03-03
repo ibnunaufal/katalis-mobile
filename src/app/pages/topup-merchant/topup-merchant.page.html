@@ -1,0 +1,34 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Topup</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()" strong>
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item lines="none">
+    <div>
+      <h2 class="title">Metode Topup</h2> <span (click)="presentActionSheet()" class="lihat">Lihat Semua</span>
+      <div>
+        <img width="62px" style="display: inline-block;" src="../../../assets/merchant/{{metodes[merchant].image}}">
+        <p class="metode">{{metodes[merchant].metodepembayaran}}</p>
+      </div>
+    </div>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-input #autofocus class="input-nominal" type="string" elastic placeholder='Rp 0' [(ngModel)]="nominal"
+      (ionInput)='onChangePrice($event.target.value)'></ion-input>
+  </ion-item>
+  <div class="btn-proses">
+    <ion-button class="no-box-shadow" style="font-weight: 600;
+    text-transform: capitalize;" slot="end" expand="" size="default" (click)="proses()" [disabled]="!btn_status">
+      Proses
+    </ion-button>
+  </div>
+
+
+</ion-content>

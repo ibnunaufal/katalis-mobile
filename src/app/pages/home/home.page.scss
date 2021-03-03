@@ -1,0 +1,221 @@
+* {
+    font-family: "montserrat";
+}
+// ion-header {
+//     ion-toolbar {
+//         ion-title {
+//             background-image: url("../../../assets/logo.png");
+//             background-repeat: no-repeat;
+//             background-position: 13px 0px;
+//             padding-left: 38px;
+//             background-size: contain;
+//         }
+//     }
+// }
+ion-title {
+    font-weight: 600;
+    color: #1b1c1e;
+}
+ion-toolbar {
+    border-radius: 0px 0px 8px 8px;
+}
+ion-note {
+    font-size: 10px;
+    word-break: break-word;
+}
+.box-shadow {
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+}
+.no-box-shadow {
+    -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1) !important;
+}
+.disable {
+    filter: grayscale(1);
+}
+
+ion-card {
+    border-radius: 8px;
+}
+ion-card-title {
+    font-size: 14px;
+    color: #1b1c1e;
+    font-weight: 600;
+}
+ion-slide {
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+    padding: 10px;
+    img {
+        border-radius: 8px !important;
+    }
+}
+
+.top-menu {
+    background-color: #2486ef;
+    color: #fff;
+    p {
+        font-size: 12px;
+        font-weight: 500;
+        margin-bottom: 0;
+    }
+}
+.top-icon {
+    zoom: 1.8;
+}
+.bottom-icon {
+    zoom: 2.3;
+}
+.menu {
+    p {
+        font-size: 10px;
+        font-weight: 500;
+        margin-bottom: 16px;
+        color: #1b1c1e;
+    }
+}
+.balance {
+    font-size: 19px;
+    font-weight: 600;
+    font-family: "montserrat";
+    letter-spacing: 1px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    color: #1b1c1e;
+}
+.avatar {
+    margin-top: 4px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+}
+
+.profile {
+    p {
+        font-size: 11px;
+        position: absolute;
+        top: 14px;
+        z-index: 2;
+    }
+}
+ion-slides {
+    --bullet-background: rgb(197, 216, 255);
+    --bullet-background-active: #018af3;
+}
+.show-background {
+    border-style: none;
+    transition: all 0.7s ease-in-out;
+    transform: translateY(-60px);
+}
+.show-background2 {
+    border-style: none;
+    transition: all 0.4s ease-in-out;
+    transform: translateY(0px);
+}
+.show-img {
+    transition: all 0.5s ease-in-out;
+    transform: translateY(60px);
+}
+.show-img2 {
+    position: relative;
+    transition: all 0.7s ease-in-out;
+    transform: translateY(0px);
+}
+
+.show-icon {
+    transition: all 0.5s ease-in-out;
+    transform: translateY(60px) rotate(40deg);
+}
+.show-icon2 {
+    position: relative;
+    transition: all 0.7s ease-in-out;
+    transform: translateY(0px) rotate(0deg);
+}
+
+.show-top {
+    opacity: 1 !important;
+    border-style: none;
+    transition: all 0.7s ease-in-out;
+    transform: translateY(0px);
+}
+.show-top2 {
+    border-style: none;
+    transition: all 0.4s ease-in-out;
+    transform: translateY(-60px);
+}
+
+.show-right {
+    transition: all 0.5s ease-in-out;
+    transform: translateX(0px);
+}
+.show-right2 {
+    position: relative;
+    transition: all 0.5s ease-in-out;
+    transform: translateX(10px);
+}
+.show-left {
+    transition: all 0.5s ease-in-out;
+    transform: translateX(-10px);
+}
+.show-left2 {
+    position: relative;
+    transition: all 0.5s ease-in-out;
+    transform: translateX(0px);
+}
+.show-bsmall {
+    transition: all 0.7s ease-in-out;
+    transform: translateY(-20px);
+}
+.show-bsmall2 {
+    position: relative;
+    transition: all 0.7s ease-in-out;
+
+    transform: translateY(0px);
+}
+.show-bsmall2 {
+    transition-delay: 0.5s;
+    transition: all 0.7s ease-in-out;
+    transform: translateY(-30px);
+}
+.show-bsmall22 {
+    position: relative;
+    transition-delay: 0.2s;
+    transition: all 0.8s ease-in-out;
+    transform: translateY(0px);
+}
+
+.show-blue-t {
+    transition-delay: 0.2s;
+    transition: all 0.7s ease-in-out;
+    transform: translateY(-10px);
+}
+.show-blue-t2 {
+    position: relative;
+    transition-delay: 0.2s;
+    transition: all 0.8s ease-in-out;
+    transform: translateY(0px);
+}
+
+.show-blue {
+    transition-delay: 0.5s;
+    transition: all 1s ease-in-out;
+    transform: translateY(-10px);
+}
+.show-blue2 {
+    position: relative;
+    transition-delay: 0.2s;
+    transition: all 0.8s ease-in-out;
+    transform: translateY(0px);
+}
+
+.show-rightblue {
+    transition-delay: 0.5s;
+    transition: all 1s ease-in-out;
+    transform: translateY(-10px);
+}
+.show-rightblue2 {
+    position: relative;
+    transition-delay: 0.2s;
+    transition: all 0.8s ease-in-out;
+    transform: translateY(0px);
+}

@@ -1,0 +1,92 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Confirmation Payment</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="title-header">
+    <span>Detail Tagihan</span>
+  </div>
+  <ion-card class="card-detail">
+    <ion-card-header>
+      <p>{{invoice.title}}</p>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col>Total</ion-col>
+        <ion-col>:</ion-col>
+        <ion-col class="amount">{{ invoice.amount | currency: 'Rp. ':true:'1.0' | replace: ',':'.' }}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Terbayar</ion-col>
+        <ion-col>:</ion-col>
+        <ion-col class="amount">{{ invoice.paidAmount | currency: 'Rp. ':true:'1.0' | replace: ',':'.' }}</ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-row class="bottom-detail">
+    <ion-col>Sisa</ion-col>
+    <ion-col></ion-col>
+    <ion-col class="amount">{{ invoice.amount - invoice.paidAmount | currency: 'Rp. ':true:'1.0' | replace: ',':'.' }}
+    </ion-col>
+  </ion-row>
+
+  <div class="input" lines="none">
+    <ion-label class="ion-label" position="stacked">Masukkan Nominal <ion-text color="danger">
+      </ion-text>
+    </ion-label>
+    <ion-input #autofocus class="input-nominal" type="string" elastic placeholder='Rp 0' [(ngModel)]="nominal"
+      (ionInput)='onChangePrice($event.target.value)'></ion-input>
+  </div>
+  <div class="container-button">
+    <ion-button expand="block" type="button" (click)="confirmPay()">
+      {{'INVOICE.pay' | translate}}
+    </ion-button>
+  </div>
+
+  <!-- <div>
+    <div>
+      <span>Detail Tagihan</span>
+    </div>
+    <div class="container-detail">
+
+      <div class="detail">
+        <h2>Nama Tagihan</h2>
+        <p>{{invoice.title}}</p>
+      </div>
+      <div class="detail">
+        <h2>Total Tagihan</h2>
+        <p>{{ invoice.amount | currency: 'Rp. ':true:'1.0' | replace: ',':'.' }}</p>
+      </div>
+      <div class="detail">
+        <h2>Sisa Tagihan</h2>
+        <p>{{ invoice.amount - invoice.paidAmount | currency: 'Rp. ':true:'1.0' | replace: ',':'.' }}</p>
+      </div>
+    </div>
+
+    <ion-item lines="none">
+      <ion-label class="ion-label" position="stacked">Masukkan Nominal Pembayaran <ion-text color="danger">
+        </ion-text>
+      </ion-label>
+      <ion-input #autofocus class="input-nominal" type="string" elastic placeholder='Rp 0' [(ngModel)]="nominal"
+        (ionInput)='onChangePrice($event.target.value)'></ion-input>
+    </ion-item>
+    <div class="container-button">
+      <ion-button expand="block" type="button" (click)="confirmPay()">
+        {{'INVOICE.pay' | translate}}
+      </ion-button>
+    </div>
+
+
+  </div> -->
+
+
+</ion-content>
