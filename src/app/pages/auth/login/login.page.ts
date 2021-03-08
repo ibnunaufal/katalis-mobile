@@ -64,7 +64,7 @@ export class LoginPage implements OnInit {
   ) {
 
     this.firebase.getTokenUnLogin();
-    this.statusBar.backgroundColorByHexString('#0054e6');
+    this.statusBar.backgroundColorByHexString('#fff');
 
     this.storage.get('profile').then((profile: any) => {
       // console.log(profile);

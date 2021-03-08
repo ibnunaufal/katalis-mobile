@@ -15,10 +15,6 @@ GET_ALL_DONATION(){
     return this.http.get(API_GET_ALL_DONATION_URL);
 }
 
-getHistory(id){
-  return this.http.get("katalis/donation/"+id);
-}
-
 ADD_DONATION(accountId,id,amount,callerId){
   var data = {
     accountId:accountId,
@@ -30,6 +26,10 @@ ADD_DONATION(accountId,id,amount,callerId){
    
   };
   return this.http.post(API_ADD_DONATION_URL,data);
+}
+
+getHistory(id){
+  return this.http.get("katalis/donation/"+id);
 }
 tokenCheck() {
     return this.http.get("katalis/user/credential/check");

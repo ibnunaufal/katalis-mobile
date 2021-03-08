@@ -96,10 +96,11 @@
     "DIGITALCARD": {
         "title": "Kartu Digital",
         "information": "Informasi Kartu",
-        "balance": "Saldo Kartu",
-        "limitmax": "Batas Maks",
-        "dailylimit": "Batas Harian",
-        "cardholder": "Nama Pemegang Kartu"
+        "balance": "Batas kartu",
+        "limitmax": "Batas maks",
+        "dailylimit": "Batas harian",
+        "cardholder": "Nama Pemegang Kartu",
+        "setLimit": "Atur batas"
     },
     "INFO": {
         "title": "Informasi dan Berita"
@@ -240,7 +241,11 @@
         "selectYear": "Pilih Tahun"
     },
     "DONATION": {
-        "title": "Donasi"
+        "title": "Donation",
+        "balance": "Saldo Ando",
+        "nominal": "Nominal Donasi",
+        "history": "Riwayat Donasi",
+        "donate": "Donasi"
     },
     "DATANOTFOUND": {
         "title": "Sayang Sekali, Data yang anda inginkan tidak ditemukan."

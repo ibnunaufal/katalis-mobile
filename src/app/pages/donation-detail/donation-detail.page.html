@@ -10,53 +10,63 @@
 </ion-header>
 
 <ion-content>
-  <div>
-    <ion-item lines="none">
-    </ion-item>
-    <ion-item lines="none">
-      <ion-label class="ion-label" position="stacked">Nama Donasi <ion-text color="danger">
-        </ion-text>
-      </ion-label>
-      <ion-input class="ion-input" [(ngModel)]="donationName" type="text" readonly></ion-input>
-    </ion-item>
-    <ion-item lines="none">
-      <ion-label class="ion-label" position="stacked">Input Nominal Donasi <ion-text color="danger">
-        </ion-text>
-      </ion-label>
-      <ion-input #autofocus class="input-nominal" type="string" elastic placeholder='Rp 0' [(ngModel)]="nominal"
-        (ionInput)='onChangePrice($event.target.value)'></ion-input>
-      <!-- <ion-input class="ion-input" [(ngModel)]="nominal" type="number"></ion-input> -->
-    </ion-item>    
-    <ion-item lines="none">
-      <ion-label class="ion-label" position="stacked">Riwayat Donasi
-      </ion-label>
-      <table class="table">
-        <tbody>
-          <tr *ngFor="let list of history">
-            <td>{{ list.amount | currency: 'Rp ':true:'1.0' | replace: ',':'.' }}</td>
-            <td>{{list.dateTime | date : 'dd MMM yyyy hh:mm'}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </ion-item>
-      
-    <ion-fab bottom>
-      <ion-row text-center>
-        <ion-col>
-          <ion-button class="btn" ion-fab fab-fixed color="primary" expand="block" (click)="ADD_DONATION()">
-            {{'DONATION.title' | translate}}
-          </ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-fab>
-    <div class="container-button">
-      <!-- <ion-button expand="block" type="button" (click)="ADD_DONATION()">
-        {{'DONATION.title' | translate}}
-      </ion-button> -->
-    </div>
+  <ion-card>
+    <ion-card-header>
+      <p style="font-weight: 600;">
+        {{'DONATION.balance' | translate}}
+      </p>
+      <h2>
+        {{balance | currency: 'Rp. ':true:'1.0' | replace:
+        ',':'.' }}
+      </h2>
+    </ion-card-header>
 
+    <ion-card-content>
+      <ion-item lines="none">
+        <ion-label class="ion-label" position="stacked">{{'DONATION.nominal' | translate}} <ion-text color="danger">
+          </ion-text>
+        </ion-label>
+        <ion-input #autofocus class="input-nominal" type="string" elastic placeholder='Rp 0' [(ngModel)]="nominal"
+          (ionInput)='onChangePrice($event.target.value)'></ion-input>
+      </ion-item>
 
+      <div class="container-button">
+        <ion-button expand="block" type="button" (click)="ADD_DONATION()">
+          {{'DONATION.donate' | translate}}
+        </ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="history">
+    <ion-label class="ion-label" position="stacked">{{'DONATION.history' | translate}}
+      <ion-icon name="md-history-bread" style="zoom: 2;
+      position: absolute;
+      right: 12px;" (click)="showHistory(showData)"></ion-icon>
+    </ion-label>
+
+    <ion-list *ngIf="showData">
+      <ion-item lines="none" *ngFor="let list of history">
+        <ion-icon name="md-dollar" style="margin-right: 18px;" slot="start"></ion-icon>
+        <ion-label>
+          <h6>{{donation.title}}</h6>
+          <p>{{list.dateTime | date : 'dd MMMM yyyy'}}</p>
+          <span style="position: absolute;
+          right: 0;
+          top: 7px;
+          font-weight: 500;
+          font-size: 15px;">{{list.amount | currency: 'Rp. ':true:'1.0' | replace:
+            ',':'.' }}</span>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <!-- <table class="table">
+      <tbody>
+        <tr *ngFor="let list of history">
+          <td>{{ list.amount | currency: 'Rp ':true:'1.0' | replace: ',':'.' }}</td>
+          <td>{{list.dateTime | date : 'dd MMM yyyy hh:mm'}}</td>
+        </tr>
+      </tbody>
+    </table> -->
   </div>
-
-
 </ion-content>

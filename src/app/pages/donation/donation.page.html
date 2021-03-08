@@ -10,13 +10,11 @@
 
 <ion-content>
   <div *ngIf="donations">
-
-
-
     <ion-card *ngFor="let donation of donations" class="no-box-shadow" (click)="POPUP_FORM_DONATION(donation)">
       <ion-card-header>
         <ion-card-title>{{donation.title}}</ion-card-title>
-        <p class="createDate"> {{donation.createDate}}</p>
+        <p class="createDate"> {{donation.createDate| date : 'dd MMMM yyyy'
+          }}</p>
       </ion-card-header>
     </ion-card>
     <div *ngIf="donations.length==0" style="width: 100%;

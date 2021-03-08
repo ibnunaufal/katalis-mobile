@@ -15,6 +15,6 @@ import { InvoiceInputAmountPage } from './invoice-input-amount.page';
     IonicModule,
     InvoiceInputAmountPageRoutingModule
   ],
-  declarations: [InvoiceInputAmountPage]
+  // declarations: [InvoiceInputAmountPage]
 })
-export class InvoiceInputAmountPageModule {}
+export class InvoiceInputAmountPageModule { }

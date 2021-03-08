@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { CardSetLimitPageRoutingModule } from './card-set-limit-routing.module';
 
+import { PipesModule } from "src/app/pipes/pipes.module";
 import { CardSetLimitPage } from './card-set-limit.page';
 
 @NgModule({
@@ -13,8 +14,9 @@ import { CardSetLimitPage } from './card-set-limit.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    CardSetLimitPageRoutingModule
+    CardSetLimitPageRoutingModule,
+    PipesModule,
   ],
-  declarations: [CardSetLimitPage]
+  // declarations: [CardSetLimitPage]
 })
-export class CardSetLimitPageModule {}
+export class CardSetLimitPageModule { }

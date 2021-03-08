@@ -7,7 +7,7 @@
     <ng-container *ngIf="!invoicesError else invoicesErrorTpl">
       <ng-container *ngIf="invoices.length > 0 else invoicesEmptyTpl">
         <ion-card *ngFor="let invoice of invoices" class="no-box-shadow">
-          <div *ngIf="invoice.detail.length>1">
+          <div *ngIf="invoice.detail.length>0">
             <div *ngIf="invoice.detail[0].discount!=0" class="ribbon ribbon-top-right scanner">
               <ion-label class="glow">
                 &nbsp;</ion-label>

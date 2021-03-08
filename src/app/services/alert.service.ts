@@ -17,6 +17,7 @@ export class AlertService {
       header: "Alert",
       message: message,
       buttons: ["OK"],
+      mode: 'ios'
     });
 
     await alert.present();
@@ -27,6 +28,7 @@ export class AlertService {
       message: message,
       duration: 2000,
       position: "bottom",
+      mode: 'ios'
     });
 
     await toast.present();
@@ -38,6 +40,7 @@ export class AlertService {
       duration: 2000,
       position: "bottom",
       color: "success",
+      mode: 'ios'
     });
 
     await toast.present();

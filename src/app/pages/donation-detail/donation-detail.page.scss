@@ -5,7 +5,7 @@ ion-card {
     border-radius: 8px;
 }
 ion-content {
-    --background: #f8f8fa;
+    --background: #ffffff;
 }
 
 ion-item {
@@ -167,71 +167,52 @@ ion-label {
     }
 }
 .ion-label {
-    color: #1b1c1e !important;
+    color: #ffffff !important;
     font-family: "montserrat";
     font-size: 18px;
     font-weight: 600;
 }
 .container-button {
-    height: 65px;
     margin-left: 12px;
     margin-right: 12px;
-    // margin-top: 47px;
+    margin-top: 47px;
     ion-button {
         --border-radius: 62px;
         height: 56px;
-        --background: #0054e6;
+        --background: #ffffff;
+        color: #0054e6;
+        font-size: 16px;
         --box-shadow: none;
-        font-weight: 500 !important;
+        font-weight: 600 !important;
         text-transform: capitalize;
     }
 }
 
-table {
-    font-size: 14px;
-    width: 100%;
-    padding: 10px;
-    tbody{
-        padding: 10px;
+.history {
+    ion-label {
+        color: #1b1c1e !important;
+        font-size: 14px;
     }
-    th {
-      padding: 10px;
-      font-weight: 500;
-      color: #575757;
-      --backgroundVar: #efefed;
+    margin: 18px;
+    color: #1b1c1e;
+}
+
+ion-card {
+    background-color: #0054e6;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 30px;
+    ion-card-header {
+        margin: 0px 18px 0px 18px;
+        color: #fff;
+        h2 {
+            font-weight: 600;
+        }
     }
-  
-    td {
-      padding: 10px;
-      text-align: center;
-      font-weight: 400;
-      color: #575757;
-    }
-  
-    tr:nth-child(even) {
-      --backgroundVar: #f2f2f2;
-    }
-  }
-  ion-fab{
-    // width: 150px;
-    // display: flex;
-    // width: 100%;
-    // flex-direction: row;
-    // justify-content: center;
-    // background:aqua;
-     width: 100%;
-      display: block;
-      line-height: 50px;
-      text-align: center;
-      color: white;
-      font-size: 30px;
-      font-weight: bold;
-      border-radius: 20px;
-      -webkit-border-radius: 20px;
-      text-decoration: none;
-      transition: ease all 0.3s;
-      position: fixed;
-    //   margin-left: auto; margin-right: auto;
-    // left: calc(50% - 250px);
-      bottom:10px;
-  }
+}
+
+ion-list {
+    margin-top: 21px;
+    max-height: 350px;
+    overflow: scroll;
+    padding-top: 8px;
+}

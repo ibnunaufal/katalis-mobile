@@ -4,12 +4,9 @@
 
 export const environment = {
   production: false,
-  // API_URL: "https://api.katalis.info/",
-  // API_URL_ACADEMIC: "https://api.katalis.info/webedu/",
-  // API_URL_PY: "https://api.katalis.info/",
-  API_URL: "https://api.edumedia.me/",
-  API_URL_ACADEMIC: "https://api.edumedia.me/webedu/",
-  API_URL_PY: "https://api.edumedia.me/",
+  API_URL: "https://api.katalis.info/",
+  API_URL_ACADEMIC: "https://api.katalis.info/webedu/",
+  API_URL_PY: "https://api.katalis.info/",
 
   // API_URL: "http://sundev.duckdns.org/",
   // API_URL: "http://192.168.1.102/",

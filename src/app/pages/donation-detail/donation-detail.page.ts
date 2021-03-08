@@ -26,7 +26,11 @@ export class DonationDetailPage implements OnInit {
   temp_nominal = 0;
   nominal = "";
   donationName;
-  history:any;
+  history: any;
+  balance = 0;
+
+  showData = false;
+
 
   constructor(
     private modalCtrl: ModalController,
@@ -42,6 +46,15 @@ export class DonationDetailPage implements OnInit {
     this.donation = this.navParams.get("donation");
     this.donationName = this.donation.title;
     this.getHistory();
+    this.getBalance();
+
+
+  }
+
+  getBalance() {
+    this.storage.get('balance').then(balance => {
+      this.balance = balance
+    })
   }
 
   ngOnInit() {
@@ -57,6 +70,14 @@ export class DonationDetailPage implements OnInit {
 
   setFocusOnInput() {
     this.ionInput.setFocus();
+  }
+
+  showHistory(b) {
+    if (b) {
+      this.showData = false
+    } else {
+      this.showData = true
+    }
   }
 
 
@@ -85,8 +106,8 @@ export class DonationDetailPage implements OnInit {
     }
   }
 
-  getHistory(){
-    this.donationService.getHistory(this.donation.id).then((res:any)=>{
+  getHistory() {
+    this.donationService.getHistory(this.donation.id).then((res: any) => {
       this.history = res.body.participants;
       console.log(this.history);
     })

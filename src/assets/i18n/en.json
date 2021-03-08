@@ -96,10 +96,11 @@
     "DIGITALCARD": {
         "title": "Digital Card",
         "information": "Card Information",
-        "balance": "Card Balance",
-        "limitmax": "Limit Max",
+        "balance": "Card limit",
+        "limitmax": "Maximum limit",
         "dailylimit": "Daily Limit",
-        "cardholder": "Cardholder's Name"
+        "cardholder": "Cardholder's Name",
+        "setLimit": "Set Limit"
     },
     "INFO": {
         "title": "Information and News"
@@ -240,7 +241,11 @@
         "selectYear": "Select Year"
     },
     "DONATION": {
-        "title": "Donation"
+        "title": "Donation",
+        "balance": "Your Balance",
+        "nominal": "Nominal Donation",
+        "history": "Donation History",
+        "donate": "Donate"
     },
     "DATANOTFOUND": {
         "title": "Unfortunately, the data you wanted was not found."

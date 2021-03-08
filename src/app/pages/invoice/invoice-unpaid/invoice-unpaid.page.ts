@@ -205,7 +205,7 @@ export class InvoiceUnpaidPage implements OnInit {
           {
             text: "Bayar",
             handler: () => {
-              this.confirmPay(invoice.invoiceId, invoice.amount, invoice.tags);
+              this.confirmPay(invoice.invoiceId, invoice.title, invoice.amount, invoice.tags);
             },
           },
         ],
@@ -215,14 +215,14 @@ export class InvoiceUnpaidPage implements OnInit {
     await alert.present();
   }
 
-  confirmPay(id, amount, tag) {
+  confirmPay(id, title, amount, tag) {
     this.start = 0;
     this.loading.show();
 
     this.invoice.payInvoice(id, amount, tag).then(
       (invoice: any) => {
         this.loading.hide();
-        this.alert.alert("Success");
+        this.alert.popoverSuccess("Transaksi Berhasil", "Pembayaran tagihan " + title + " sebesar " + this.getCurrency(amount) + " telah berhasil dilakukan.")
         this.getData(this.start, this.limit);
 
         this.globalObservable.publish({
@@ -245,5 +245,9 @@ export class InvoiceUnpaidPage implements OnInit {
       },
     });
     return await modal.present();
+  }
+
+  getCurrency(amount: number) {
+    return this.currencyPipe.transform(amount, 'IDR', 'Rp ', '1.0-0');
   }
 }
