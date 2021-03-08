@@ -40,10 +40,19 @@
       </table>
     </ion-item>
       
+    <ion-fab bottom>
+      <ion-row text-center>
+        <ion-col>
+          <ion-button class="btn" ion-fab fab-fixed color="primary" expand="block" (click)="ADD_DONATION()">
+            {{'DONATION.title' | translate}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-fab>
     <div class="container-button">
-      <ion-button expand="block" type="button" (click)="ADD_DONATION()">
+      <!-- <ion-button expand="block" type="button" (click)="ADD_DONATION()">
         {{'DONATION.title' | translate}}
-      </ion-button>
+      </ion-button> -->
     </div>
 
 
