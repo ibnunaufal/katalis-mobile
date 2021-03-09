@@ -70,6 +70,7 @@
         </config-file>
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+        <preference name="deployment-target" value="9.0" />
         <icon height="144" src="resources/ios/icon/icon-72@2x.png" width="144" />
         <icon height="57" src="resources/ios/icon/icon.png" width="57" />
         <icon height="20" src="resources/ios/icon/icon-20.png" width="20" />
