@@ -59,7 +59,6 @@
     "cordova-plugin-file-transfer": "^1.7.1",
     "cordova-plugin-filechooser": "^1.2.0",
     "cordova-plugin-filepath": "^1.5.8",
-    "cordova-plugin-firebase": "^2.0.5",
     "cordova-plugin-insomnia": "^4.3.0",
     "cordova-plugin-network-information": "^2.0.2",
     "cordova-plugin-shake": "^0.7.0",
@@ -119,7 +118,6 @@
   "description": "An Ionic project",
   "cordova": {
     "plugins": {
-      "cordova-plugin-firebase": {},
       "cordova-plugin-whitelist": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-device": {},
